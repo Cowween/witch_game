@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c7tfmcxxmba41"]
+
+[ext_resource type="PackedScene" uid="uid://cei4unw5l38he" path="res://Scenes/Ingredients/ingredient.tscn" id="1_lc1oi"]
+[ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="2_8od7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qbn"]
+size = Vector2(1154, 144)
+
+[node name="Test" type="Node" unique_id=2030630075]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=415763324]
+position = Vector2(8, 296)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2045122298]
+position = Vector2(567, 72)
+shape = SubResource("RectangleShape2D_o3qbn")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1538275815]
+offset_left = -8.0
+offset_right = 1152.0
+offset_bottom = 144.0
+
+[node name="Ingredient" parent="." unique_id=977333642 instance=ExtResource("1_lc1oi")]
+position = Vector2(408, 168)
+
+[node name="Ingredient2" parent="." unique_id=2074537377 instance=ExtResource("1_lc1oi")]
+position = Vector2(192, 128)
+
+[node name="Beaker" parent="." unique_id=1601484383 instance=ExtResource("2_8od7v")]
+position = Vector2(520, 256)
+initial_volume = 100.0
+
+[node name="Beaker2" parent="." unique_id=375797042 instance=ExtResource("2_8od7v")]
+position = Vector2(264, 264)

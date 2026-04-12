@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://de107huwwecmr"]
+
+[ext_resource type="Script" uid="uid://cvoorpceshao8" path="res://Scripts/Equipment/beaker.gd" id="1_8nens"]
+[ext_resource type="Texture2D" uid="uid://b1sinaqh14f37" path="res://Assets/TestAssets/Beaker.png" id="1_e83w5"]
+[ext_resource type="Texture2D" uid="uid://di84l4viyh401" path="res://Assets/TestAssets/water.png" id="2_8nens"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="4_8d3m3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d3m3"]
+size = Vector2(50, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7gaa"]
+size = Vector2(7.8125, 54.305)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nens"]
+size = Vector2(44, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc45u"]
+size = Vector2(53, 59)
+
+[node name="Beaker" type="CharacterBody2D" unique_id=1687937678]
+collision_layer = 5
+collision_mask = 6
+script = ExtResource("1_8nens")
+push_force = 250.0
+gravity = 1000.0
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=8635498]
+clip_children = 2
+texture = ExtResource("1_e83w5")
+
+[node name="Water" type="Sprite2D" parent="Glass" unique_id=1052853056]
+position = Vector2(0, 2.0625029)
+scale = Vector2(0.8398438, 0.9042968)
+texture = ExtResource("2_8nens")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069660311]
+position = Vector2(1, 28.5)
+shape = SubResource("RectangleShape2D_8d3m3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=146331282]
+position = Vector2(-23.1875, 0)
+shape = SubResource("RectangleShape2D_p7gaa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=70996944]
+position = Vector2(26.09375, 0.84749985)
+shape = SubResource("RectangleShape2D_p7gaa")
+
+[node name="BeakerArea" type="Area2D" parent="." unique_id=1087631236]
+collision_layer = 3
+priority = 1
+script = ExtResource("4_8d3m3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeakerArea" unique_id=1756292199]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8nens")
+
+[node name="PourReceptor" type="Area2D" parent="." unique_id=148254013]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourReceptor" unique_id=1321918741]
+position = Vector2(0.5, -56.5)
+shape = SubResource("RectangleShape2D_rc45u")
+
+[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pourable" from="BeakerArea" to="." method="_on_beaker_area_pourable"]
+[connection signal="area_entered" from="PourReceptor" to="." method="_on_pour_receptor_area_entered"]
+[connection signal="area_exited" from="PourReceptor" to="." method="_on_pour_receptor_area_exited"]
