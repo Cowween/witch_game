@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cmv8nf4frcs1p"]
+
+[ext_resource type="Script" uid="uid://bmj1tit1nwc14" path="res://Scripts/UI/tool_tip.gd" id="1_bu04f"]
+
+[sub_resource type="SystemFont" id="SystemFont_bkqjj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu04f"]
+font = SubResource("SystemFont_bkqjj")
+font_size = 13
+
+[node name="ToolTip" type="VBoxContainer" unique_id=209308309]
+offset_right = 96.0
+offset_bottom = 144.0
+size_flags_vertical = 3
+script = ExtResource("1_bu04f")
+
+[node name="Name" type="Label" parent="." unique_id=1466133256]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_bu04f")
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=1391991173]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 8
+text = "ABCDABCDABCD"
+fit_content = true
+
+[node name="Composition" type="Label" parent="." unique_id=2118753726]
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Wood: Earth: Fire: Metal: Water:"

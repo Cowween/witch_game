@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="2_8od7v"]
 [ext_resource type="PackedScene" uid="uid://hwkqe1aenhf7" path="res://Scenes/Equipment/blender.tscn" id="3_qc4db"]
 [ext_resource type="PackedScene" uid="uid://cbhyenjg7unk8" path="res://Scenes/Equipment/jar.tscn" id="4_ys1qc"]
+[ext_resource type="Script" uid="uid://qnacb7ayv71y" path="res://Scripts/ui_communicator.gd" id="5_i3aeo"]
+[ext_resource type="PackedScene" uid="uid://cmv8nf4frcs1p" path="res://UI/tool_tip.tscn" id="6_5wyu1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qbn"]
 size = Vector2(1154, 144)
@@ -25,27 +27,67 @@ offset_left = -8.0
 offset_right = 1152.0
 offset_bottom = 144.0
 
-[node name="Ingredient" parent="." unique_id=977333642 instance=ExtResource("1_lc1oi")]
+[node name="Ingredient" parent="." unique_id=977333642 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("1_lc1oi")]
 position = Vector2(408, 168)
 blended_volume = 100
+UI_communicator = NodePath("../UICommunicator")
 
-[node name="Ingredient2" parent="." unique_id=2074537377 instance=ExtResource("1_lc1oi")]
+[node name="Ingredient2" parent="." unique_id=2074537377 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("1_lc1oi")]
 position = Vector2(192, 128)
 blended_volume = 100
+UI_communicator = NodePath("../UICommunicator")
 
-[node name="Beaker" parent="." unique_id=1601484383 instance=ExtResource("2_8od7v")]
+[node name="Beaker" parent="." unique_id=1601484383 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(520, 256)
+full_y = null
+empty_y = null
+full_x = null
+empty_x = null
+initial_volume = null
+max_volume = null
 initial_volumes = Array[float]([0.0, 0.0, 0.0, 20.0])
+UI_communicator = NodePath("../UICommunicator")
+drag_speed = null
 
-[node name="Beaker2" parent="." unique_id=375797042 instance=ExtResource("2_8od7v")]
+[node name="Beaker2" parent="." unique_id=375797042 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(264, 264)
+full_y = null
+empty_y = null
+full_x = null
+empty_x = null
+initial_volume = null
+max_volume = null
 initial_volumes = Array[float]([50.0, 0.0, 0.0, 0.0])
+UI_communicator = NodePath("../UICommunicator")
+drag_speed = null
 
-[node name="Blender" parent="." unique_id=1680497295 instance=ExtResource("3_qc4db")]
+[node name="Blender" parent="." unique_id=1680497295 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("3_qc4db")]
 position = Vector2(144, 232)
+UI_communicator = NodePath("../UICommunicator")
 
-[node name="Beaker3" parent="." unique_id=1687937678 instance=ExtResource("2_8od7v")]
+[node name="Beaker3" parent="." unique_id=1687937678 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(360, 256)
+full_y = null
+empty_y = null
+full_x = null
+empty_x = null
+initial_volume = null
+max_volume = null
+initial_volumes = null
+UI_communicator = NodePath("../UICommunicator")
+drag_speed = null
 
-[node name="Jar" parent="." unique_id=210293072 instance=ExtResource("4_ys1qc")]
+[node name="Jar" parent="." unique_id=210293072 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("4_ys1qc")]
 position = Vector2(56, 40)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="UICommunicator" type="Node" parent="." unique_id=312197961]
+script = ExtResource("5_i3aeo")
+
+[node name="ToolTip" parent="." unique_id=209308309 instance=ExtResource("6_5wyu1")]
+offset_left = 752.0
+offset_top = 80.0
+offset_right = 890.0
+offset_bottom = 224.0
+
+[connection signal="display_request" from="UICommunicator" to="ToolTip" method="_on_ui_communicator_display_request"]

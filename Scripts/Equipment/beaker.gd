@@ -15,9 +15,11 @@ class_name Beaker
 @export var max_volume := 100.0
 @export var push_force := 80.0
 @export var initial_volumes :Array[float] = [0.0, 0.0, 0.0, 0.0]
+@export var UI_communicator : UICommunicator
 
 @export var gravity := 9.81
 @export var drag_speed := 20.0
+const OPERATIONS := preload("res://Res/operations.tres")
 var mouse_in := false
 var dragging := false
 var pouring := false
@@ -25,6 +27,8 @@ var target_beaker : Beaker = null
 var volume := 0.0 : set = set_volume
 var mouse_offset := Vector2.ZERO
 var all_solution : Array[Solution]
+var total_amount : Dictionary[String, Dictionary]
+var total_comp : Dictionary[String, float]
 # Called when the node enters the scene tree for the first time.
 func set_volume(value: float):
 	volume = clamp(value, 0, max_volume)
@@ -36,6 +40,7 @@ func _ready() -> void:
 			all_solution.append(i)
 			volume += i.volume
 			count += 1
+	
 	print(all_solution)
 	
 	draw_volume()
@@ -98,6 +103,8 @@ func _input(event: InputEvent) -> void:
 				rotate(PI/2)
 				pouring = false
 				draw_volume()
+
+func tally_effects() -> void:
 	
 			
 func draw_volume(hori := false) -> void:
@@ -141,6 +148,7 @@ func change_volume(value : float, hori:=false, concentration:Dictionary = {}, so
 func _on_area_2d_mouse_entered() -> void:
 
 	mouse_in = true
+	#UI_communicator.emit_signal("display_request", item_name, el_composition, amounts)
 
 
 func _on_area_2d_mouse_exited() -> void:

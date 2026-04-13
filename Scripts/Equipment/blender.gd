@@ -10,6 +10,7 @@ const OPERATIONS := preload("res://Res/operations.tres")
 @onready var blender_texture := $BlenderTexture
 
 @export var capacity := 100.0
+@export var UI_communicator : UICommunicator
 var amounts : Dictionary
 var all_elements : Array[BaseElement]
 var mouse_in := false
@@ -27,6 +28,7 @@ func _ready() -> void:
 	initial_pos = cup.position
 	cup.empty_y = BLENDER_EMPTY_POS
 	cup.full_y = BLENDER_FULL_POS
+	cup.UI_communicator = UI_communicator
 	cup.max_volume = capacity
 	volume = 0.0
 	

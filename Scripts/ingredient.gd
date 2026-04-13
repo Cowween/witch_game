@@ -8,15 +8,18 @@ var all_elements : Array[BaseElement]= []
 @export var drag_speed := 20.0
 @export var push_force := 200.0
 @export var blended_volume := 10
+@export var item_name := 'Ing'
+
 var mouse_in := false
 var dragging := false
 var mouse_offset := Vector2.ZERO
-var amounts : Dictionary
+var amounts : Dictionary[String, Dictionary]
 var el_composition : Dictionary[String, float]
 var total_amount := 0.0
 var is_pushed := false
 var is_vel_reset := true
 var external_velocity := Vector2.ZERO
+@export var UI_communicator : UICommunicator
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -83,6 +86,7 @@ func blend() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	mouse_in = true
+	UI_communicator.emit_signal("display_request", item_name, el_composition, amounts)
 
 
 func _on_area_2d_mouse_exited() -> void:

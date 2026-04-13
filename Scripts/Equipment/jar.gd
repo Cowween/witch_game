@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var ingredient : PackedScene
+@export var UI_communicator : UICommunicator
 var mouse_in := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action("l_click"):
 		if event.is_pressed() and mouse_in:
 			var new_ing := ingredient.instantiate()
-			
+			new_ing.ui_communicator = UI_communicator
 			#new_ing.dragging = true
 			add_child(new_ing)
 			new_ing.dragging = true
