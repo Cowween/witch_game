@@ -36,4 +36,3 @@ texture = ExtResource("2_3kua7")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
-[connection signal="volume_updated" from="BlenderCup" to="." method="_on_blender_cup_volume_updated"]

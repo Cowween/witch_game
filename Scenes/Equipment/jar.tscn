@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cbhyenjg7unk8"]
+
+[ext_resource type="Script" uid="uid://dtqkpvdlmro3i" path="res://Scripts/Equipment/jar.gd" id="1_m3vt4"]
+[ext_resource type="Texture2D" uid="uid://cgqumg80d6rc8" path="res://Assets/TestAssets/jar.png" id="1_o5mei"]
+[ext_resource type="PackedScene" uid="uid://cei4unw5l38he" path="res://Scenes/Ingredients/ingredient.tscn" id="2_fogmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpssd"]
+size = Vector2(64, 64)
+
+[node name="Jar" type="Area2D" unique_id=210293072]
+script = ExtResource("1_m3vt4")
+ingredient = ExtResource("2_fogmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814850656]
+shape = SubResource("RectangleShape2D_cpssd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1644568657]
+texture = ExtResource("1_o5mei")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

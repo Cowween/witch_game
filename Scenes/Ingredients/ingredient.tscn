@@ -22,11 +22,13 @@ texture = ExtResource("2_qu2du")
 
 [node name="Element" parent="." unique_id=2016421258 instance=ExtResource("1_n0heg")]
 type = "Wood"
+state = "Non-polar"
 is_non_polar = true
 
 [node name="Element2" parent="." unique_id=1070466791 instance=ExtResource("1_n0heg")]
 type = "Metal"
-is_metal = true
+state = "Non-polar"
+is_non_polar = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=77040318]
 priority = 3

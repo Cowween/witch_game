@@ -1,12 +1,20 @@
 extends CharacterBody2D
 class_name Beaker
-@onready var liquid = $Glass/Water
-@onready var glass = $Glass
-@onready var beaker_area = $BeakerArea
+@onready var non_polar_l := $Glass/NonPolar
+@onready var polar_l := $Glass/Polar
+@onready var salt_l := $Glass/Salt
+@onready var mixture_l := $Glass/Mixture
+@onready var glass := $Glass
+@onready var beaker_area := $BeakerArea
 
+@export var full_y := 0.0
+@export var empty_y := 64.0
+@export var full_x := 0.0
+@export var empty_x := -53.0
 @export var initial_volume := 0.0
 @export var max_volume := 100.0
 @export var push_force := 80.0
+@export var initial_volumes :Array[float] = [0.0, 0.0, 0.0, 0.0]
 
 @export var gravity := 9.81
 @export var drag_speed := 20.0
@@ -15,14 +23,23 @@ var dragging := false
 var pouring := false
 var target_beaker : Beaker = null
 var volume := 0.0 : set = set_volume
-
 var mouse_offset := Vector2.ZERO
+var all_solution : Array[Solution]
 # Called when the node enters the scene tree for the first time.
 func set_volume(value: float):
 	volume = clamp(value, 0, max_volume)
 func _ready() -> void:
-	volume = initial_volume
+	var count := 0
+	for i in get_children():
+		if i is Solution:
+			i.volume = initial_volumes[count]
+			all_solution.append(i)
+			volume += i.volume
+			count += 1
+	print(all_solution)
+	
 	draw_volume()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +47,11 @@ func _process(delta: float) -> void:
 	if pouring:
 		change_volume(-0.1, true)
 		if target_beaker and volume != 0:
-			target_beaker.change_volume(0.1)
+			for i in range(all_solution.size() - 1, -1, -1):
+				if all_solution[i].volume > 0:
+					target_beaker.change_volume(0.1, false, all_solution[i].conc, all_solution[i].solvent)
+					#print(name, "pouring into", target_beaker.name)
+					break
 		#await get_tree().create_timer(0.1).timeout
 	#liquid.position.y -= 0.1
 	#liquid.position.y = clamp(liquid.position.y, 0, 64)
@@ -41,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		var target_pos := get_global_mouse_position() + mouse_offset
 		var target_direction := target_pos - position
 		velocity = target_direction * drag_speed
+		#print(volume)
 		
 	else:
 		if not is_on_floor():
@@ -72,23 +94,47 @@ func _input(event: InputEvent) -> void:
 				pouring = true
 				rotate(-PI/2)
 				draw_volume(true)
-			elif mouse_in:
+			elif pouring:
 				rotate(PI/2)
 				pouring = false
 				draw_volume()
-			else:
-				pouring = false
 	
 			
 func draw_volume(hori := false) -> void:
-	if hori:
-		liquid.position.y = 0
-		liquid.position.x = -53 - ((volume/max_volume) * -53)
-	else:
-		liquid.position.x = 0
-		liquid.position.y = 64 - (volume/max_volume) * 64
+	var total_vol := 0.0
+	for i in all_solution:
+		print(i.name,  i.volume)
+		total_vol += i.volume
+		total_vol = clamp(total_vol, 0, max_volume)
+		var ratio := total_vol/max_volume
+		var liquid := non_polar_l
+		if i.is_polar:
+			liquid = polar_l
+		if i.is_mixture:
+			liquid = mixture_l
+		if i.is_salt:
+			liquid = salt_l
+			
+		if hori:
+			liquid.position.y = full_y
+			liquid.position.x = lerp(empty_x, full_x, ratio)
+		else:
+			liquid.position.x = full_x
+			liquid.position.y = lerp(empty_y, full_y, ratio)
 
-func change_volume(value : float, hori:=false) -> void:
+func change_volume(value : float, hori:=false, concentration:Dictionary = {}, solvent:="") -> void:
+	if value<0:
+		for i in range(all_solution.size() - 1, -1, -1):
+			if all_solution[i].volume > 0:
+				all_solution[i].decrease_volume(-value)
+				break
+	else:
+		for i in all_solution:
+			if i.solvent == solvent:
+				i.combine(value, concentration)
+	for i in all_solution:
+		if i.solvent != "Mixture" and i.volume > 0:
+			all_solution[0].separate(i)
 	volume += value
 	draw_volume(hori)
 

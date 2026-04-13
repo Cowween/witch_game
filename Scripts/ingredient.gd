@@ -1,16 +1,19 @@
 extends CharacterBody2D
 class_name Ingredient
-
+const OPERATIONS := preload("res://Res/operations.tres")
 var all_elements : Array[BaseElement]= []
 
 #==Internals==
 @export var gravity := 9.81
 @export var drag_speed := 20.0
 @export var push_force := 200.0
+@export var blended_volume := 10
 var mouse_in := false
 var dragging := false
 var mouse_offset := Vector2.ZERO
-var amounts : Dictionary[String, float]
+var amounts : Dictionary
+var el_composition : Dictionary[String, float]
+var total_amount := 0.0
 var is_pushed := false
 var is_vel_reset := true
 var external_velocity := Vector2.ZERO
@@ -20,15 +23,19 @@ func _ready() -> void:
 	for i in get_children():
 		if i is BaseElement:
 			all_elements.append(i)
-			amounts[i.type] = 0
 	for i in all_elements:
-		amounts[i.type] = i.moles + amounts[i.type]
-	print(amounts)
+		if not i.type in amounts:
+			amounts[i.type] = {}
+		amounts[i.type][i.state] = amounts[i.type].get(i.state, 0) + i.moles
+		total_amount += i.moles
+	el_composition = OPERATIONS.get_composition_from_amount(amounts)
+	#print(el_composition)
 
 func _physics_process(delta: float) -> void:
 	
 	if dragging:
 		var target_pos := get_global_mouse_position() + mouse_offset
+		#print(mouse_offset)
 		var target_direction := target_pos - position
 		velocity = target_direction * drag_speed
 		for i in get_slide_collision_count():
