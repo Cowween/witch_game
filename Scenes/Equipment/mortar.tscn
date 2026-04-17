@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://chd547q64a8w2"]
+
+[ext_resource type="Script" uid="uid://dnf5qhgq02q5d" path="res://Scripts/Equipment/mortar.gd" id="1_6tihu"]
+[ext_resource type="Texture2D" uid="uid://brniij3v1om3m" path="res://Assets/Equipment/mortarfront.png" id="2_0fx67"]
+[ext_resource type="PackedScene" uid="uid://dgry3kypfekms" path="res://Scenes/powder.tscn" id="2_50cj7"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_vhoxm"]
+[ext_resource type="Texture2D" uid="uid://cafm3jdvi81db" path="res://Assets/Equipment/mortarback.png" id="3_e7djc"]
+[ext_resource type="PackedScene" uid="uid://bffluf8e5epp6" path="res://Scenes/paste.tscn" id="3_oqbcw"]
+[ext_resource type="Texture2D" uid="uid://7h5n2x83gudo" path="res://Assets/Equipment/mortarrod1.png" id="4_vhoxm"]
+[ext_resource type="Texture2D" uid="uid://c1f235bvvgxa3" path="res://Assets/Equipment/mortarrod2.png" id="5_y0hqc"]
+[ext_resource type="Texture2D" uid="uid://y0qk71u1una3" path="res://Assets/Equipment/mortarrod3.png" id="6_ymb0o"]
+[ext_resource type="Texture2D" uid="uid://ko80ao2urset" path="res://Assets/Equipment/mortarrod4.png" id="7_50cj7"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="7_e7djc"]
+[ext_resource type="Texture2D" uid="uid://dyk14u0u5r8de" path="res://Assets/Equipment/mortarrod5.png" id="8_oqbcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiqog"]
+size = Vector2(63, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tihu"]
+size = Vector2(64, 36)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0hqc"]
+shader = ExtResource("7_e7djc")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rq6w8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vhoxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y0hqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ymb0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_50cj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oqbcw")
+}],
+"loop": false,
+"name": &"Grind",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymb0o"]
+resource_local_to_scene = true
+shader = ExtResource("7_e7djc")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50cj7"]
+resource_local_to_scene = true
+shader = ExtResource("7_e7djc")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0000000475
+
+[node name="Mortar" type="StaticBody2D" unique_id=1348376444]
+z_index = 1
+collision_layer = 5
+script = ExtResource("1_6tihu")
+powder = ExtResource("2_50cj7")
+paste = ExtResource("3_oqbcw")
+
+[node name="Container" type="Area2D" parent="." unique_id=252097534]
+position = Vector2(0, -34.965)
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container" unique_id=1581761086]
+position = Vector2(-0.5, 42.465)
+shape = SubResource("RectangleShape2D_wiqog")
+
+[node name="ClickableArea" type="Area2D" parent="." unique_id=1821189982 node_paths=PackedStringArray("selected_texture", "not_selected", "non_static")]
+priority = 3
+script = ExtResource("2_vhoxm")
+selected_texture = NodePath("../Selected")
+not_selected = NodePath("../Unselected")
+non_static = [NodePath("../Pestle")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea" unique_id=910700047]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_6tihu")
+
+[node name="IngredientSpawn" type="Node2D" parent="." unique_id=1378109505]
+position = Vector2(-0.175, -10.025)
+
+[node name="Pestle" type="AnimatedSprite2D" parent="." unique_id=673598583]
+z_index = 1
+material = SubResource("ShaderMaterial_y0hqc")
+sprite_frames = SubResource("SpriteFrames_rq6w8")
+animation = &"Grind"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=386092785]
+polygon = PackedVector2Array(30, 2, 31, 14, 21, 24, -21, 24, -30, 15, -32, 5, -28, -1, -26, 14, -19, 20, 20, 20, 27, 13)
+
+[node name="Selected" type="Node2D" parent="." unique_id=1742031910]
+visible = false
+
+[node name="Mortarback" type="Sprite2D" parent="Selected" unique_id=1767413428]
+z_index = -1
+material = SubResource("ShaderMaterial_ymb0o")
+texture = ExtResource("3_e7djc")
+
+[node name="Mortarfront" type="Sprite2D" parent="Selected" unique_id=351309237]
+z_index = 2
+material = SubResource("ShaderMaterial_50cj7")
+texture = ExtResource("2_0fx67")
+
+[node name="Unselected" type="Node2D" parent="." unique_id=434908567]
+
+[node name="Mortarback" type="Sprite2D" parent="Unselected" unique_id=1542684150]
+z_index = -1
+texture = ExtResource("3_e7djc")
+
+[node name="Mortarfront" type="Sprite2D" parent="Unselected" unique_id=104891258]
+z_index = 2
+texture = ExtResource("2_0fx67")
+
+[connection signal="body_entered" from="Container" to="." method="_on_container_body_entered"]
+[connection signal="body_exited" from="Container" to="." method="_on_container_body_exited"]
+[connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickableArea" to="ClickableArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickableArea" to="." method="_on_clickable_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickableArea" to="ClickableArea" method="_on_mouse_exited"]

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bsdbsnjpskve0"]
+
+[ext_resource type="Script" uid="uid://d2yhby3bn0pm" path="res://Scripts/Equipment/wand.gd" id="1_vw6r0"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_1mlg2"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="3_r0u0q"]
+[ext_resource type="Texture2D" uid="uid://cflbuklk4dxkl" path="res://Assets/Equipment/wand.png" id="3_v1j1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roggc"]
+size = Vector2(163, 15)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw6r0"]
+radius = 27.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0abqx"]
+size = Vector2(53, 52)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0t8m"]
+shader = ExtResource("3_r0u0q")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="Wand" type="CharacterBody2D" unique_id=1744849138]
+script = ExtResource("1_vw6r0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=621798864]
+position = Vector2(82, 7.5)
+shape = SubResource("RectangleShape2D_roggc")
+disabled = true
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=290814847]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=612693562]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_vw6r0")
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=1619434912 node_paths=PackedStringArray("non_static")]
+z_index = 4
+script = ExtResource("2_1mlg2")
+non_static = [NodePath("../Wand")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1292103335]
+position = Vector2(20.5, 18)
+shape = SubResource("RectangleShape2D_0abqx")
+
+[node name="Wand" type="Sprite2D" parent="." unique_id=1179428121]
+material = SubResource("ShaderMaterial_s0t8m")
+position = Vector2(26, 25)
+texture = ExtResource("3_v1j1j")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_mouse_exited"]

@@ -1,7 +1,7 @@
 extends Node
 class_name BaseElement
 
-@export_enum("Wood", "Fire", "Water", "Earth", "Metal") var type: String
+@export_enum("Wood", "Fire", "Water", "Earth", "Metal", "Junk") var type: String
 @export_enum("Polar", "Non-polar", "Salt", "Elemental") var state: String
 @export var moles := 1.0
 @export var is_polar := false

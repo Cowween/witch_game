@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dgry3kypfekms"]
+
+[ext_resource type="Script" uid="uid://ddlsglkkg8xg3" path="res://Scripts/ingredient.gd" id="1_pij5w"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="2_4gija"]
+[ext_resource type="Texture2D" uid="uid://c3uew6cohl2h" path="res://Assets/Ingredients/Powder.png" id="2_i23dk"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="4_4gija"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhoei"]
+resource_local_to_scene = true
+shader = ExtResource("2_4gija")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uw8q3"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gija"]
+size = Vector2(20, 8)
+
+[node name="Ingredient" type="CharacterBody2D" unique_id=977333642]
+collision_mask = 7
+platform_floor_layers = 4294967042
+script = ExtResource("1_pij5w")
+gravity = 1000.0
+item_name = ""
+soluble = true
+suffix = "Powder"
+is_powder = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
+modulate = Color(0.1793338, 0.2571089, 0.10246957, 1)
+material = SubResource("ShaderMaterial_bhoei")
+texture = ExtResource("2_i23dk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=77040318 node_paths=PackedStringArray("non_static")]
+priority = 3
+script = ExtResource("4_4gija")
+non_static = [NodePath("../Sprite2D")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454880484]
+position = Vector2(0, 19)
+shape = SubResource("CircleShape2D_uw8q3")
+debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_4gija")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]

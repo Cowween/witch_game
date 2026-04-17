@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bqj8rkxdbeeeg"]
+
+[ext_resource type="Script" uid="uid://1is2xwv6cuv5" path="res://Scripts/Equipment/cauldron.gd" id="1_hap34"]
+[ext_resource type="PackedScene" uid="uid://chapjbym4jil8" path="res://Scenes/potion.tscn" id="2_wjndh"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="3_l8d1q"]
+[ext_resource type="Texture2D" uid="uid://dbcawh08pdqh1" path="res://Assets/Equipment/Cauldronback.png" id="4_bv1vs"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="4_mebvf"]
+[ext_resource type="Texture2D" uid="uid://dwbtdrsm3q4g1" path="res://Assets/Equipment/Cauldronfront.png" id="5_mebvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjndh"]
+size = Vector2(64, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqtye"]
+size = Vector2(80, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x8yd"]
+size = Vector2(10, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8d1q"]
+size = Vector2(80, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv1vs"]
+size = Vector2(80, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mebvf"]
+size = Vector2(24.5, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmuv"]
+size = Vector2(56, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfmuv"]
+shader = ExtResource("4_mebvf")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jgb66"]
+shader = ExtResource("4_mebvf")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="Cauldron" type="StaticBody2D" unique_id=312336044]
+script = ExtResource("1_hap34")
+potion_scene = ExtResource("2_wjndh")
+
+[node name="PourReceptor" type="Area2D" parent="." unique_id=1365736271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourReceptor" unique_id=77347804]
+position = Vector2(0, -72)
+shape = SubResource("RectangleShape2D_wjndh")
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=443035525 node_paths=PackedStringArray("non_static")]
+script = ExtResource("3_l8d1q")
+non_static = [NodePath("../CauldronBack"), NodePath("../CauldronFront")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1554593414]
+shape = SubResource("RectangleShape2D_mqtye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=366481248]
+position = Vector2(-35, 0)
+shape = SubResource("RectangleShape2D_3x8yd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=263909419]
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_3x8yd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=2043819668]
+position = Vector2(0, 23.5)
+shape = SubResource("RectangleShape2D_l8d1q")
+
+[node name="DissolveArea" type="Area2D" parent="." unique_id=886675333]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DissolveArea" unique_id=802077750]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_bv1vs")
+
+[node name="PourArea" type="Area2D" parent="." unique_id=2063694468]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourArea" unique_id=992365384]
+position = Vector2(-56, 16)
+shape = SubResource("RectangleShape2D_mebvf")
+
+[node name="CupPos" type="Node2D" parent="." unique_id=424135928]
+position = Vector2(-64, 88)
+
+[node name="Tap" type="Area2D" parent="." unique_id=1694150060]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tap" unique_id=1011342197]
+position = Vector2(-40, -8)
+shape = SubResource("RectangleShape2D_rfmuv")
+
+[node name="CauldronBack" type="Sprite2D" parent="." unique_id=1099265028]
+z_index = -1
+material = SubResource("ShaderMaterial_rfmuv")
+texture = ExtResource("4_bv1vs")
+
+[node name="CauldronFront" type="Sprite2D" parent="." unique_id=1157921476]
+z_index = 2
+material = SubResource("ShaderMaterial_jgb66")
+texture = ExtResource("5_mebvf")
+
+[connection signal="body_entered" from="PourReceptor" to="." method="_on_pour_receptor_body_entered"]
+[connection signal="body_exited" from="PourReceptor" to="." method="_on_pour_receptor_body_exited"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_mouse_exited"]
+[connection signal="body_entered" from="DissolveArea" to="." method="_on_dissolve_area_body_entered"]
+[connection signal="body_entered" from="PourArea" to="." method="_on_pour_area_body_entered"]
+[connection signal="body_exited" from="PourArea" to="." method="_on_pour_area_body_exited"]
+[connection signal="mouse_entered" from="Tap" to="." method="_on_tap_mouse_entered"]
+[connection signal="mouse_exited" from="Tap" to="." method="_on_tap_mouse_exited"]

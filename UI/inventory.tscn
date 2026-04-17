@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://de2n8u2d74f14"]
+
+[ext_resource type="Script" uid="uid://d4htto5u3r0kf" path="res://Scripts/UI/inventory.gd" id="1_0knst"]
+[ext_resource type="Texture2D" uid="uid://x3wr4gmyjnq1" path="res://Assets/Ingredients/Blucrystal.png" id="1_23vm5"]
+[ext_resource type="PackedScene" uid="uid://ckpud7yglvnqm" path="res://UI/ingredient_button.tscn" id="1_fxcd2"]
+[ext_resource type="Texture2D" uid="uid://dtw0hki2eevkm" path="res://Assets/Ingredients/Worm.png" id="3_su3to"]
+[ext_resource type="PackedScene" uid="uid://755y3e4ktsn1" path="res://Scenes/Ingredients/earth_worm.tscn" id="4_e57su"]
+[ext_resource type="Texture2D" uid="uid://ci1blhxnd4yfq" path="res://Assets/Ingredients/Fiddle.png" id="5_3dtbo"]
+[ext_resource type="PackedScene" uid="uid://c1s05ua3ryt1f" path="res://Scenes/Ingredients/fiddle_head.tscn" id="6_cxd6k"]
+[ext_resource type="Texture2D" uid="uid://dd10kemu2uxxg" path="res://Assets/Ingredients/Glowbug.png" id="7_f5xeh"]
+[ext_resource type="PackedScene" uid="uid://lq0fkn3uv3eu" path="res://Scenes/Ingredients/glowbug.tscn" id="8_kt7ch"]
+[ext_resource type="Texture2D" uid="uid://pwi51v8lvksk" path="res://Assets/Ingredients/Honeypot.png" id="9_8trr1"]
+[ext_resource type="PackedScene" uid="uid://d242wy8rl6846" path="res://Scenes/Ingredients/honeypot_ant.tscn" id="10_df3qr"]
+[ext_resource type="Texture2D" uid="uid://lv8pq4vwerk2" path="res://Assets/Ingredients/Stagbeetle.png" id="11_pdm82"]
+[ext_resource type="PackedScene" uid="uid://cdy7k6rlivo2e" path="res://Scenes/Ingredients/rhino_beetle.tscn" id="12_y4578"]
+[ext_resource type="PackedScene" uid="uid://b6qrl0byfkuac" path="res://Scenes/Ingredients/water_crytal.tscn" id="14_e57su"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g8kd"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_fxcd2"]
+PanelContainer/colors/Bg = Color(0.94996744, 0.067957014, 0.6445159, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_7g8kd")
+
+[node name="Inventory" type="PanelContainer" unique_id=349930675]
+z_index = -1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = SubResource("Theme_fxcd2")
+script = ExtResource("1_0knst")
+
+[node name="IngredientsInventory" type="ScrollContainer" parent="." unique_id=318961520]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IngredientsInventory" unique_id=292613456]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="IngredientButton" parent="IngredientsInventory/HBoxContainer" unique_id=819609343 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("3_su3to")
+ingredient = ExtResource("4_e57su")
+
+[node name="IngredientButton2" parent="IngredientsInventory/HBoxContainer" unique_id=1640179235 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("5_3dtbo")
+ingredient = ExtResource("6_cxd6k")
+
+[node name="IngredientButton3" parent="IngredientsInventory/HBoxContainer" unique_id=1698251948 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("7_f5xeh")
+ingredient = ExtResource("8_kt7ch")
+
+[node name="IngredientButton4" parent="IngredientsInventory/HBoxContainer" unique_id=1998266414 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("9_8trr1")
+ingredient = ExtResource("10_df3qr")
+
+[node name="IngredientButton5" parent="IngredientsInventory/HBoxContainer" unique_id=526062003 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("11_pdm82")
+ingredient = ExtResource("12_y4578")
+
+[node name="IngredientButton6" parent="IngredientsInventory/HBoxContainer" unique_id=161847047 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("1_23vm5")
+ingredient = ExtResource("14_e57su")
+desc = "Crystallated water. Needs to be grinded down for use."
+
+[connection signal="mouse_entered" from="IngredientsInventory" to="IngredientsInventory" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientsInventory" to="IngredientsInventory" method="_on_mouse_exited"]

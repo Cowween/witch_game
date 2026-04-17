@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://87ldof7f0ps4"]
+
+[ext_resource type="Script" uid="uid://dtqkpvdlmro3i" path="res://Scripts/Equipment/jar.gd" id="1_rjxnp"]
+[ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="2_rjxnp"]
+[ext_resource type="Texture2D" uid="uid://br1oa681gql0o" path="res://Assets/Equipment/Beaker.png" id="3_jprh4"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="3_y4mq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpssd"]
+size = Vector2(42, 48)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oy0av"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dcebc"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7iwy"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl1lv"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oraqm"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5kui"]
+shader = ExtResource("3_y4mq6")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="BeakerSpawn" type="Area2D" unique_id=210293072 node_paths=PackedStringArray("non_static")]
+script = ExtResource("1_rjxnp")
+ingredient = ExtResource("2_rjxnp")
+non_static = [NodePath("Beaker5"), NodePath("Beaker4"), NodePath("Beaker"), NodePath("Beaker2"), NodePath("Sprite2D"), NodePath("Beaker3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814850656]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_cpssd")
+
+[node name="Beaker5" type="Sprite2D" parent="." unique_id=1371595271]
+material = SubResource("ShaderMaterial_oy0av")
+position = Vector2(12, -2.4)
+texture = ExtResource("3_jprh4")
+
+[node name="Beaker4" type="Sprite2D" parent="." unique_id=1228960467]
+material = SubResource("ShaderMaterial_dcebc")
+position = Vector2(-6, -1.835)
+texture = ExtResource("3_jprh4")
+
+[node name="Beaker" type="Sprite2D" parent="." unique_id=518435158]
+material = SubResource("ShaderMaterial_t7iwy")
+position = Vector2(-10, -0.905)
+texture = ExtResource("3_jprh4")
+
+[node name="Beaker2" type="Sprite2D" parent="." unique_id=1045127001]
+material = SubResource("ShaderMaterial_pl1lv")
+position = Vector2(13, -0.925)
+texture = ExtResource("3_jprh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1644568657]
+material = SubResource("ShaderMaterial_oraqm")
+texture = ExtResource("3_jprh4")
+
+[node name="Beaker3" type="Sprite2D" parent="." unique_id=1390659987]
+material = SubResource("ShaderMaterial_y5kui")
+position = Vector2(0, -23)
+texture = ExtResource("3_jprh4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

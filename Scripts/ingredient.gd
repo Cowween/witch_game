@@ -2,23 +2,27 @@ extends CharacterBody2D
 class_name Ingredient
 const OPERATIONS := preload("res://Res/operations.tres")
 var all_elements : Array[BaseElement]= []
-
+@onready var sprite := $Sprite2D
 #==Internals==
 @export var gravity := 9.81
 @export var drag_speed := 20.0
 @export var push_force := 200.0
 @export var blended_volume := 10
 @export var item_name := 'Ing'
+@export var soluble := false
+@export var soluble_in_acid := false
+@export var suffix := ""
 
+@export var is_powder := false
 var mouse_in := false
 var dragging := false
 var mouse_offset := Vector2.ZERO
 var amounts : Dictionary[String, Dictionary]
 var el_composition : Dictionary[String, float]
-var total_amount := 0.0
 var is_pushed := false
 var is_vel_reset := true
 var external_velocity := Vector2.ZERO
+var active := true
 @export var UI_communicator : UICommunicator
 
 # Called when the node enters the scene tree for the first time.
@@ -26,17 +30,15 @@ func _ready() -> void:
 	for i in get_children():
 		if i is BaseElement:
 			all_elements.append(i)
+	amounts = OPERATIONS.get_empty_dict()
 	for i in all_elements:
-		if not i.type in amounts:
-			amounts[i.type] = {}
 		amounts[i.type][i.state] = amounts[i.type].get(i.state, 0) + i.moles
-		total_amount += i.moles
 	el_composition = OPERATIONS.get_composition_from_amount(amounts)
 	#print(el_composition)
 
 func _physics_process(delta: float) -> void:
 	
-	if dragging:
+	if dragging and active:
 		var target_pos := get_global_mouse_position() + mouse_offset
 		#print(mouse_offset)
 		var target_direction := target_pos - position
@@ -63,7 +65,35 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	velocity -= external_velocity
 	
+func combine(_amount:Dictionary, _vol: float) -> void:
+	for i in _amount:
+		for j in _amount[i]:
+			amounts[i][j] = amounts[i].get(j, 0) + _amount[i][j]
+	blended_volume += _vol
+	el_composition = OPERATIONS.get_composition_from_amount(amounts)
+
+func generate_default_name() -> String:
+	var n := ""
+	var majors := []
+	for i in el_composition:
+		if el_composition[i] >=0.25:
+			majors.append(i)
+	for i in majors:
+		n += i + " "
+	n += suffix
 	
+	return n
+
+func generate_desc() -> String:
+	var output := ""
+	for element in amounts:
+			for state in amounts[element]:
+				if amounts[element][state] <= 0.0:
+					continue
+				output += "%s %s: %2f \n" % [state, element, amounts[element][state]]
+	
+	return output
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_action("l_click"):
 		if event.is_pressed() and mouse_in:
@@ -71,23 +101,23 @@ func _input(event: InputEvent) -> void:
 			mouse_offset = position - get_global_mouse_position()
 		else:
 			dragging = false
-			
-func chop() -> void:
-	pass
 
-func grind() ->  void:
-	pass
-	
-func distill() -> void:
-	pass
-	
-func blend() -> void:
-	pass
+func generate_comp_text() -> String:
+	var output := "Composition: "
+	for i in el_composition:
+		output += i + ": " + str(el_composition[i]*100) + "% "
+	return output
 
 func _on_area_2d_mouse_entered() -> void:
 	mouse_in = true
-	UI_communicator.emit_signal("display_request", item_name, el_composition, amounts)
+	if UI_communicator:
+		var n := item_name
+		if n == "":
+			n = generate_default_name()
+		UI_communicator.emit_signal("display_request", generate_default_name(), generate_comp_text(), generate_desc())
 
 
 func _on_area_2d_mouse_exited() -> void:
 	mouse_in = false
+	if UI_communicator:
+		UI_communicator.emit_signal("stop_display")

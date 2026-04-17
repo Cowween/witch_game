@@ -4,9 +4,12 @@ class_name Beaker
 @onready var polar_l := $Glass/Polar
 @onready var salt_l := $Glass/Salt
 @onready var mixture_l := $Glass/Mixture
+@onready var elixir_l := $Glass/Elixir
 @onready var glass := $Glass
 @onready var beaker_area := $BeakerArea
+@onready var pour_receptor := $PourReceptor
 
+@export var fill_curve : Curve
 @export var full_y := 0.0
 @export var empty_y := 64.0
 @export var full_x := 0.0
@@ -14,7 +17,7 @@ class_name Beaker
 @export var initial_volume := 0.0
 @export var max_volume := 100.0
 @export var push_force := 80.0
-@export var initial_volumes :Array[float] = [0.0, 0.0, 0.0, 0.0]
+@export var initial_volumes :Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]
 @export var UI_communicator : UICommunicator
 
 @export var gravity := 9.81
@@ -24,11 +27,14 @@ var mouse_in := false
 var dragging := false
 var pouring := false
 var target_beaker : Beaker = null
+var target_cauldron : Cauldron = null
 var volume := 0.0 : set = set_volume
 var mouse_offset := Vector2.ZERO
-var all_solution : Array[Solution]
+var all_solution : Array[Solution] #mixture, salt, polar, nonpolar, elixir
 var total_amount : Dictionary[String, Dictionary]
 var total_comp : Dictionary[String, float]
+var item_name := ""
+var solute : Array[Ingredient]
 # Called when the node enters the scene tree for the first time.
 func set_volume(value: float):
 	volume = clamp(value, 0, max_volume)
@@ -40,21 +46,34 @@ func _ready() -> void:
 			all_solution.append(i)
 			volume += i.volume
 			count += 1
-	
 	print(all_solution)
-	
+	total_amount = OPERATIONS.get_empty_dict()
+	#print(all_solution)
+	tally_effects()
+	#print(total_amount)
 	draw_volume()
 	
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if pour_receptor:
+		for i in pour_receptor.get_overlapping_areas():
+			print(i)
+			i.emit_signal("pourable", self)
 	if pouring:
 		change_volume(-0.1, true)
 		if target_beaker and volume != 0:
 			for i in range(all_solution.size() - 1, -1, -1):
 				if all_solution[i].volume > 0:
+					if all_solution[i].acidified:
+						target_beaker.acidify()
 					target_beaker.change_volume(0.1, false, all_solution[i].conc, all_solution[i].solvent)
+					#print(name, "pouring into", target_beaker.name)
+					break
+		if target_cauldron and volume != 0:
+			for i in range(all_solution.size() - 1, -1, -1):
+				if all_solution[i].volume > 0:
+					target_cauldron.combine(0.1, all_solution[i].conc)
 					#print(name, "pouring into", target_beaker.name)
 					break
 		#await get_tree().create_timer(0.1).timeout
@@ -77,6 +96,7 @@ func _physics_process(delta: float) -> void:
 			for i in beaker_area.get_overlapping_bodies():
 				if i is Ingredient:
 					i.external_velocity = Vector2.ZERO
+			velocity.x = move_toward(velocity.x, 0, 500 * delta)
 	for i in beaker_area.get_overlapping_bodies():
 		if i is Ingredient:
 			i.external_velocity = velocity
@@ -90,6 +110,7 @@ func _input(event: InputEvent) -> void:
 				mouse_offset = position - get_global_mouse_position()
 				for i in beaker_area.get_overlapping_bodies():
 					if i is Ingredient and i.mouse_in:
+						print(i.mouse_in)
 						dragging = false
 				
 			else:
@@ -97,20 +118,45 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("r_click"):
 			if event.is_pressed() and mouse_in:
 				pouring = true
-				rotate(-PI/2)
-				draw_volume(true)
+				draw_volume()
 			elif pouring:
-				rotate(PI/2)
 				pouring = false
 				draw_volume()
 
+
+
 func tally_effects() -> void:
-	
+	total_amount = OPERATIONS.get_empty_dict()
+	total_comp = {}
+	for solution in all_solution:
+		#print(solution.el_composition)
+		for element in solution.el_composition:
 			
-func draw_volume(hori := false) -> void:
+			total_comp[element] = total_comp.get(element, 0) + solution.el_composition[element]
+		for outer_key in solution.amounts.keys():
+			# Initialize the outer dictionary if it doesn't exist yet
+
+			
+			var inner_dict = solution.amounts[outer_key]
+			for inner_key in inner_dict.keys():
+				# Initialize the float value to 0 if it's the first time we see it
+				
+				# Add the value to the total
+				total_amount[outer_key][inner_key] += inner_dict[inner_key]
+	
+		
+			
+func draw_volume() -> void:
+	#print("Draw vol")
 	var total_vol := 0.0
+	if pouring:
+		glass.rotation = lerpf(-PI/2, 0, volume/max_volume)
+
+	else:
+		glass.rotation = 0
+
 	for i in all_solution:
-		print(i.name,  i.volume)
+		#print(i.name,  i.volume)
 		total_vol += i.volume
 		total_vol = clamp(total_vol, 0, max_volume)
 		var ratio := total_vol/max_volume
@@ -121,13 +167,21 @@ func draw_volume(hori := false) -> void:
 			liquid = mixture_l
 		if i.is_salt:
 			liquid = salt_l
+		if i.is_elixir:
+			liquid = elixir_l
+		if fill_curve:
+			ratio = fill_curve.sample(ratio)
+		liquid.modulate = OPERATIONS.generate_color(i.el_composition)
+		if pouring:
 			
-		if hori:
-			liquid.position.y = full_y
-			liquid.position.x = lerp(empty_x, full_x, ratio)
+			var new_pos := Vector2(full_x, lerp(empty_x, full_y, ratio))
+			liquid.global_position = to_global(new_pos)
 		else:
-			liquid.position.x = full_x
-			liquid.position.y = lerp(empty_y, full_y, ratio)
+			var new_pos := Vector2(full_x, lerp(empty_y, full_y, ratio))
+			liquid.position = new_pos
+			print(liquid.position)
+		if i.volume == 0.0:
+			liquid.position.y = 999
 
 func change_volume(value : float, hori:=false, concentration:Dictionary = {}, solvent:="") -> void:
 	if value<0:
@@ -143,25 +197,115 @@ func change_volume(value : float, hori:=false, concentration:Dictionary = {}, so
 		if i.solvent != "Mixture" and i.volume > 0:
 			all_solution[0].separate(i)
 	volume += value
-	draw_volume(hori)
+	dissolve()
+	draw_volume()
+	
+func acidify() -> void:
+	for i in all_solution:
+		i.acidified = true
+	
+func dissolve() -> void:
+	var metals := []
+	if solute.is_empty():
+		return
+	if all_solution[1].volume > 0.0:
+		while not solute.is_empty():
+			var s : Ingredient = solute.pop_front()
+			if s.soluble_in_acid and not all_solution[1]:
+				metals.append(s)
+			else:
+				all_solution[1].dissolve(s)
+			solute.clear()
 
+	if all_solution[0].volume > 0.0:
+		while not solute.is_empty():
+			var s : Ingredient = solute.pop_front()
+			if s.soluble_in_acid and not all_solution[0]:
+				metals.append(s)
+			else:
+				all_solution[1].dissolve(s)
+		solute.clear()
+	solute = metals
+	return
+	
+func generate_desc() -> String:
+	var output := ""
+	
+	for solution in all_solution:
+		if solution.volume <= 0.0:
+			continue
+		output+= "Layer %s: %dml\n" % [solution.solvent, solution.volume]
+		for element in solution.amounts:
+			for state in solution.amounts[element]:
+				if solution.amounts[element][state] <= 0.0:
+					continue
+				output += "%s %s: %2f \n" % [state, element, solution.amounts[element][state]]
+	
+	return output
+func generate_default_name() -> String:
+	if volume == 0.0:
+		return "Empty"
+	var n := ""
+	var majors := []
+	for i in total_comp:
+		if total_comp[i] >=0.25:
+			majors.append(i)
+	for i in majors:
+		n += i + " "
+	var suffix := "Mixture"
+	
+	for i in all_solution:
+		if i.solvent != "Mixture" and i.volume/volume >= 0.5:
+			suffix = "Solution"
+	n += suffix
+	
+	
+	return n
+func generate_comp_text() -> String:
+	var output := "Composition: "
+	for i in total_comp:
+		output += i + ": " + str(total_comp[i]*100) + "% "
+	return output
 func _on_area_2d_mouse_entered() -> void:
-
+	
 	mouse_in = true
-	#UI_communicator.emit_signal("display_request", item_name, el_composition, amounts)
+	tally_effects()
+	if UI_communicator:
+		var n := item_name 
+		if n == "":
+			n = generate_default_name()
+		UI_communicator.emit_signal("display_request", n, generate_comp_text(), generate_desc())
 
 
 func _on_area_2d_mouse_exited() -> void:
 	mouse_in = false
-
+	if UI_communicator:
+		UI_communicator.emit_signal("stop_display")
 
 func _on_pour_receptor_area_entered(area: Area2D) -> void:
-	area.emit_signal("pourable", self)
+	print("Detected", area.name)
+	#area.emit_signal("pourable", self)
 
 
 func _on_beaker_area_pourable(beaker: Beaker) -> void:
 	target_beaker = beaker
+	print("pourable")
 
 
 func _on_pour_receptor_area_exited(area: Area2D) -> void:
+	print("here")
 	area.emit_signal("pourable", null)
+
+
+func _on_solute_level_body_entered(body: Node2D) -> void:
+	if body is Ingredient and body.soluble:
+		for i in $SoluteLevel.get_overlapping_bodies():
+			if body is Ingredient and body.soluble:
+				solute.append(i)
+		dissolve()
+
+func _on_solute_level_body_exited(body: Node2D) -> void:
+	if body is Ingredient and body.soluble and not body.is_queued_for_deletion():
+		for i in $SoluteLevel.get_overlapping_bodies():
+			if body is Ingredient and body.soluble:
+				solute.append(i)

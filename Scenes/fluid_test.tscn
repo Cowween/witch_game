@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dtqao1rtf3dt3"]
+
+[ext_resource type="PackedScene" uid="uid://60fse1p6b77w" path="res://Scenes/test_fluid.tscn" id="1_wv7qb"]
+[ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="2_ju2m2"]
+[ext_resource type="Texture2D" uid="uid://di84l4viyh401" path="res://Assets/TestAssets/water.png" id="3_5yqxa"]
+[ext_resource type="Script" uid="uid://c70amrnbdymwf" path="res://addons/godot-rapier2d/fluid_2d_renderer.gd" id="4_un5r5"]
+
+[sub_resource type="FluidEffect2DViscosityArtificial" id="FluidEffect2DViscosityArtificial_wv7qb"]
+fluid_viscosity_coefficient = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jhw4"]
+size = Vector2(1154, 130)
+
+[node name="FluidTest" type="Node2D" unique_id=2041090041]
+
+[node name="Fluid2D" parent="." unique_id=1085799563 instance=ExtResource("1_wv7qb")]
+effects = Array[Resource]([SubResource("FluidEffect2DViscosityArtificial_wv7qb")])
+position = Vector2(304, 75)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=361739134]
+position = Vector2(8, 296)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=654322697]
+position = Vector2(567, 79)
+shape = SubResource("RectangleShape2D_7jhw4")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=249470364]
+offset_left = -8.0
+offset_right = 1152.0
+offset_bottom = 144.0
+
+[node name="Beaker" parent="." unique_id=1687937678 instance=ExtResource("2_ju2m2")]
+position = Vector2(314, 260)
+
+[node name="Beaker2" parent="." unique_id=660735812 instance=ExtResource("2_ju2m2")]
+position = Vector2(195, 259)
+
+[node name="MultiMeshInstance2D" type="MultiMeshInstance2D" parent="." unique_id=793340167 node_paths=PackedStringArray("fluid")]
+position = Vector2(259, 52)
+texture = ExtResource("3_5yqxa")
+script = ExtResource("4_un5r5")
+fluid = NodePath("../Fluid2D")
+color = Color(0.8, 0.8, 0.8, 1)
+mesh_scale = Vector2(0.1, 0.1)

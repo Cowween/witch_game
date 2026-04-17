@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://23nh1yce1hl8"]
+
+[ext_resource type="Script" uid="uid://buy2hafu0orfk" path="res://Scripts/mineral.gd" id="1_ol0tk"]
+[ext_resource type="Texture2D" uid="uid://db8jivqbank82" path="res://icon.svg" id="2_1jn2p"]
+[ext_resource type="PackedScene" uid="uid://cei4unw5l38he" path="res://Scenes/ingredient.tscn" id="2_k10wl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu2du"]
+size = Vector2(62, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5in2v"]
+size = Vector2(62, 61)
+
+[node name="Mineral" type="CharacterBody2D" unique_id=977333642]
+collision_mask = 7
+platform_floor_layers = 4294967042
+script = ExtResource("1_ol0tk")
+gravity = 1000.0
+item_name = "Metal Crystal"
+powder = ExtResource("2_k10wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_1jn2p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=77040318]
+priority = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454880484]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qu2du")
+debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5in2v")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

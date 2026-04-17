@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://c4snp4hx54w4h"]
+
+[ext_resource type="Script" uid="uid://rbqp8anhx1n2" path="res://Scripts/Equipment/distillator.gd" id="1_3tqox"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_3tbyi"]
+[ext_resource type="Texture2D" uid="uid://dcs8kjqd6fiut" path="res://Assets/Equipment/Thermometer.png" id="2_t1reo"]
+[ext_resource type="PackedScene" uid="uid://cn4ypckhjviin" path="res://Scenes/Equipment/round_bottomed_flask.tscn" id="3_0cx7w"]
+[ext_resource type="Texture2D" uid="uid://c71b6cd83uf0e" path="res://Assets/Equipment/distill.png" id="4_3tbyi"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="4_jx8tp"]
+[ext_resource type="Texture2D" uid="uid://dtj76ge6gnu6s" path="res://Assets/Equipment/firerock.png" id="5_jx8tp"]
+[ext_resource type="Texture2D" uid="uid://cw5174jvj1wyg" path="res://Assets/Equipment/firerockoff.png" id="8_jx8tp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tqox"]
+size = Vector2(45, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olv74"]
+size = Vector2(128, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s3kb"]
+size = Vector2(60, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1reo"]
+size = Vector2(6, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0trqa"]
+shader = ExtResource("4_jx8tp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gqh3"]
+shader = ExtResource("4_jx8tp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwsrf"]
+shader = ExtResource("4_jx8tp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1s3kb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jx8tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jx8tp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0trqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jx8tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jx8tp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cb2k"]
+radius = 15.0
+
+[node name="Distillator" type="StaticBody2D" unique_id=1543099707 node_paths=PackedStringArray("flask")]
+script = ExtResource("1_3tqox")
+flask_pos = Vector2(0, 88)
+flask = NodePath("Flask")
+
+[node name="PourArea" type="Area2D" parent="." unique_id=969495341]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourArea" unique_id=1688696146]
+position = Vector2(120, 71)
+shape = SubResource("RectangleShape2D_3tqox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1392200453]
+position = Vector2(61, 55)
+shape = SubResource("RectangleShape2D_olv74")
+disabled = true
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=1773879053 node_paths=PackedStringArray("selected_texture", "not_selected")]
+priority = 2
+script = ExtResource("2_3tbyi")
+selected_texture = NodePath("../SDist")
+not_selected = NodePath("../UDist")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=362627309]
+position = Vector2(81, 31)
+shape = SubResource("RectangleShape2D_1s3kb")
+
+[node name="Timer" type="Timer" parent="." unique_id=745710041]
+wait_time = 0.2
+
+[node name="ThermometerArea" type="Area2D" parent="." unique_id=958017915 node_paths=PackedStringArray("selected_texture", "not_selected")]
+script = ExtResource("2_3tbyi")
+selected_texture = NodePath("../STherm")
+not_selected = NodePath("../UTherm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThermometerArea" unique_id=930950087]
+position = Vector2(41, 23)
+shape = SubResource("RectangleShape2D_t1reo")
+
+[node name="UTherm" type="Sprite2D" parent="." unique_id=1354307945]
+texture = ExtResource("2_t1reo")
+
+[node name="STherm" type="Sprite2D" parent="." unique_id=1985587894]
+visible = false
+material = SubResource("ShaderMaterial_0trqa")
+texture = ExtResource("2_t1reo")
+
+[node name="Flask" parent="." unique_id=1687937678 instance=ExtResource("3_0cx7w")]
+metadata/_edit_lock_ = true
+
+[node name="UDist" type="Sprite2D" parent="." unique_id=152499888]
+texture = ExtResource("4_3tbyi")
+
+[node name="SDist" type="Sprite2D" parent="." unique_id=61350762]
+visible = false
+material = SubResource("ShaderMaterial_5gqh3")
+texture = ExtResource("4_3tbyi")
+
+[node name="SRock" type="AnimatedSprite2D" parent="." unique_id=389308377]
+visible = false
+material = SubResource("ShaderMaterial_cwsrf")
+sprite_frames = SubResource("SpriteFrames_1s3kb")
+frame = 1
+frame_progress = 0.7346702
+
+[node name="URock" type="AnimatedSprite2D" parent="." unique_id=244300797]
+sprite_frames = SubResource("SpriteFrames_0trqa")
+
+[node name="RockArea" type="Area2D" parent="." unique_id=895684446 node_paths=PackedStringArray("selected_texture", "not_selected")]
+script = ExtResource("2_3tbyi")
+selected_texture = NodePath("../SRock")
+not_selected = NodePath("../URock")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea" unique_id=1785463454]
+position = Vector2(45, 92)
+shape = SubResource("CircleShape2D_3cb2k")
+
+[connection signal="body_entered" from="PourArea" to="." method="_on_pour_area_body_entered"]
+[connection signal="body_exited" from="PourArea" to="." method="_on_pour_area_body_exited"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="ThermometerArea" to="." method="_on_thermometer_area_mouse_entered"]
+[connection signal="mouse_entered" from="ThermometerArea" to="ThermometerArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ThermometerArea" to="." method="_on_thermometer_area_mouse_exited"]
+[connection signal="mouse_exited" from="ThermometerArea" to="ThermometerArea" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RockArea" to="." method="_on_rock_area_mouse_entered"]
+[connection signal="mouse_entered" from="RockArea" to="RockArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RockArea" to="." method="_on_rock_area_mouse_exited"]
+[connection signal="mouse_exited" from="RockArea" to="RockArea" method="_on_mouse_exited"]

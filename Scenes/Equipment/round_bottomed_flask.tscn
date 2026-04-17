@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://cn4ypckhjviin"]
+
+[ext_resource type="Script" uid="uid://bsvgy4kpfscmt" path="res://Scripts/Equipment/round_bottomed_flask.gd" id="1_u3o3m"]
+[ext_resource type="Texture2D" uid="uid://bpie1w8tnlb53" path="res://Assets/Equipment/roundflaskmask.png" id="2_xedul"]
+[ext_resource type="Texture2D" uid="uid://da678pgb25pak" path="res://Assets/TestAssets/cum.png" id="4_kgujy"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="5_gmay8"]
+[ext_resource type="PackedScene" uid="uid://s3284u2bwf6t" path="res://Scenes/solution.tscn" id="6_w0wiw"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="7_xedul"]
+[ext_resource type="Texture2D" uid="uid://8irlxp38ikxv" path="res://Assets/Equipment/Roundflask.png" id="8_kgujy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kgujy"]
+radius = 18.756666
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmay8"]
+radius = 14.77593
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmay8"]
+shader = ExtResource("7_xedul")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0wiw"]
+radius = 18.0
+
+[node name="Flask" type="CharacterBody2D" unique_id=1687937678]
+collision_layer = 9
+collision_mask = 6
+script = ExtResource("1_u3o3m")
+full_y = 83.0
+empty_y = 103.0
+full_x = 46.0
+max_volume = 400.0
+push_force = 250.0
+gravity = 1000.0
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=8635498]
+clip_children = 1
+texture = ExtResource("2_xedul")
+
+[node name="Elixir" type="Sprite2D" parent="Glass" unique_id=1131293766]
+modulate = Color(0.7172813, 0.21646726, 1, 1)
+position = Vector2(0, -1.0156269)
+scale = Vector2(0.84, 0.9)
+texture = ExtResource("4_kgujy")
+
+[node name="NonPolar" type="Sprite2D" parent="Glass" unique_id=64412712]
+position = Vector2(44.999996, 104)
+scale = Vector2(0.84, 0.9)
+texture = ExtResource("4_kgujy")
+
+[node name="Polar" type="Sprite2D" parent="Glass" unique_id=1839005476]
+modulate = Color(0, 0.58431375, 0, 1)
+position = Vector2(45, 103.00001)
+scale = Vector2(0.84, 0.9)
+texture = ExtResource("4_kgujy")
+
+[node name="Salt" type="Sprite2D" parent="Glass" unique_id=794742396]
+modulate = Color(0.8524396, 1.2513996e-06, 0.52156204, 1)
+position = Vector2(0, 48.399)
+scale = Vector2(0.84, 0.9)
+texture = ExtResource("4_kgujy")
+
+[node name="Mixture" type="Sprite2D" parent="Glass" unique_id=499785281]
+modulate = Color(0.64706546, 0.42863622, 0, 1)
+position = Vector2(0, 71.874)
+scale = Vector2(0.84, 0.9)
+texture = ExtResource("4_kgujy")
+
+[node name="BeakerArea" type="Area2D" parent="." unique_id=1087631236 node_paths=PackedStringArray("selected_texture", "not_selected")]
+collision_layer = 16
+collision_mask = 0
+priority = 1
+script = ExtResource("5_gmay8")
+selected_texture = NodePath("../Selected")
+not_selected = NodePath("../Unselected")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeakerArea" unique_id=1756292199]
+position = Vector2(45.25, 56.5)
+shape = SubResource("CircleShape2D_kgujy")
+
+[node name="PourReceptor" type="Area2D" parent="." unique_id=148254013]
+position = Vector2(32, 6)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PourReceptor" unique_id=1321918741]
+position = Vector2(-11, 21)
+shape = SubResource("CircleShape2D_gmay8")
+
+[node name="Mixture" parent="." unique_id=937602957 instance=ExtResource("6_w0wiw")]
+volume = 50.0
+is_mixture = true
+solvent = "Mixture"
+
+[node name="SaltSol" parent="." unique_id=151391060 instance=ExtResource("6_w0wiw")]
+is_salt = true
+solvent = "Salt"
+
+[node name="PolarSol" parent="." unique_id=69709080 instance=ExtResource("6_w0wiw")]
+is_polar = true
+solvent = "Polar"
+
+[node name="NonPolarSol" parent="." unique_id=64438105 instance=ExtResource("6_w0wiw")]
+volume = 50.0
+is_non_polar = true
+solvent = "Non-polar"
+
+[node name="Elixir" parent="." unique_id=349803339 instance=ExtResource("6_w0wiw")]
+is_elixir = true
+solvent = "Elixir"
+
+[node name="Selected" type="Sprite2D" parent="." unique_id=391841370]
+visible = false
+material = SubResource("ShaderMaterial_gmay8")
+texture = ExtResource("8_kgujy")
+
+[node name="Unselected" type="Sprite2D" parent="." unique_id=610662777]
+texture = ExtResource("8_kgujy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=454267451]
+position = Vector2(45, 57)
+shape = SubResource("CircleShape2D_w0wiw")
+
+[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="BeakerArea" to="BeakerArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="BeakerArea" to="BeakerArea" method="_on_mouse_exited"]
+[connection signal="pourable" from="BeakerArea" to="." method="_on_beaker_area_pourable"]
+[connection signal="area_entered" from="PourReceptor" to="." method="_on_pour_receptor_area_entered"]
+[connection signal="area_exited" from="PourReceptor" to="." method="_on_pour_receptor_area_exited"]

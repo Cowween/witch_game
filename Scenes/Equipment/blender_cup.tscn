@@ -1,73 +1,129 @@
 [gd_scene format=3 uid="uid://dhnr3ney512wj"]
 
 [ext_resource type="Script" uid="uid://dbuimcq5ld2b8" path="res://Scripts/Equipment/blender_cup.gd" id="1_jf7xx"]
-[ext_resource type="Texture2D" uid="uid://dof01gwfqifof" path="res://Assets/TestAssets/blender3.png" id="2_jf7xx"]
+[ext_resource type="Curve" uid="uid://jvaulqp8oj0x" path="res://Res/blender_curve.tres" id="2_4a5kw"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="2_fwktm"]
+[ext_resource type="Texture2D" uid="uid://c5ds67fcv0v35" path="res://Assets/Equipment/Blender/Bleenderback.png" id="2_jwlvs"]
+[ext_resource type="Texture2D" uid="uid://bm6583ipllmys" path="res://Assets/Equipment/Blender/Bleendertwig1.png" id="3_fwktm"]
+[ext_resource type="Texture2D" uid="uid://8sy4qphwnf5" path="res://Assets/Equipment/Blender/Bleendertwig2.png" id="4_4a5kw"]
 [ext_resource type="Texture2D" uid="uid://da678pgb25pak" path="res://Assets/TestAssets/cum.png" id="4_d81jy"]
 [ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="4_ppm87"]
-[ext_resource type="PackedScene" uid="uid://s3284u2bwf6t" path="res://Scenes/Ingredients/solution.tscn" id="5_mpsrd"]
+[ext_resource type="PackedScene" uid="uid://s3284u2bwf6t" path="res://Scenes/solution.tscn" id="5_mpsrd"]
+[ext_resource type="Texture2D" uid="uid://dqilgx5uoecu" path="res://Assets/Equipment/Blender/Bleendertwig3.png" id="5_wp5cq"]
+[ext_resource type="Texture2D" uid="uid://b6lffkcogw4xr" path="res://Assets/Equipment/Blender/Bleendertwig4.png" id="6_pfos2"]
+[ext_resource type="Texture2D" uid="uid://cerpqxio5ugf" path="res://Assets/Equipment/Blender/Bleendermask.png" id="7_tnx5g"]
+[ext_resource type="Script" uid="uid://cjta88eemok2j" path="res://Scripts/liquid_texture.gd" id="9_6j6oh"]
+[ext_resource type="Texture2D" uid="uid://c6o5nco4emrie" path="res://Assets/Equipment/Blender/Bleenderfront.png" id="12_gm4ta"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d3m3"]
-size = Vector2(52, 13.5)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4a5kw"]
+shader = ExtResource("2_fwktm")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7gaa"]
-size = Vector2(7.8125, 97.1525)
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hn6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fwktm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4a5kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wp5cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pfos2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nens"]
-size = Vector2(47, 92)
+size = Vector2(38.5, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc45u"]
-size = Vector2(53, 59)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsrd"]
+size = Vector2(39, 46)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp5cq"]
+shader = ExtResource("2_fwktm")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [node name="BlenderCup" type="CharacterBody2D" unique_id=1687937678]
 collision_layer = 5
 collision_mask = 2
 script = ExtResource("1_jf7xx")
+fill_curve = ExtResource("2_4a5kw")
+full_y = 30.0
+empty_y = 73.0
+empty_x = 66.0
+max_volume = 300.0
+
+[node name="BlendBack" type="Sprite2D" parent="." unique_id=1915346319]
+material = SubResource("ShaderMaterial_4a5kw")
+texture = ExtResource("2_jwlvs")
+
+[node name="Twig" type="AnimatedSprite2D" parent="." unique_id=1080427454]
+sprite_frames = SubResource("SpriteFrames_0hn6t")
+frame = 3
+frame_progress = 1.0
 
 [node name="Glass" type="Sprite2D" parent="." unique_id=8635498]
-clip_children = 2
-texture = ExtResource("2_jf7xx")
+clip_children = 1
+texture = ExtResource("7_tnx5g")
 
 [node name="Mixture" type="Sprite2D" parent="Glass" unique_id=262251744]
 modulate = Color(0.64706546, 0.42863622, 0, 1)
-position = Vector2(0, 71.874)
-scale = Vector2(0.75, 1.5307617)
+position = Vector2(0, 76)
+scale = Vector2(1.734375, 1.5307617)
 texture = ExtResource("4_d81jy")
+script = ExtResource("9_6j6oh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069660311]
-position = Vector2(1, 47.75)
-shape = SubResource("RectangleShape2D_8d3m3")
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Glass" unique_id=431228232]
+remote_path = NodePath("../../BlendBack")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=146331282]
-position = Vector2(-27, -1)
-shape = SubResource("RectangleShape2D_p7gaa")
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Glass" unique_id=1833551514]
+remote_path = NodePath("../../BlendFront")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=70996944]
-position = Vector2(28, -1.5762501)
-shape = SubResource("RectangleShape2D_p7gaa")
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Glass" unique_id=1582323899]
+remote_path = NodePath("../../Twig")
 
 [node name="BeakerArea" type="Area2D" parent="." unique_id=1087631236]
-collision_layer = 3
-priority = 1
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("4_ppm87")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeakerArea" unique_id=1756292199]
-position = Vector2(0.5, -4)
+position = Vector2(2.75, -13)
 shape = SubResource("RectangleShape2D_8nens")
-
-[node name="PourReceptor" type="Area2D" parent="." unique_id=148254013]
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PourReceptor" unique_id=1321918741]
-position = Vector2(2, -79)
-shape = SubResource("RectangleShape2D_rc45u")
 
 [node name="Mixture" parent="." unique_id=69709080 instance=ExtResource("5_mpsrd")]
 is_mixture = true
 solvent = "Mixture"
 
+[node name="ClickArea" type="Area2D" parent="." unique_id=296196020 node_paths=PackedStringArray("non_static")]
+priority = 1
+script = ExtResource("4_ppm87")
+non_static = [NodePath("../BlendBack"), NodePath("../BlendFront")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1956695760]
+position = Vector2(2.5, 2)
+shape = SubResource("RectangleShape2D_mpsrd")
+
+[node name="BlendFront" type="Sprite2D" parent="." unique_id=320862011]
+z_index = 1
+material = SubResource("ShaderMaterial_wp5cq")
+texture = ExtResource("12_gm4ta")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=39913686]
+polygon = PackedVector2Array(-19, -19, -15, -20, -10, 22, 10, 22, 16, -20, 20, -18, 12, 25, -12, 25)
+
 [connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pourable" from="BeakerArea" to="." method="_on_beaker_area_pourable"]
-[connection signal="area_entered" from="PourReceptor" to="." method="_on_pour_receptor_area_entered"]
-[connection signal="area_exited" from="PourReceptor" to="." method="_on_pour_receptor_area_exited"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_mouse_exited"]

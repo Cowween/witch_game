@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://60fse1p6b77w"]
+
+[ext_resource type="Script" uid="uid://dhvg3d8muf58l" path="res://addons/godot-rapier2d/fluid_2d_circle.gd" id="1_6ja1u"]
+
+[sub_resource type="FluidEffect2DViscosityArtificial" id="FluidEffect2DViscosityArtificial_ju2m2"]
+fluid_viscosity_coefficient = 100.0
+
+[sub_resource type="FluidEffect2DSurfaceTensionAKINCI" id="FluidEffect2DSurfaceTensionAKINCI_ju2m2"]
+fluid_tension_coefficient = 10.0
+
+[sub_resource type="FluidEffect2DElasticity" id="FluidEffect2DElasticity_ju2m2"]
+young_modulus = 1000.0
+
+[node name="Fluid2D" type="Fluid2D" unique_id=1085799563]
+debug_draw = true
+density = 1000.0
+effects = Array[Resource]([SubResource("FluidEffect2DViscosityArtificial_ju2m2"), SubResource("FluidEffect2DSurfaceTensionAKINCI_ju2m2"), SubResource("FluidEffect2DElasticity_ju2m2")])
+points = PackedVector2Array(-70, 0, -60, -30, -60, -20, -60, -10, -60, 0, -60, 10, -60, 20, -60, 30, -50, -40, -50, -30, -50, -20, -50, -10, -50, 0, -50, 10, -50, 20, -50, 30, -50, 40, -40, -50, -40, -40, -40, -30, -40, -20, -40, -10, -40, 0, -40, 10, -40, 20, -40, 30, -40, 40, -40, 50, -30, -60, -30, -50, -30, -40, -30, -30, -30, -20, -30, -10, -30, 0, -30, 10, -30, 20, -30, 30, -30, 40, -30, 50, -30, 60, -20, -60, -20, -50, -20, -40, -20, -30, -20, -20, -20, -10, -20, 0, -20, 10, -20, 20, -20, 30, -20, 40, -20, 50, -20, 60, -10, -60, -10, -50, -10, -40, -10, -30, -10, -20, -10, -10, -10, 0, -10, 10, -10, 20, -10, 30, -10, 40, -10, 50, -10, 60, 0, -70, 0, -60, 0, -50, 0, -40, 0, -30, 0, -20, 0, -10, 0, 0, 0, 10, 0, 20, 0, 30, 0, 40, 0, 50, 0, 60, 10, -60, 10, -50, 10, -40, 10, -30, 10, -20, 10, -10, 10, 0, 10, 10, 10, 20, 10, 30, 10, 40, 10, 50, 10, 60, 20, -60, 20, -50, 20, -40, 20, -30, 20, -20, 20, -10, 20, 0, 20, 10, 20, 20, 20, 30, 20, 40, 20, 50, 20, 60, 30, -60, 30, -50, 30, -40, 30, -30, 30, -20, 30, -10, 30, 0, 30, 10, 30, 20, 30, 30, 30, 40, 30, 50, 30, 60, 40, -50, 40, -40, 40, -30, 40, -20, 40, -10, 40, 0, 40, 10, 40, 20, 40, 30, 40, 40, 40, 50, 50, -40, 50, -30, 50, -20, 50, -10, 50, 0, 50, 10, 50, 20, 50, 30, 50, 40, 60, -30, 60, -20, 60, -10, 60, 0, 60, 10, 60, 20, 60, 30)
+script = ExtResource("1_6ja1u")
+circle_radius = 7

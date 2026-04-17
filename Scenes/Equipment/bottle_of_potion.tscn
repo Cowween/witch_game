@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dwmfcbnxc7ib8"]
+
+[ext_resource type="Script" uid="uid://dofestjbwu7e7" path="res://Scripts/Equipment/bottle_of_potion.gd" id="1_7fpdm"]
+[ext_resource type="Curve" uid="uid://ca2okbqrd4wpe" path="res://Res/fill_curve_potion.tres" id="2_1iuxa"]
+[ext_resource type="Texture2D" uid="uid://dhuc5u5mdqmqr" path="res://Assets/Equipment/POotion.png" id="2_5hkoj"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_hhyj1"]
+[ext_resource type="Texture2D" uid="uid://c50mmrfmhdosa" path="res://Assets/Equipment/POotionmask.png" id="3_hhyj1"]
+[ext_resource type="Texture2D" uid="uid://da678pgb25pak" path="res://Assets/TestAssets/cum.png" id="4_1iuxa"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="4_xid1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roggc"]
+size = Vector2(28, 38.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0abqx"]
+size = Vector2(28, 36.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvnei"]
+resource_local_to_scene = true
+shader = ExtResource("4_xid1f")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="BottleOfPotion" type="CharacterBody2D" unique_id=1744849138]
+collision_mask = 2
+script = ExtResource("1_7fpdm")
+fill_curve = ExtResource("2_1iuxa")
+full_y = 19.0
+empty_y = 56.0
+gravity = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=621798864]
+position = Vector2(0, 4.4375)
+shape = SubResource("RectangleShape2D_roggc")
+
+[node name="ClickArea" type="Area2D" parent="." unique_id=1619434912 node_paths=PackedStringArray("non_static")]
+script = ExtResource("2_hhyj1")
+non_static = [NodePath("../POotion")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1292103335]
+position = Vector2(0, 4.75)
+shape = SubResource("RectangleShape2D_0abqx")
+
+[node name="POotion" type="Sprite2D" parent="." unique_id=267274049]
+material = SubResource("ShaderMaterial_yvnei")
+texture = ExtResource("2_5hkoj")
+
+[node name="Glass" type="Sprite2D" parent="." unique_id=864176818]
+clip_children = 1
+texture = ExtResource("3_hhyj1")
+
+[node name="Liquid" type="Sprite2D" parent="Glass" unique_id=916932179]
+position = Vector2(0, 56)
+texture = ExtResource("4_1iuxa")
+
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
+[connection signal="mouse_exited" from="ClickArea" to="ClickArea" method="_on_mouse_exited"]

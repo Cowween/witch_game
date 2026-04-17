@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://o61mdfoce3cu"]
+
+[ext_resource type="PackedScene" uid="uid://c4snp4hx54w4h" path="res://Scenes/Equipment/distillator.tscn" id="1_nopj1"]
+[ext_resource type="PackedScene" uid="uid://cmv8nf4frcs1p" path="res://UI/tool_tip.tscn" id="3_g2x1m"]
+[ext_resource type="Script" uid="uid://qnacb7ayv71y" path="res://Scripts/ui_communicator.gd" id="4_cwyrk"]
+[ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="5_6lt21"]
+[ext_resource type="PackedScene" uid="uid://rs5sr5085l7s" path="res://Scenes/Equipment/test_round_bottomed_flask.tscn" id="5_cwyrk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slk23"]
+size = Vector2(1154, 144)
+
+[node name="DistillatorTest" type="Node2D" unique_id=1107937093]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=333584871]
+position = Vector2(8, 296)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=540515836]
+position = Vector2(567, 72)
+shape = SubResource("RectangleShape2D_slk23")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1723214131]
+offset_left = -8.0
+offset_right = 1152.0
+offset_bottom = 144.0
+mouse_filter = 2
+
+[node name="Distillator" parent="." unique_id=1543099707 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("1_nopj1")]
+position = Vector2(251, 170)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="PanelContainer" parent="." unique_id=646950582 instance=ExtResource("3_g2x1m")]
+
+[node name="UICommunicator" type="Node" parent="." unique_id=1586176332]
+script = ExtResource("4_cwyrk")
+
+[node name="Test" parent="." unique_id=1249767964 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("5_cwyrk")]
+position = Vector2(161, 258)
+initial_volumes = Array[float]([50.0, 0.0, 0.0, 0.0, 0.0])
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Beaker" parent="." unique_id=1687937678 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("5_6lt21")]
+position = Vector2(622, 254)
+UI_communicator = NodePath("../UICommunicator")
+
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_node_display_request"]
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
+[connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
+[connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]

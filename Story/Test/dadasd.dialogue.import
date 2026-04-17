@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhai4jnqp6hdi"
+path="res://.godot/imported/dadasd.dialogue-7c16e76db22bf20b9ca95e89f50a8806.tres"
+
+[deps]
+
+source_file="res://Story/Test/dadasd.dialogue"
+dest_files=["res://.godot/imported/dadasd.dialogue-7c16e76db22bf20b9ca95e89f50a8806.tres"]
+
+[params]
+
+defaults=true

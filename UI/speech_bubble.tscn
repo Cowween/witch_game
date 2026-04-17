@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6i3awoaepw7o"]
+
+[ext_resource type="FontFile" uid="uid://c6rkvog4ygxy4" path="res://Assets/UI/m3x6.ttf" id="1_fr7yj"]
+
+[sub_resource type="Theme" id="Theme_hqh3f"]
+RichTextLabel/fonts/normal_font = ExtResource("1_fr7yj")
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=644040401]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 181.0
+offset_bottom = 13.0
+size_flags_horizontal = 0
+
+[node name="SpeechBubble" type="PanelContainer" parent="." unique_id=1022257495]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_hqh3f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble" unique_id=476180877]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "sdsa  sdas sda "
+fit_content = true

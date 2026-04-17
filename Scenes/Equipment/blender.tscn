@@ -1,39 +1,74 @@
 [gd_scene format=3 uid="uid://hwkqe1aenhf7"]
 
 [ext_resource type="Script" uid="uid://4ds806l723sm" path="res://Scripts/Equipment/blender.gd" id="1_lvand"]
-[ext_resource type="Texture2D" uid="uid://bkiu7xk24j6go" path="res://Assets/TestAssets/blender1.png" id="2_3kua7"]
 [ext_resource type="PackedScene" uid="uid://dhnr3ney512wj" path="res://Scenes/Equipment/blender_cup.tscn" id="2_lvand"]
+[ext_resource type="Texture2D" uid="uid://qdnmw5vjtnlx" path="res://Assets/Equipment/Blender/Bleenderbase.png" id="2_ndoqh"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_os1nl"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="3_u3fsa"]
+[ext_resource type="Texture2D" uid="uid://bxxvvm6thidkj" path="res://Assets/Equipment/Blender/Bleendercap.png" id="4_4dkjm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os1nl"]
-size = Vector2(48, 114)
+size = Vector2(43, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndoqh"]
-size = Vector2(51, 23)
+size = Vector2(40, 14.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kua7"]
+size = Vector2(45, 94)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj8nb"]
+shader = ExtResource("3_u3fsa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwvhr"]
+shader = ExtResource("3_u3fsa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [node name="Blender" type="StaticBody2D" unique_id=1680497295]
 script = ExtResource("1_lvand")
 capacity = 300.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1361046300]
+[node name="Area2D" type="Area2D" parent="." unique_id=1361046300 node_paths=PackedStringArray("non_static")]
+script = ExtResource("2_os1nl")
+non_static = [NodePath("../BlenderBase"), NodePath("../Cap")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1722136092]
-visible = false
-position = Vector2(0, 7)
+position = Vector2(0.5, 15.5)
 shape = SubResource("RectangleShape2D_os1nl")
 
 [node name="LidCollider" type="CollisionShape2D" parent="." unique_id=350230331]
-position = Vector2(0, -61)
+position = Vector2(0, -20.75)
 shape = SubResource("RectangleShape2D_ndoqh")
-disabled = true
+
+[node name="MouthArea" type="Area2D" parent="." unique_id=1261156208]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouthArea" unique_id=657855405]
+position = Vector2(1, -76)
+shape = SubResource("RectangleShape2D_3kua7")
+
+[node name="BlenderBase" type="Sprite2D" parent="." unique_id=2143336421]
+material = SubResource("ShaderMaterial_dj8nb")
+position = Vector2(0, 15)
+texture = ExtResource("2_ndoqh")
 
 [node name="BlenderCup" parent="." unique_id=1687937678 instance=ExtResource("2_lvand")]
-position = Vector2(-1, 0)
 empty_x = -48.0
-max_volume = 300.0
+metadata/_edit_lock_ = true
 
-[node name="BlenderTexture" type="Sprite2D" parent="." unique_id=1607868326]
-texture = ExtResource("2_3kua7")
+[node name="Cap" type="Sprite2D" parent="." unique_id=935920144]
+z_index = 1
+material = SubResource("ShaderMaterial_nwvhr")
+texture = ExtResource("4_4dkjm")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
+[connection signal="body_entered" from="MouthArea" to="." method="_on_mouth_area_body_entered"]
+[connection signal="body_exited" from="MouthArea" to="." method="_on_mouth_area_body_exited"]
+[connection signal="back" from="BlenderCup" to="." method="_on_blender_cup_back"]
+[connection signal="moving" from="BlenderCup" to="." method="_on_blender_cup_moving"]
 [connection signal="volume_updated" from="BlenderCup" to="." method="_on_blender_cup_volume_updated"]

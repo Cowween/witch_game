@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://c7tfmcxxmba41"]
 
-[ext_resource type="PackedScene" uid="uid://cei4unw5l38he" path="res://Scenes/Ingredients/ingredient.tscn" id="1_lc1oi"]
+[ext_resource type="PackedScene" uid="uid://cei4unw5l38he" path="res://Scenes/ingredient.tscn" id="1_lc1oi"]
 [ext_resource type="PackedScene" uid="uid://de107huwwecmr" path="res://Scenes/Equipment/beaker.tscn" id="2_8od7v"]
 [ext_resource type="PackedScene" uid="uid://hwkqe1aenhf7" path="res://Scenes/Equipment/blender.tscn" id="3_qc4db"]
 [ext_resource type="PackedScene" uid="uid://cbhyenjg7unk8" path="res://Scenes/Equipment/jar.tscn" id="4_ys1qc"]
 [ext_resource type="Script" uid="uid://qnacb7ayv71y" path="res://Scripts/ui_communicator.gd" id="5_i3aeo"]
 [ext_resource type="PackedScene" uid="uid://cmv8nf4frcs1p" path="res://UI/tool_tip.tscn" id="6_5wyu1"]
+[ext_resource type="PackedScene" uid="uid://23nh1yce1hl8" path="res://Scenes/mineral.tscn" id="7_5wyu1"]
+[ext_resource type="PackedScene" uid="uid://dgry3kypfekms" path="res://Scenes/powder.tscn" id="8_0c07c"]
+[ext_resource type="PackedScene" uid="uid://b5s41hsc0raq7" path="res://Scenes/Equipment/SolventBarrel.tscn" id="9_2cgwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qbn"]
 size = Vector2(1154, 144)
@@ -39,27 +42,13 @@ UI_communicator = NodePath("../UICommunicator")
 
 [node name="Beaker" parent="." unique_id=1601484383 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(520, 256)
-full_y = null
-empty_y = null
-full_x = null
-empty_x = null
-initial_volume = null
-max_volume = null
-initial_volumes = Array[float]([0.0, 0.0, 0.0, 20.0])
+initial_volumes = Array[float]([50.0, 0.0, 0.0, 0.0, 0.0])
 UI_communicator = NodePath("../UICommunicator")
-drag_speed = null
 
 [node name="Beaker2" parent="." unique_id=375797042 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(264, 264)
-full_y = null
-empty_y = null
-full_x = null
-empty_x = null
-initial_volume = null
-max_volume = null
-initial_volumes = Array[float]([50.0, 0.0, 0.0, 0.0])
+initial_volumes = Array[float]([50.0, 0.0, 0.0, 0.0, 0.0])
 UI_communicator = NodePath("../UICommunicator")
-drag_speed = null
 
 [node name="Blender" parent="." unique_id=1680497295 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("3_qc4db")]
 position = Vector2(144, 232)
@@ -67,15 +56,7 @@ UI_communicator = NodePath("../UICommunicator")
 
 [node name="Beaker3" parent="." unique_id=1687937678 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("2_8od7v")]
 position = Vector2(360, 256)
-full_y = null
-empty_y = null
-full_x = null
-empty_x = null
-initial_volume = null
-max_volume = null
-initial_volumes = null
 UI_communicator = NodePath("../UICommunicator")
-drag_speed = null
 
 [node name="Jar" parent="." unique_id=210293072 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("4_ys1qc")]
 position = Vector2(56, 40)
@@ -84,10 +65,24 @@ UI_communicator = NodePath("../UICommunicator")
 [node name="UICommunicator" type="Node" parent="." unique_id=312197961]
 script = ExtResource("5_i3aeo")
 
-[node name="ToolTip" parent="." unique_id=209308309 instance=ExtResource("6_5wyu1")]
-offset_left = 752.0
-offset_top = 80.0
-offset_right = 890.0
-offset_bottom = 224.0
+[node name="PanelContainer" parent="." unique_id=646950582 instance=ExtResource("6_5wyu1")]
+offset_left = 735.0
+offset_top = 46.0
+offset_right = 827.0
+offset_bottom = 93.0
+mouse_offset = Vector2(20, -50)
 
-[connection signal="display_request" from="UICommunicator" to="ToolTip" method="_on_ui_communicator_display_request"]
+[node name="Mineral" parent="." unique_id=911586854 instance=ExtResource("7_5wyu1")]
+position = Vector2(453, 262)
+
+[node name="Ingredient3" parent="." unique_id=1760964692 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("8_0c07c")]
+position = Vector2(600, 247)
+item_name = "Powder"
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="SolventBarrel" parent="." unique_id=1567967711 instance=ExtResource("9_2cgwh")]
+position = Vector2(513, 66)
+solvent = "Salt"
+
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
+[connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c54ok7fh2jo6v"]
+
+[ext_resource type="Script" uid="uid://dd73uhwpb5nl0" path="res://Scripts/UI/spell_interface.gd" id="1_j4mfn"]
+
+[node name="SpellInterface" type="ColorRect" unique_id=653094351]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.14901961)
+script = ExtResource("1_j4mfn")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=28952773]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "Type your spell here"
+alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1458884478]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "What can I do for you, little witch?"
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

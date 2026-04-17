@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://lq0fkn3uv3eu"]
+
+[ext_resource type="Script" uid="uid://ddlsglkkg8xg3" path="res://Scripts/ingredient.gd" id="1_1qvog"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="2_0s4iw"]
+[ext_resource type="Texture2D" uid="uid://u0h02nllugv3" path="res://Assets/Ingredients/Glowbugsmall.png" id="3_1qvog"]
+[ext_resource type="PackedScene" uid="uid://08fp0te6c5fa" path="res://Scenes/element.tscn" id="4_xfkqo"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="5_kc0ox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0lqd"]
+resource_local_to_scene = true
+shader = ExtResource("2_0s4iw")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugrgv"]
+radius = 7.615773
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0lqd"]
+radius = 6.0
+
+[node name="Ingredient" type="CharacterBody2D" unique_id=977333642]
+collision_mask = 7
+platform_floor_layers = 4294967042
+script = ExtResource("1_1qvog")
+gravity = 1000.0
+item_name = "Glowbug"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
+material = SubResource("ShaderMaterial_w0lqd")
+texture = ExtResource("3_1qvog")
+
+[node name="Element" parent="." unique_id=2016421258 instance=ExtResource("4_xfkqo")]
+type = "Fire"
+state = "Non-polar"
+moles = 5.0
+is_non_polar = true
+
+[node name="Element2" parent="." unique_id=1070466791 instance=ExtResource("4_xfkqo")]
+type = "Earth"
+state = "Polar"
+moles = 3.0
+is_polar = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=77040318 node_paths=PackedStringArray("non_static")]
+priority = 3
+script = ExtResource("5_kc0ox")
+non_static = [NodePath("../Sprite2D")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454880484]
+position = Vector2(-9, -8)
+shape = SubResource("CircleShape2D_ugrgv")
+debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
+position = Vector2(-10, -7)
+shape = SubResource("CircleShape2D_w0lqd")
+
+[node name="Element3" parent="." unique_id=1698068545 instance=ExtResource("4_xfkqo")]
+type = "Junk"
+state = "Non-polar"
+is_non_polar = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
