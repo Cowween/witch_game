@@ -1,0 +1,24 @@
+~ start
+do rise_halfway()
+Incubus: Eep!
+do ring()
+[wait=1.5]
+do duck_down()
+Witch: Welcome to witchy whims! How may I-
+Witch: Thats weird, I swear i heard someone
+Witch: Oh well, back to work i guess
+Incubus: Um!
+do rise_up()
+Incubus: Excuse me!
+Witch: Oh so there was someone
+Witch: Welcome to Witchy whims! How may I help-
+Incubus: Auwasjidadiudud
+Witch: What?
+Incubus: I meant to say can you give me a potion please!
+Witch: Alright, what potion do you want
+Incubus: What-I-dont-know-I-thought-you-would-know
+Witch: Well, based on your crippling social anxiety, I would assume you need a [color=yellow]potion of courage[/color]
+Incubus: Yes-please!!!
+Witch: (Well, he needs a [color=yellow]standard strength courage potion[/color] at least)
+
+=> END

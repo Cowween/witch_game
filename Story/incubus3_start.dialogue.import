@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://wvv12lvp044u"
+path="res://.godot/imported/incubus3_start.dialogue-27b9f24e0e8635b5cfe781e4ec477019.tres"
+
+[deps]
+
+source_file="res://Story/incubus3_start.dialogue"
+dest_files=["res://.godot/imported/incubus3_start.dialogue-27b9f24e0e8635b5cfe781e4ec477019.tres"]
+
+[params]
+
+defaults=true

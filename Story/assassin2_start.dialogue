@@ -1,0 +1,15 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to EEP-
+Witch: What happened to you?!
+do shake()
+Assassin: What do you think happened?
+Assassin: It's okay, I already had a healing potion
+Assassin: But I need something to take the pain away
+Witch: Alright, I'll make a [color=yellow]Painkiller Potion[/color] for you
+Witch: (Something to numb the body... [color=yellow]Cursed earth[/color] should be able to do that)
+Witch: (I need to take care [color=yellow]not to make it too strong[/color] though)
+
+=> END

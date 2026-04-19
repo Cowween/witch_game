@@ -1,0 +1,23 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+
+Witch: Welcome to Witchy Whims!
+Witch: You weren't lying when you said you'll be back huh?
+do shake()
+Maid: *SIGH*
+Maid: First he slept until his breakfast had gone cold
+Maid: Then the moment he woke up, he threw all his bedding on the floor
+Maid: And overturned every laundry basket he could find
+Maid: I don't get it
+Maid: How can such a lazy and undisciplined bum be THE PRINCE!
+Witch: So... How about a [color=yellow]Potion of Discipline[/color]?
+Maid: Huh?
+[wait=0.5]
+Maid: There's such a thing?
+Witch: Mm hmm...
+Maid: Please, I must try it on him!
+Witch: (Looks like I'll need a [color=yellow]strong metal potion[/color] for this prince's [color=yellow]mind[/color])
+
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dhd44vs6a3iin"
+path="res://.godot/imported/unset.dialogue-33eed40561e91f2a7f3ec9bf0d28a41a.tres"
+
+[deps]
+
+source_file="res://Story/ErrorDialogues/unset.dialogue"
+dest_files=["res://.godot/imported/unset.dialogue-33eed40561e91f2a7f3ec9bf0d28a41a.tres"]
+
+[params]
+
+defaults=true

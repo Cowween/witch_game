@@ -9,6 +9,7 @@ var conc : Dictionary[String, Dictionary]
 
 @export var volume := 0.0 : set = set_volume
 var el_composition : Dictionary[String, float]
+var max_volume  := 999
 @export var is_polar := false
 @export var is_non_polar := false
 @export var is_salt := false
@@ -17,7 +18,7 @@ var el_composition : Dictionary[String, float]
 @export var acidified := false
 @export_enum("Polar", "Non-polar", "Salt", "Mixture", "Elixir") var solvent: String
 func set_volume(value: float) -> void:
-	volume = clamp(value, 0, 9999)
+	volume = clamp(value, 0, max_volume)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	amounts = OPERATIONS.get_empty_dict()
@@ -38,10 +39,13 @@ func calculate_conc() -> void:
 			conc[i][j] = amounts[i][j]/volume
 	#print(conc)
 func decrease_volume(dec: float) -> void:
-	#print(amounts)
 	volume -= dec
 	for i in conc:
 		for j in conc[i]:
+			if volume == 0.0:
+				amounts[i][j] = 0.0
+				conc[i][j] = 0.0
+				continue
 			amounts[i][j] = amounts[i].get(j, 0) - conc[i][j] * dec
 	el_composition = OPERATIONS.get_composition_from_amount(amounts)
 
@@ -85,6 +89,8 @@ func simple_combine(_amount:Dictionary) -> void:
 	calculate_conc()
 	el_composition = OPERATIONS.get_composition_from_amount(amounts)
 func combine(vol:float, concentration:Dictionary) -> void:
+	if max_volume - volume < vol:
+		vol = max_volume - volume
 	volume += vol
 	for i in concentration:
 		for j in concentration[i]:

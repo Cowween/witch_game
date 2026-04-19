@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bbdag6257l512"
+path="res://.godot/imported/maid3_end.dialogue-e460774408dc741bea0c47980d4f53b0.tres"
+
+[deps]
+
+source_file="res://Story/maid3_end.dialogue"
+dest_files=["res://.godot/imported/maid3_end.dialogue-e460774408dc741bea0c47980d4f53b0.tres"]
+
+[params]
+
+defaults=true

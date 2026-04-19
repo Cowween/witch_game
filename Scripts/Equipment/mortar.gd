@@ -6,11 +6,14 @@ var target_mineral : Array[Mineral]
 var target_ingredient : Array[Ingredient]
 var inner_selected := false
 var stage := 0
+var animation :=  true
 @export var powder : PackedScene
 @export var paste : PackedScene
 @export var UI_communicator : UICommunicator
 @export var launch_force := Vector2(-200, -600)
 @onready var pestle := $Pestle
+@onready var sound := $Scrape1
+@onready var pop := $Pop
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -19,10 +22,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-func grind() -> void:
+func grind() -> bool:
 	print(stage)
 	pestle.play("Grind")
-	
+	sound.play()
 	await pestle.animation_finished
 	pestle.frame = 0
 	match stage:
@@ -56,6 +59,8 @@ func grind() -> void:
 				var new_ing : Ingredient = m.powder.instantiate()
 				m.queue_free()
 				add_child(new_ing)
+				if not new_ing.soluble:
+					final_res.soluble = false
 				final_res.combine(new_ing.amounts, new_ing.blended_volume)
 				new_ing.queue_free()
 			target_mineral.clear()
@@ -78,18 +83,18 @@ func grind() -> void:
 			final_res.UI_communicator = UI_communicator
 			final_res.sprite.modulate = final_res.OPERATIONS.generate_color(final_res.el_composition)
 			await get_tree().create_timer(0.1).timeout
-			
+			pop.play()
 			final_res.velocity += launch_force
-		
+	return true
 			
 	
 func _input(event: InputEvent) -> void:
 			
 	if event is InputEventMouseButton and event.is_action("l_click"):
-		if event.is_pressed() and mouse_in and stage < 4:
+		if event.is_pressed() and mouse_in and stage < 4 and animation:
 			if not target_mineral.is_empty() or not target_ingredient.is_empty():
-				
-				grind()
+				animation = false
+				animation = await grind()
 				stage += 1
 				if stage == 4:
 					await get_tree().create_timer(2).timeout

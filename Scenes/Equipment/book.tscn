@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://btkgplhbxmccl"]
+
+[ext_resource type="Texture2D" uid="uid://dkrqvegf4pwol" path="res://Assets/Equipment/Book/book1.png" id="1_3lot3"]
+[ext_resource type="Script" uid="uid://bx3s5qd85siyo" path="res://Scripts/Equipment/book.gd" id="1_nxdue"]
+[ext_resource type="Texture2D" uid="uid://dhjaevvs82f21" path="res://Assets/Equipment/Book/book2.png" id="3_sa2r1"]
+[ext_resource type="Texture2D" uid="uid://cnf5a0tim28xe" path="res://Assets/Equipment/Book/book3.png" id="4_tcnrp"]
+[ext_resource type="Texture2D" uid="uid://1eyvn181rvlb" path="res://Assets/Equipment/Book/book4.png" id="5_v5jmd"]
+[ext_resource type="Texture2D" uid="uid://nau2o3x8t11" path="res://Assets/Equipment/Book/book5.png" id="6_06kou"]
+[ext_resource type="Texture2D" uid="uid://1shv5phyofy4" path="res://Assets/Equipment/Book/book6.png" id="7_75mi6"]
+[ext_resource type="Texture2D" uid="uid://ckl3att85pgm1" path="res://Assets/Equipment/Book/book7.png" id="8_nwx8h"]
+[ext_resource type="Texture2D" uid="uid://d362664gw48fe" path="res://Assets/Equipment/Book/book8.png" id="9_31dqx"]
+[ext_resource type="Texture2D" uid="uid://bl6vevo7faria" path="res://Res/left_boo.tres" id="10_06kou"]
+[ext_resource type="Texture2D" uid="uid://cdgix0cq2l1ki" path="res://Res/bookmark.tres" id="11_75mi6"]
+[ext_resource type="Texture2D" uid="uid://d15vy4q2mchms" path="res://Res/right_boo.tres" id="12_nwx8h"]
+
+[node name="Book" type="CanvasLayer" unique_id=2117418619]
+layer = 2
+script = ExtResource("1_nxdue")
+pages = Array[CompressedTexture2D]([ExtResource("1_3lot3"), ExtResource("3_sa2r1"), ExtResource("4_tcnrp"), ExtResource("5_v5jmd"), ExtResource("6_06kou"), ExtResource("7_75mi6"), ExtResource("8_nwx8h"), ExtResource("9_31dqx")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2057785416]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3lot3")
+
+[node name="Previous" type="TextureButton" parent="." unique_id=258960199]
+offset_left = 40.0
+offset_top = 310.0
+offset_right = 68.0
+offset_bottom = 332.0
+texture_normal = ExtResource("10_06kou")
+
+[node name="Close" type="TextureButton" parent="." unique_id=1431235783]
+offset_left = 608.0
+offset_top = 28.0
+offset_right = 639.0
+offset_bottom = 68.0
+texture_normal = ExtResource("11_75mi6")
+
+[node name="Next" type="TextureButton" parent="." unique_id=1380327513]
+offset_left = 577.0
+offset_top = 310.0
+offset_right = 605.0
+offset_bottom = 332.0
+texture_normal = ExtResource("12_nwx8h")
+
+[connection signal="pressed" from="Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

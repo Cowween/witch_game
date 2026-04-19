@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dpi0bidvylmk5"
+path="res://.godot/imported/grandma1_end.dialogue-30ed866a2194a400acdd06fb73fff313.tres"
+
+[deps]
+
+source_file="res://Story/grandma1_end.dialogue"
+dest_files=["res://.godot/imported/grandma1_end.dialogue-30ed866a2194a400acdd06fb73fff313.tres"]
+
+[params]
+
+defaults=true

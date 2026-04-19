@@ -8,6 +8,7 @@ class_name Beaker
 @onready var glass := $Glass
 @onready var beaker_area := $BeakerArea
 @onready var pour_receptor := $PourReceptor
+@export var particle : GPUParticles2D
 
 @export var fill_curve : Curve
 @export var full_y := 0.0
@@ -43,6 +44,7 @@ func _ready() -> void:
 	for i in get_children():
 		if i is Solution:
 			i.volume = initial_volumes[count]
+			i.max_volume = max_volume
 			all_solution.append(i)
 			volume += i.volume
 			count += 1
@@ -61,13 +63,18 @@ func _process(delta: float) -> void:
 			print(i)
 			i.emit_signal("pourable", self)
 	if pouring:
-		change_volume(-0.1, true)
+		change_volume(-0.1)
+		if volume != 0:
+			particle.emitting = true
+		else:
+			particle.emitting = false
 		if target_beaker and volume != 0:
+			
 			for i in range(all_solution.size() - 1, -1, -1):
 				if all_solution[i].volume > 0:
 					if all_solution[i].acidified:
 						target_beaker.acidify()
-					target_beaker.change_volume(0.1, false, all_solution[i].conc, all_solution[i].solvent)
+					target_beaker.change_volume(0.1, all_solution[i].conc, all_solution[i].solvent)
 					#print(name, "pouring into", target_beaker.name)
 					break
 		if target_cauldron and volume != 0:
@@ -85,7 +92,8 @@ func _physics_process(delta: float) -> void:
 	if dragging:
 		var target_pos := get_global_mouse_position() + mouse_offset
 		var target_direction := target_pos - position
-		velocity = target_direction * drag_speed
+		var raw_velocity := target_direction * drag_speed
+		velocity = raw_velocity.limit_length(500)
 		#print(volume)
 		
 	else:
@@ -118,9 +126,11 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("r_click"):
 			if event.is_pressed() and mouse_in:
 				pouring = true
+				
 				draw_volume()
 			elif pouring:
 				pouring = false
+				particle.emitting = false
 				draw_volume()
 
 
@@ -146,7 +156,7 @@ func tally_effects() -> void:
 	
 		
 			
-func draw_volume() -> void:
+func draw_volume(a:Dictionary = {}) -> void:
 	#print("Draw vol")
 	var total_vol := 0.0
 	if pouring:
@@ -171,61 +181,68 @@ func draw_volume() -> void:
 			liquid = elixir_l
 		if fill_curve:
 			ratio = fill_curve.sample(ratio)
+		print(name, i.name, i.el_composition)
 		liquid.modulate = OPERATIONS.generate_color(i.el_composition)
+		if not a.is_empty():
+			liquid.modulate = OPERATIONS.generate_color(a)
 		if pouring:
-			
 			var new_pos := Vector2(full_x, lerp(empty_x, full_y, ratio))
 			liquid.global_position = to_global(new_pos)
 		else:
 			var new_pos := Vector2(full_x, lerp(empty_y, full_y, ratio))
 			liquid.position = new_pos
-			print(liquid.position)
+			
 		if i.volume == 0.0:
 			liquid.position.y = 999
 
-func change_volume(value : float, hori:=false, concentration:Dictionary = {}, solvent:="") -> void:
+func change_volume(value : float, concentration:Dictionary = {}, solvent:="") -> void:
+	if max_volume - volume < value:
+		value = max_volume - volume
 	if value<0:
 		for i in range(all_solution.size() - 1, -1, -1):
 			if all_solution[i].volume > 0:
 				all_solution[i].decrease_volume(-value)
+				particle.modulate = OPERATIONS.generate_color(all_solution[i].el_composition)
 				break
 	else:
 		for i in all_solution:
 			if i.solvent == solvent:
 				i.combine(value, concentration)
 	for i in all_solution:
-		if i.solvent != "Mixture" and i.volume > 0:
+		if i.solvent != "Mixture" and i.volume > 5.0:
 			all_solution[0].separate(i)
 	volume += value
 	dissolve()
 	draw_volume()
 	
+func purge() -> void:
+	print("purged")
+	
+	for i in all_solution:
+		i.decrease_volume(i.volume)
+	volume = 0
+	draw_volume()
+
 func acidify() -> void:
 	for i in all_solution:
 		i.acidified = true
 	
 func dissolve() -> void:
-	var metals := []
 	if solute.is_empty():
 		return
 	if all_solution[1].volume > 0.0:
 		while not solute.is_empty():
 			var s : Ingredient = solute.pop_front()
-			if s.soluble_in_acid and not all_solution[1]:
-				metals.append(s)
-			else:
-				all_solution[1].dissolve(s)
-			solute.clear()
+			all_solution[1].dissolve(s)
+		solute.clear()
 
 	if all_solution[0].volume > 0.0:
 		while not solute.is_empty():
 			var s : Ingredient = solute.pop_front()
-			if s.soluble_in_acid and not all_solution[0]:
-				metals.append(s)
-			else:
-				all_solution[1].dissolve(s)
+
+			all_solution[1].dissolve(s)
 		solute.clear()
-	solute = metals
+	draw_volume()
 	return
 	
 func generate_desc() -> String:
@@ -239,7 +256,7 @@ func generate_desc() -> String:
 			for state in solution.amounts[element]:
 				if solution.amounts[element][state] <= 0.0:
 					continue
-				output += "%s %s: %2f \n" % [state, element, solution.amounts[element][state]]
+				output += "%s %s: %.2f \n" % [state, element, solution.amounts[element][state]]
 	
 	return output
 func generate_default_name() -> String:
@@ -262,9 +279,10 @@ func generate_default_name() -> String:
 	
 	return n
 func generate_comp_text() -> String:
-	var output := "Composition: "
+	var output := "Composition: \n"
 	for i in total_comp:
-		output += i + ": " + str(total_comp[i]*100) + "% "
+		if total_comp[i] > 0.0:
+			output += i + ": %.2f" %(total_comp[i]*100) + "% "
 	return output
 func _on_area_2d_mouse_entered() -> void:
 	

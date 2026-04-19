@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b6k6ceu07gbds"
+path="res://.godot/imported/incubus1_end.dialogue-d923727b9a2314f1af2da5bdee71d5d4.tres"
+
+[deps]
+
+source_file="res://Story/incubus1_end.dialogue"
+dest_files=["res://.godot/imported/incubus1_end.dialogue-d923727b9a2314f1af2da5bdee71d5d4.tres"]
+
+[params]
+
+defaults=true

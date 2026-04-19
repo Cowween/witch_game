@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://cjta88eemok2j" path="res://Scripts/liquid_texture.gd" id="4_rch35"]
 [ext_resource type="PackedScene" uid="uid://s3284u2bwf6t" path="res://Scenes/solution.tscn" id="5_rc45u"]
 [ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="7_jeh5j"]
+[ext_resource type="Texture2D" uid="uid://ce76v28w6d5t1" path="res://Res/particle.tres" id="9_5wq2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d3m3"]
-size = Vector2(22, 3)
+size = Vector2(22, 6.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7gaa"]
 size = Vector2(3.90625, 25.1525)
@@ -29,10 +30,15 @@ shader = ExtResource("7_jeh5j")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0000000475
 
-[node name="Beaker" type="CharacterBody2D" unique_id=1687937678]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rch35"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="Beaker" type="CharacterBody2D" unique_id=1687937678 node_paths=PackedStringArray("particle")]
 collision_layer = 5
 collision_mask = 6
 script = ExtResource("1_8nens")
+particle = NodePath("Sprites/GPUParticles2D")
 full_y = 6.5
 empty_y = 32.0
 empty_x = 23.0
@@ -81,7 +87,7 @@ script = ExtResource("4_rch35")
 remote_path = NodePath("../../Sprites")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069660311]
-position = Vector2(0, 19)
+position = Vector2(0, 17.25)
 shape = SubResource("RectangleShape2D_8d3m3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=146331282]
@@ -151,6 +157,14 @@ texture = ExtResource("2_jeh5j")
 
 [node name="Beaker" type="Sprite2D" parent="Sprites" unique_id=1647639821]
 texture = ExtResource("2_jeh5j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites" unique_id=1682560171]
+position = Vector2(-10, -4)
+emitting = false
+amount = 11
+texture = ExtResource("9_5wq2n")
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_rch35")
 
 [connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="BeakerArea" to="BeakerArea" method="_on_mouse_entered"]

@@ -1,0 +1,18 @@
+~ start
+do enter_top()
+[wait=0.1]
+do ring()
+Gma: My little Charlotte's all grown up and taking over my shop now
+Witch: Yes grandma, I see you're extremely enthusiastic about your retirement
+Gma: You bet I am! Didn't spend 60 years running this place for nuthin'
+Gma: But before I go, I need to make sure you're truly prepared to handle my lil' shop.
+Witch: Is me being the valedictorian not enough for you?
+Gma: It's easy to be one when there are only 3 students in the cohort!
+Witch: Heh, you got me there
+Gma: So, would please make me a [color=yellow]weak potion of courage[/color], they should've taught this at the first lesson
+Gma: Remember, courage is associated with the [color=yellow]fire element[/color] and you should set the potion with a [color=yellow]mental spell[/color] as courage is a mental attribute
+Gma: If I was to choose an ingredient to use, it would be [color=yellow]fire crystal[/color]
+Gma: I've written a basic summary for potion making on the shelf, so be sure you take a read before you do anything
+
+
+=> END

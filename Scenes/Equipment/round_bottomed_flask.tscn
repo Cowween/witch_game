@@ -12,7 +12,7 @@
 radius = 18.756666
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmay8"]
-radius = 14.77593
+radius = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmay8"]
 shader = ExtResource("7_xedul")
@@ -85,7 +85,7 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PourReceptor" unique_id=1321918741]
-position = Vector2(-11, 21)
+position = Vector2(-16, 10)
 shape = SubResource("CircleShape2D_gmay8")
 
 [node name="Mixture" parent="." unique_id=937602957 instance=ExtResource("6_w0wiw")]
@@ -122,9 +122,11 @@ texture = ExtResource("8_kgujy")
 position = Vector2(45, 57)
 shape = SubResource("CircleShape2D_w0wiw")
 
+[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_beaker_area_mouse_entered"]
 [connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="BeakerArea" to="BeakerArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="BeakerArea" to="." method="_on_beaker_area_mouse_exited"]
 [connection signal="mouse_exited" from="BeakerArea" to="BeakerArea" method="_on_mouse_exited"]
 [connection signal="pourable" from="BeakerArea" to="." method="_on_beaker_area_pourable"]
 [connection signal="area_entered" from="PourReceptor" to="." method="_on_pour_receptor_area_entered"]

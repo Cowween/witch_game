@@ -44,6 +44,7 @@ func _input(event: InputEvent) -> void:
 
 func fill_up() -> void:
 	var tween = create_tween()
+	liquid.modulate = potion.OPERATIONS.generate_color(potion.el_composition)
 	tween.tween_method(
 		func(progress):
 			# Sample curve to get interpolated value
@@ -52,6 +53,7 @@ func fill_up() -> void:
 	, 0.0, 1.0, 10.0
 		
 	)
+	await tween.finished
 
 func _on_click_area_mouse_entered() -> void:
 	mouse_in = true

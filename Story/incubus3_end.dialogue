@@ -1,0 +1,30 @@
+~ start
+Incubus: Wait...
+Incubus: I don't recall asking for a potion...
+Witch: Well you've come to the wrong place then 
+Witch: Just drink this now
+Incubus: Sure...
+Witch: People who drink potions of truth can only say the truth 
+Witch: Even if they disagree or are unaware of it
+Witch: So, firstly, what's your name
+Incubus: It's Angel...
+Witch: That's somewhat ironic, but sure
+Witch: Now, you are going to answer this truthfully.
+Witch: Why were you unable to approach anyone in the past
+Incubus: CUZ I'M UGL-
+Incubus: Because I would run away before they could say anything to me
+Witch: Very good. So did people find you attractive?
+Incubus: NO-
+Incubus: Yes, people thought my shy demeanor and stature was cute
+Witch: So would you have been able to successfully drain people without the potions?
+Incubus: Yes... Somehow it seems I could have done it from the start...
+Witch: See, you're no failure, you just lack confidence!
+Incubus: Wow... 
+Incubus: I didn't know the potion shop offered counselling sessions too...
+Incubus: Thank you so much for everything! I think I believe in myself a bit more now! 
+Incubus: I don't think I need potions anymore!
+do exit_left()
+Witch: Wait! Are you sure? You could always use some extra strength or calmness-
+Witch: Wow good job Charlotte, permanently closing off that source of sales
+
+=> END

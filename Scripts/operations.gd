@@ -1,8 +1,8 @@
 extends Resource
 const ELEMENTS := ["Wood", "Fire", "Water", "Earth", "Metal", "Junk"]
 const STATES := ["Polar", "Non-polar", "Salt", "Elemental"]
-const DISTIL_TEMPS := {"Wood": 30.0, "Fire": 120.0, "Water": 100.0, "Earth": 35.0, "Metal": 50.0}
-const STR_RANGE := [200, 400, 600, 800]
+const DISTIL_TEMPS := {"Wood": 30.0, "Fire": 120.0, "Water": 100.0, "Earth": 35.0, "Metal": 60.0}
+const STR_RANGE := [50, 100, 200, 300]
 const COLORS := {"Wood": Color.SADDLE_BROWN, "Earth": Color.DARK_GREEN, "Water": Color.AQUA, "Fire": Color.RED, "Metal": Color.BISQUE, "Junk": Color.BLACK}
 
 #amount = {Metal: {Polar:1, NonPolar: 2}...

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bcq0rw6kaj6gk"
+path="res://.godot/imported/assassin3_end.dialogue-cdcaf5ea5665eb4f598c08c209b56cb3.tres"
+
+[deps]
+
+source_file="res://Story/assassin3_end.dialogue"
+dest_files=["res://.godot/imported/assassin3_end.dialogue-cdcaf5ea5665eb4f598c08c209b56cb3.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,318 @@
+[gd_scene format=3 uid="uid://b4yi45map6tbj"]
+
+[ext_resource type="Script" uid="uid://dj6jifemnxwui" path="res://Scripts/Misc/shop_scene.gd" id="1_y63y6"]
+[ext_resource type="Texture2D" uid="uid://b2k8c22a14oo3" path="res://Assets/Workspace/Workspace.png" id="2_fg74v"]
+[ext_resource type="PackedScene" uid="uid://b5s41hsc0raq7" path="res://Scenes/Equipment/SolventBarrel.tscn" id="3_yys15"]
+[ext_resource type="PackedScene" uid="uid://87ldof7f0ps4" path="res://Scenes/Equipment/beaker_spawn.tscn" id="4_clco5"]
+[ext_resource type="PackedScene" uid="uid://hwkqe1aenhf7" path="res://Scenes/Equipment/blender.tscn" id="5_dutf0"]
+[ext_resource type="PackedScene" uid="uid://c4snp4hx54w4h" path="res://Scenes/Equipment/distillator.tscn" id="6_l5coh"]
+[ext_resource type="PackedScene" uid="uid://chd547q64a8w2" path="res://Scenes/Equipment/mortar.tscn" id="7_yquun"]
+[ext_resource type="PackedScene" uid="uid://bqj8rkxdbeeeg" path="res://Scenes/Equipment/cauldron.tscn" id="8_wlsvu"]
+[ext_resource type="PackedScene" uid="uid://ou2gukbjogx" path="res://Scenes/Equipment/potion_bottle_spawn.tscn" id="9_jnyk8"]
+[ext_resource type="Script" uid="uid://qnacb7ayv71y" path="res://Scripts/ui_communicator.gd" id="10_2kvy3"]
+[ext_resource type="PackedScene" uid="uid://cmv8nf4frcs1p" path="res://UI/tool_tip.tscn" id="11_fshwe"]
+[ext_resource type="PackedScene" uid="uid://de2n8u2d74f14" path="res://UI/inventory.tscn" id="12_a0hhf"]
+[ext_resource type="PackedScene" uid="uid://bsdbsnjpskve0" path="res://Scenes/Equipment/wand.tscn" id="13_12iu4"]
+[ext_resource type="PackedScene" uid="uid://bk1uh24j22aeb" path="res://UI/DialogueUI.tscn" id="14_netl5"]
+[ext_resource type="PackedScene" uid="uid://c54ok7fh2jo6v" path="res://UI/spell_interface.tscn" id="15_rll3k"]
+[ext_resource type="Script" uid="uid://baht78t3as0k2" path="res://Scripts/encounter_manager.gd" id="16_y3mj1"]
+[ext_resource type="PackedScene" uid="uid://ecsoxi5eoq5f" path="res://Scenes/Story/incubus2.tscn" id="17_jpown"]
+[ext_resource type="Script" uid="uid://p4bwy4666lw5" path="res://Scripts/Misc/tim.gd" id="20_iba11"]
+[ext_resource type="Texture2D" uid="uid://cg64ofb7j421i" path="res://Assets/Workspace/Timothy/Timothy1.png" id="21_ns8ck"]
+[ext_resource type="Texture2D" uid="uid://dw30wkqjwmy0q" path="res://Assets/Workspace/Timothy/Timothy2.png" id="22_7phrp"]
+[ext_resource type="Texture2D" uid="uid://cicr5pp6lq2va" path="res://Assets/Workspace/Timothy/Timothy3.png" id="23_aa1tg"]
+[ext_resource type="Texture2D" uid="uid://coswd5h0t7xl8" path="res://Assets/Workspace/Timothy/Timothy4.png" id="24_rmbgl"]
+[ext_resource type="Texture2D" uid="uid://5wdmteo04nb4" path="res://Assets/Workspace/Timothy/Timothy5.png" id="25_e1b3l"]
+[ext_resource type="Texture2D" uid="uid://cuojsmsw5g484" path="res://Assets/Workspace/Timothy/Timothy6.png" id="26_dyfk8"]
+[ext_resource type="Texture2D" uid="uid://ryfbswnuhrvb" path="res://Assets/Workspace/Timothy/Timothy7.png" id="27_3jn15"]
+[ext_resource type="Texture2D" uid="uid://cm4dododmjlur" path="res://Assets/Workspace/Timothy/Timothy8.png" id="28_s7kc7"]
+[ext_resource type="Texture2D" uid="uid://b4n53xlw1pqds" path="res://Assets/Workspace/Timothy/Timothy12.png" id="29_fcgew"]
+[ext_resource type="Texture2D" uid="uid://cpp1orl3ftupt" path="res://Assets/Workspace/Windowbackground.png" id="30_wt4s3"]
+[ext_resource type="Script" uid="uid://b37e6a5ln1klr" path="res://Scripts/Misc/cost_counter.gd" id="31_ysd4u"]
+[ext_resource type="PackedScene" uid="uid://b2g2kkts75jem" path="res://UI/end.tscn" id="32_nttsj"]
+[ext_resource type="PackedScene" uid="uid://biotcanr2sdwt" path="res://Scenes/Shop/shop_scene_day2.tscn" id="33_23y4g"]
+[ext_resource type="AudioStream" uid="uid://7ogahco6g6a" path="res://Assets/Sounds/alchemy_lab.mp3" id="34_0a6bu"]
+[ext_resource type="AudioStream" uid="uid://qbpdakbulig2" path="res://Assets/Sounds/cooking_without_cover_01.ogg" id="35_c0dwd"]
+[ext_resource type="PackedScene" uid="uid://btkgplhbxmccl" path="res://Scenes/Equipment/book.tscn" id="36_oruv5"]
+[ext_resource type="PackedScene" uid="uid://ia10rmcylprs" path="res://Scenes/Equipment/small_book.tscn" id="37_fgvwp"]
+[ext_resource type="PackedScene" uid="uid://dd03jxwvmee31" path="res://Scenes/Shop/bell.tscn" id="38_hxwu8"]
+[ext_resource type="Texture2D" uid="uid://cli5v8x5uilw5" path="res://Assets/Equipment/firegif1.png" id="39_b4rla"]
+[ext_resource type="Texture2D" uid="uid://c26v0foqq6tfq" path="res://Assets/Equipment/firegif2.png" id="40_qywca"]
+[ext_resource type="Texture2D" uid="uid://bkn4q2c0cr6r1" path="res://Assets/Equipment/firegif3.png" id="41_y2ykd"]
+[ext_resource type="Texture2D" uid="uid://dwqipr86j7m8h" path="res://Assets/Equipment/firegif4.png" id="42_2qo84"]
+[ext_resource type="Texture2D" uid="uid://cm6juo0y8nd0t" path="res://Assets/Equipment/firegif5.png" id="43_8dvrs"]
+[ext_resource type="Texture2D" uid="uid://bp3t2djillre4" path="res://Assets/Equipment/firegif6.png" id="44_ypg3m"]
+[ext_resource type="Texture2D" uid="uid://dqve876b8dkj3" path="res://Assets/Equipment/firegif7.png" id="45_yeq1a"]
+[ext_resource type="Texture2D" uid="uid://cnggheioa0i54" path="res://Assets/Equipment/firegif8.png" id="46_7sh7t"]
+[ext_resource type="Texture2D" uid="uid://dwr46qiqgs0cj" path="res://Assets/Equipment/firegif9.png" id="47_htl6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg1wq"]
+size = Vector2(477, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_assh8"]
+size = Vector2(152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxxb5"]
+size = Vector2(16, 296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r37aj"]
+size = Vector2(112, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itksv"]
+size = Vector2(32, 280)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ak510"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_ns8ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7phrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_aa1tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rmbgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_e1b3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dyfk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3jn15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_s7kc7")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_fcgew")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4fdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_b4rla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_qywca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_y2ykd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_2qo84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_8dvrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ypg3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_yeq1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_7sh7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_htl6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ShopScene" type="Node" unique_id=208922778]
+script = ExtResource("1_y63y6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=320123528]
+z_index = -3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_fg74v")
+
+[node name="TableCollider" type="StaticBody2D" parent="." unique_id=1581436371]
+collision_layer = 130
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TableCollider" unique_id=2065300290]
+position = Vector2(401.5, 320)
+shape = SubResource("RectangleShape2D_bg1wq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TableCollider" unique_id=1710834217]
+position = Vector2(76, 360)
+shape = SubResource("RectangleShape2D_assh8")
+
+[node name="SolventBarrel" parent="." unique_id=1567967711 instance=ExtResource("3_yys15")]
+position = Vector2(312, 180)
+solvent = "Salt"
+item_name = "Aqua"
+desc = "Salt solvent"
+
+[node name="SolventBarrel2" parent="." unique_id=298994873 instance=ExtResource("3_yys15")]
+position = Vector2(351, 180)
+solvent = "Polar"
+item_name = "Moonshine"
+desc = "Polar solvent"
+
+[node name="SolventBarrel3" parent="." unique_id=165874745 instance=ExtResource("3_yys15")]
+position = Vector2(390, 180)
+solvent = "Non-polar"
+item_name = "Slime Juice"
+desc = "Non-polar solvent"
+
+[node name="BeakerSpawn" parent="." unique_id=210293072 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("4_clco5")]
+position = Vector2(561, 134)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Blender" parent="." unique_id=1680497295 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("5_dutf0")]
+position = Vector2(252.21, 240)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Distillator" parent="." unique_id=1543099707 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("6_l5coh")]
+position = Vector2(279, 180)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Mortar" parent="." unique_id=1348376444 instance=ExtResource("7_yquun")]
+position = Vector2(448, 253)
+
+[node name="Cauldron" parent="." unique_id=312336044 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("8_wlsvu")]
+position = Vector2(558, 243)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="PotionSpawn" parent="." unique_id=114448042 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("9_jnyk8")]
+position = Vector2(509, 129)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="UICommunicator" type="Node" parent="." unique_id=614538878]
+script = ExtResource("10_2kvy3")
+
+[node name="PanelContainer" parent="." unique_id=646950582 instance=ExtResource("11_fshwe")]
+visible = false
+
+[node name="Inventory" parent="." unique_id=349930675 node_paths=PackedStringArray("cost") instance=ExtResource("12_a0hhf")]
+cost = NodePath("../CostCounter")
+
+[node name="Wand" parent="." unique_id=1744849138 node_paths=PackedStringArray("spell_interface", "cauldron") instance=ExtResource("13_12iu4")]
+position = Vector2(432, 180)
+spell_interface = NodePath("../SpellInterface")
+cauldron = NodePath("../Cauldron")
+
+[node name="DialogueUI" parent="." unique_id=167703360 instance=ExtResource("14_netl5")]
+test_dialogue = null
+
+[node name="SpellInterface" parent="." unique_id=653094351 instance=ExtResource("15_rll3k")]
+visible = false
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=459809127]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall" unique_id=447477156]
+position = Vector2(8, 200)
+shape = SubResource("RectangleShape2D_rxxb5")
+
+[node name="EncounterManager" type="Area2D" parent="." unique_id=1645848961 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("16_y3mj1")
+dialogue_ui = NodePath("../DialogueUI")
+cost_counter = NodePath("../CostCounter")
+end = NodePath("../RichTextLabel")
+bell = NodePath("../Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterManager" unique_id=1726411278]
+position = Vector2(72, 180)
+shape = SubResource("RectangleShape2D_r37aj")
+
+[node name="Encounter" parent="EncounterManager" unique_id=1718985390 instance=ExtResource("17_jpown")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=722211196]
+script = ExtResource("20_iba11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=255503054]
+position = Vector2(640, 216)
+shape = SubResource("RectangleShape2D_itksv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1914826388]
+position = Vector2(587, 218)
+sprite_frames = SubResource("SpriteFrames_ak510")
+frame = 8
+frame_progress = 0.5343289
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1895128020]
+z_index = -5
+offset_left = 9.0
+offset_top = 105.0
+offset_right = 137.0
+offset_bottom = 255.0
+texture = ExtResource("30_wt4s3")
+
+[node name="CostCounter" type="Node" parent="." unique_id=143479706]
+script = ExtResource("31_ysd4u")
+
+[node name="RichTextLabel" parent="." unique_id=1584764037 instance=ExtResource("32_nttsj")]
+z_index = 10
+next_scene_path = ExtResource("33_23y4g")
+
+[node name="AlchemyLab" type="AudioStreamPlayer2D" parent="." unique_id=1058278874]
+position = Vector2(326, 244)
+stream = ExtResource("34_0a6bu")
+autoplay = true
+parameters/looping = true
+
+[node name="CookingWithoutCover01" type="AudioStreamPlayer2D" parent="." unique_id=1843767144]
+position = Vector2(340, 250)
+stream = ExtResource("35_c0dwd")
+volume_db = -6.386
+autoplay = true
+parameters/looping = true
+
+[node name="Book" parent="." unique_id=83682887 instance=ExtResource("36_oruv5")]
+visible = false
+
+[node name="Area2D2" parent="." unique_id=1119884972 node_paths=PackedStringArray("book") instance=ExtResource("37_fgvwp")]
+position = Vector2(350, 181)
+book = NodePath("../Book")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102141520]
+position = Vector2(565, 356)
+sprite_frames = SubResource("SpriteFrames_b4fdm")
+autoplay = "default"
+frame_progress = 0.42115164
+
+[node name="Node2D" parent="." unique_id=1586733694 instance=ExtResource("38_hxwu8")]
+position = Vector2(73, 120)
+
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
+[connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
+[connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]
+[connection signal="spell_inputted" from="SpellInterface" to="Wand" method="_on_spell_interface_spell_inputted"]
+[connection signal="body_entered" from="EncounterManager" to="EncounterManager" method="_on_body_entered"]
+[connection signal="encounter_over" from="EncounterManager" to="EncounterManager" method="_on_encounter_over"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

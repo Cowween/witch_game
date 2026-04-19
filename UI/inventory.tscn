@@ -14,6 +14,28 @@
 [ext_resource type="Texture2D" uid="uid://lv8pq4vwerk2" path="res://Assets/Ingredients/Stagbeetle.png" id="11_pdm82"]
 [ext_resource type="PackedScene" uid="uid://cdy7k6rlivo2e" path="res://Scenes/Ingredients/rhino_beetle.tscn" id="12_y4578"]
 [ext_resource type="PackedScene" uid="uid://b6qrl0byfkuac" path="res://Scenes/Ingredients/water_crytal.tscn" id="14_e57su"]
+[ext_resource type="Texture2D" uid="uid://nsqgigyel7dp" path="res://Assets/Ingredients/crystal.png" id="15_x4ywr"]
+[ext_resource type="PackedScene" uid="uid://bj6qiec1or1hf" path="res://Scenes/Ingredients/metal_crytal.tscn" id="16_sg0qi"]
+[ext_resource type="Texture2D" uid="uid://tkeoqkl3dwkt" path="res://Assets/Ingredients/redcrystal.png" id="17_6ekc8"]
+[ext_resource type="PackedScene" uid="uid://bmweqrftbvxca" path="res://Scenes/Ingredients/fire_crytal.tscn" id="18_7wq8k"]
+[ext_resource type="Texture2D" uid="uid://cr1ans2g6713m" path="res://Assets/Ingredients/eyeball.png" id="19_i4pru"]
+[ext_resource type="PackedScene" uid="uid://c3dgj0dum2fsm" path="res://Scenes/Ingredients/eyeball.tscn" id="20_5fxkm"]
+[ext_resource type="Texture2D" uid="uid://bva08bkrmwjxf" path="res://Assets/Ingredients/warCindersl.png" id="21_25b26"]
+[ext_resource type="PackedScene" uid="uid://qedc2elilawp" path="res://Scenes/Ingredients/cinders.tscn" id="22_vlmxf"]
+[ext_resource type="Texture2D" uid="uid://drh1rnef72s77" path="res://Assets/Ingredients/Goldenaple.png" id="23_ok3fc"]
+[ext_resource type="PackedScene" uid="uid://ccga10pc0rkuw" path="res://Scenes/Ingredients/golden_apple.tscn" id="24_dp0ea"]
+[ext_resource type="Texture2D" uid="uid://p1ijy53w8tjl" path="res://Assets/Ingredients/Orang.png" id="25_s1i0b"]
+[ext_resource type="PackedScene" uid="uid://urxtiirl884o" path="res://Scenes/Ingredients/Orange.tscn" id="26_w60vo"]
+[ext_resource type="Texture2D" uid="uid://ck74wf7il8svw" path="res://Assets/Ingredients/Tearberry.png" id="27_qclov"]
+[ext_resource type="PackedScene" uid="uid://cva0j6ggthlhp" path="res://Scenes/Ingredients/tearberries.tscn" id="28_lcm58"]
+[ext_resource type="Texture2D" uid="uid://dkuxgnbn5l8jd" path="res://Assets/Ingredients/Cheat.png" id="29_uwx5d"]
+[ext_resource type="PackedScene" uid="uid://q3oonyj0flmr" path="res://Scenes/Ingredients/witchs_cheat.tscn" id="30_4i1na"]
+[ext_resource type="Texture2D" uid="uid://d1ynospukwxn3" path="res://Assets/Ingredients/Condensatel.png" id="31_es8o3"]
+[ext_resource type="PackedScene" uid="uid://dy2uoxy22mdid" path="res://Scenes/Ingredients/imperial_condensate.tscn" id="32_eqrb3"]
+[ext_resource type="Texture2D" uid="uid://iqt07sootjjt" path="res://Assets/Ingredients/Elvencrytsalv2.png" id="33_r7ovi"]
+[ext_resource type="PackedScene" uid="uid://dfspwnxnmo2vd" path="res://Scenes/Ingredients/elven_gem.tscn" id="34_q0co6"]
+[ext_resource type="Texture2D" uid="uid://dbkmwioi7aqy1" path="res://Assets/Ingredients/Minigdebri.png" id="35_6ekc8"]
+[ext_resource type="PackedScene" uid="uid://dmr1ypivuppts" path="res://Scenes/Ingredients/mining_waste.tscn" id="36_7wq8k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g8kd"]
 content_margin_left = 0.0
@@ -42,8 +64,7 @@ script = ExtResource("1_0knst")
 
 [node name="IngredientsInventory" type="ScrollContainer" parent="." unique_id=318961520]
 layout_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="IngredientsInventory" unique_id=292613456]
 layout_mode = 2
@@ -54,32 +75,120 @@ theme_override_constants/separation = 0
 layout_mode = 2
 texture = ExtResource("3_su3to")
 ingredient = ExtResource("4_e57su")
+cost = 10
+desc = "Farmer's friend"
 
 [node name="IngredientButton2" parent="IngredientsInventory/HBoxContainer" unique_id=1640179235 instance=ExtResource("1_fxcd2")]
 layout_mode = 2
 texture = ExtResource("5_3dtbo")
 ingredient = ExtResource("6_cxd6k")
+cost = 10
+desc = "Spiralling like me"
 
 [node name="IngredientButton3" parent="IngredientsInventory/HBoxContainer" unique_id=1698251948 instance=ExtResource("1_fxcd2")]
 layout_mode = 2
 texture = ExtResource("7_f5xeh")
 ingredient = ExtResource("8_kt7ch")
+cost = 10
+desc = "Looks better than it tastes"
 
 [node name="IngredientButton4" parent="IngredientsInventory/HBoxContainer" unique_id=1998266414 instance=ExtResource("1_fxcd2")]
 layout_mode = 2
 texture = ExtResource("9_8trr1")
 ingredient = ExtResource("10_df3qr")
+cost = 13
+desc = "Stores food for the colony"
 
 [node name="IngredientButton5" parent="IngredientsInventory/HBoxContainer" unique_id=526062003 instance=ExtResource("1_fxcd2")]
 layout_mode = 2
 texture = ExtResource("11_pdm82")
 ingredient = ExtResource("12_y4578")
+cost = 13
+desc = "It's massive!"
 
 [node name="IngredientButton6" parent="IngredientsInventory/HBoxContainer" unique_id=161847047 instance=ExtResource("1_fxcd2")]
 layout_mode = 2
 texture = ExtResource("1_23vm5")
 ingredient = ExtResource("14_e57su")
-desc = "Crystallated water. Needs to be grinded down for use."
+cost = 50
+desc = "Nice and cool. Needs to be grinded down for use."
 
-[connection signal="mouse_entered" from="IngredientsInventory" to="IngredientsInventory" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="IngredientsInventory" to="IngredientsInventory" method="_on_mouse_exited"]
+[node name="IngredientButton7" parent="IngredientsInventory/HBoxContainer" unique_id=1502132747 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("15_x4ywr")
+ingredient = ExtResource("16_sg0qi")
+cost = 50
+desc = "Smells stinky. Needs to be grinded down for use."
+
+[node name="IngredientButton9" parent="IngredientsInventory/HBoxContainer" unique_id=411615429 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("17_6ekc8")
+ingredient = ExtResource("18_7wq8k")
+cost = 50
+desc = "Scorching. Needs to be grinded down for use."
+
+[node name="IngredientButton8" parent="IngredientsInventory/HBoxContainer" unique_id=796585086 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("19_i4pru")
+ingredient = ExtResource("20_5fxkm")
+cost = 30
+desc = "Squishy"
+
+[node name="IngredientButton10" parent="IngredientsInventory/HBoxContainer" unique_id=1517519458 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("21_25b26")
+ingredient = ExtResource("22_vlmxf")
+cost = 45
+desc = "Fire and grief"
+
+[node name="IngredientButton11" parent="IngredientsInventory/HBoxContainer" unique_id=1119675952 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("23_ok3fc")
+ingredient = ExtResource("24_dp0ea")
+cost = 100
+desc = "Overpriced"
+
+[node name="IngredientButton12" parent="IngredientsInventory/HBoxContainer" unique_id=1295639348 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("25_s1i0b")
+ingredient = ExtResource("26_w60vo")
+cost = 18
+desc = "It's just an orange"
+
+[node name="IngredientButton13" parent="IngredientsInventory/HBoxContainer" unique_id=1749987809 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("27_qclov")
+ingredient = ExtResource("28_lcm58")
+cost = 18
+desc = "Reminds me of me"
+
+[node name="IngredientButton14" parent="IngredientsInventory/HBoxContainer" unique_id=1986111962 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("29_uwx5d")
+ingredient = ExtResource("30_4i1na")
+cost = 300
+desc = "Developed by the witching association for witches in a bind"
+
+[node name="IngredientButton15" parent="IngredientsInventory/HBoxContainer" unique_id=808282759 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("31_es8o3")
+ingredient = ExtResource("32_eqrb3")
+cost = 300
+desc = "Crown jewel of the Imperial Alchemists"
+
+[node name="IngredientButton16" parent="IngredientsInventory/HBoxContainer" unique_id=1558169665 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("33_r7ovi")
+ingredient = ExtResource("34_q0co6")
+cost = 300
+desc = "Apparently what the elves are up to in the forests. Needs to be grinded down for use."
+
+[node name="IngredientButton17" parent="IngredientsInventory/HBoxContainer" unique_id=951580559 instance=ExtResource("1_fxcd2")]
+layout_mode = 2
+texture = ExtResource("35_6ekc8")
+ingredient = ExtResource("36_7wq8k")
+cost = 10
+desc = "Mining waste, might struck gold. Needs to be grinded down for use."
+
+[connection signal="mouse_entered" from="IngredientsInventory" to="." method="_on_ingredients_inventory_mouse_entered"]
+[connection signal="mouse_exited" from="IngredientsInventory" to="." method="_on_ingredients_inventory_mouse_exited"]

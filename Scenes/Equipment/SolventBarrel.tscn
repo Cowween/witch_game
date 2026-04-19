@@ -6,10 +6,14 @@
 [ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="4_8khab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn3g6"]
-size = Vector2(24, 32)
+size = Vector2(24, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8khab"]
 size = Vector2(40, 64)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nn3g6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iwpd6"]
 resource_local_to_scene = true
@@ -26,12 +30,20 @@ script = ExtResource("1_awryx")
 [node name="Area2D" type="Area2D" parent="." unique_id=882497449]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=193619347]
-position = Vector2(-68, -8)
+position = Vector2(-68, -16)
 shape = SubResource("RectangleShape2D_nn3g6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1647965598]
 position = Vector2(-68, -56)
 shape = SubResource("RectangleShape2D_8khab")
+disabled = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1710344535]
+position = Vector2(-67.395, -21)
+emitting = false
+amount = 12
+lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_nn3g6")
 
 [node name="Barrel" type="Sprite2D" parent="." unique_id=525299044]
 material = SubResource("ShaderMaterial_iwpd6")
@@ -49,5 +61,7 @@ shape = SubResource("RectangleShape2D_efii6")
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
 [connection signal="mouse_entered" from="Area2D2" to="Area2D2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]
 [connection signal="mouse_exited" from="Area2D2" to="Area2D2" method="_on_mouse_exited"]

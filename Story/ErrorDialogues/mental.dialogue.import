@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://6jpfsmtnwuk3"
+path="res://.godot/imported/mental.dialogue-cabc333b2c522841f41eff56567ff772.tres"
+
+[deps]
+
+source_file="res://Story/ErrorDialogues/mental.dialogue"
+dest_files=["res://.godot/imported/mental.dialogue-cabc333b2c522841f41eff56567ff772.tres"]
+
+[params]
+
+defaults=true

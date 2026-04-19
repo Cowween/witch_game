@@ -1,0 +1,9 @@
+~ start
+Witch: This potion should put some muscles on you, for a while at least
+Knight: Physical muscles?
+Witch: Yeah
+Knight: Huh, potions can do that?
+Witch: Try it to find out
+do exit_right()
+[wait=0.5]
+=> END

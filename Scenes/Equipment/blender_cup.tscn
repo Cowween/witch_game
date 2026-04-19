@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cerpqxio5ugf" path="res://Assets/Equipment/Blender/Bleendermask.png" id="7_tnx5g"]
 [ext_resource type="Script" uid="uid://cjta88eemok2j" path="res://Scripts/liquid_texture.gd" id="9_6j6oh"]
 [ext_resource type="Texture2D" uid="uid://c6o5nco4emrie" path="res://Assets/Equipment/Blender/Bleenderfront.png" id="12_gm4ta"]
+[ext_resource type="Texture2D" uid="uid://ce76v28w6d5t1" path="res://Res/particle.tres" id="15_wp5cq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4a5kw"]
 shader = ExtResource("2_fwktm")
@@ -51,14 +52,20 @@ shader = ExtResource("2_fwktm")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
-[node name="BlenderCup" type="CharacterBody2D" unique_id=1687937678]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4a5kw"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="BlenderCup" type="CharacterBody2D" unique_id=1687937678 node_paths=PackedStringArray("particle")]
 collision_layer = 5
 collision_mask = 2
 script = ExtResource("1_jf7xx")
+particle = NodePath("GPUParticles2D")
 fill_curve = ExtResource("2_4a5kw")
-full_y = 30.0
-empty_y = 73.0
-empty_x = 66.0
+full_y = 13.0
+empty_y = 55.0
+empty_x = 44.0
+initial_volume = 50.0
 max_volume = 300.0
 
 [node name="BlendBack" type="Sprite2D" parent="." unique_id=1915346319]
@@ -76,8 +83,7 @@ texture = ExtResource("7_tnx5g")
 
 [node name="Mixture" type="Sprite2D" parent="Glass" unique_id=262251744]
 modulate = Color(0.64706546, 0.42863622, 0, 1)
-position = Vector2(0, 76)
-scale = Vector2(1.734375, 1.5307617)
+position = Vector2(1, 44)
 texture = ExtResource("4_d81jy")
 script = ExtResource("9_6j6oh")
 
@@ -89,6 +95,10 @@ remote_path = NodePath("../../BlendFront")
 
 [node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Glass" unique_id=1582323899]
 remote_path = NodePath("../../Twig")
+
+[node name="RemoteTransform2D4" type="RemoteTransform2D" parent="Glass" unique_id=2084819769]
+position = Vector2(-15.235, -14.76)
+remote_path = NodePath("../../GPUParticles2D")
 
 [node name="BeakerArea" type="Area2D" parent="." unique_id=1087631236]
 collision_layer = 16
@@ -104,12 +114,12 @@ is_mixture = true
 solvent = "Mixture"
 
 [node name="ClickArea" type="Area2D" parent="." unique_id=296196020 node_paths=PackedStringArray("non_static")]
-priority = 1
+priority = 2
 script = ExtResource("4_ppm87")
 non_static = [NodePath("../BlendBack"), NodePath("../BlendFront")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1956695760]
-position = Vector2(2.5, 2)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_mpsrd")
 
 [node name="BlendFront" type="Sprite2D" parent="." unique_id=320862011]
@@ -119,6 +129,13 @@ texture = ExtResource("12_gm4ta")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=39913686]
 polygon = PackedVector2Array(-19, -19, -15, -20, -10, 22, 10, 22, 16, -20, 20, -18, 12, 25, -12, 25)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1016934618]
+position = Vector2(-15.235, -14.76)
+emitting = false
+amount = 11
+texture = ExtResource("15_wp5cq")
+process_material = SubResource("ParticleProcessMaterial_4a5kw")
 
 [connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]

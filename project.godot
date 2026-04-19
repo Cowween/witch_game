@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="witch_brew_game"
+config/name="witchy_whims"
+run/main_scene="uid://djvcobrp0wx20"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -52,7 +53,7 @@ enquire={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Story/Test/test.dialogue", "res://Story/Test/dadasd.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Story/Test/test.dialogue", "res://Story/Test/dadasd.dialogue", "res://Story/ErrorDialogues/element_count.dialogue", "res://Story/ErrorDialogues/physical.dialogue", "res://Story/ErrorDialogues/mental.dialogue", "res://Story/ErrorDialogues/unset.dialogue", "res://Story/ErrorDialogues/too_weak.dialogue", "res://Story/ErrorDialogues/too_strong.dialogue", "res://Story/knight1_start.dialogue", "res://Story/knight1_end.dialogue", "res://Story/knight2_start.dialogue", "res://Story/knight2_end.dialogue", "res://Story/knight3_start.dialogue", "res://Story/knight3_end.dialogue", "res://Story/grandma1_start.dialogue", "res://Story/grandma1_end.dialogue", "res://Story/incubus1_start.dialogue", "res://Story/incubus1_end.dialogue", "res://Story/assassin1_start.dialogue", "res://Story/assassin1_end.dialogue", "res://Story/maid1_start.dialogue", "res://Story/maid1_end.dialogue", "res://Story/incubus2_start.dialogue", "res://Story/incubus2_end.dialogue", "res://Story/assassin2_start.dialogue", "res://Story/assassin2_end.dialogue", "res://Story/assassin3_start.dialogue", "res://Story/assassin3_end.dialogue", "res://Story/maid2_start.dialogue", "res://Story/maid2_end.dialogue", "res://Story/maid3_start.dialogue", "res://Story/maid3_end.dialogue", "res://Story/incubus3_start.dialogue", "res://Story/incubus3_end.dialogue")
 
 [layer_names]
 
@@ -61,9 +62,11 @@ locale/translations_pot_files=PackedStringArray("res://Story/Test/test.dialogue"
 2d_physics/layer_3="BeakerLayer"
 2d_physics/layer_4="FlaskLayer"
 2d_physics/layer_5="PourLayer"
+2d_physics/layer_8="PotionLayer"
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
 rapier/fluid/fluid_particle_radius_2d=5.0
 

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c8mxi7m73huc5"]
+
+[ext_resource type="Script" uid="uid://dbajvnhw4448c" path="res://Scripts/encounter.gd" id="1_cvyt3"]
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="2_e7urv"]
+[ext_resource type="PackedScene" uid="uid://c5v52npiwfxdd" path="res://Scenes/potion_checker.tscn" id="2_n526q"]
+[ext_resource type="Resource" uid="uid://v6opaiwafuqt" path="res://Story/ErrorDialogues/element_count.dialogue" id="3_q644y"]
+[ext_resource type="Resource" uid="uid://bhm0n53y5d71b" path="res://Story/ErrorDialogues/physical.dialogue" id="4_emfb0"]
+[ext_resource type="Resource" uid="uid://6jpfsmtnwuk3" path="res://Story/ErrorDialogues/mental.dialogue" id="5_fqchl"]
+[ext_resource type="Resource" uid="uid://dhd44vs6a3iin" path="res://Story/ErrorDialogues/unset.dialogue" id="6_cslgx"]
+[ext_resource type="Resource" uid="uid://bwkgrnyah7hp3" path="res://Story/ErrorDialogues/too_weak.dialogue" id="7_yb1rw"]
+[ext_resource type="Resource" uid="uid://vn2h3p2wecjg" path="res://Story/ErrorDialogues/too_strong.dialogue" id="8_ce53n"]
+[ext_resource type="Texture2D" uid="uid://b2k8c22a14oo3" path="res://Assets/Workspace/Workspace.png" id="10_q644y"]
+
+[node name="Encounter" type="Node" unique_id=1718985390 node_paths=PackedStringArray("sprite", "req_potion")]
+script = ExtResource("1_cvyt3")
+error_dialogue = Array[ExtResource("2_e7urv")]([ExtResource("3_q644y"), ExtResource("3_q644y"), ExtResource("4_emfb0"), ExtResource("5_fqchl"), ExtResource("6_cslgx"), ExtResource("7_yb1rw"), ExtResource("8_ce53n")])
+sprite = NodePath("Sprite2D")
+req_potion = NodePath("PotionChecker")
+
+[node name="PotionChecker" parent="." unique_id=463208243 instance=ExtResource("2_n526q")]
+majors = Array[String]([""])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1964490206]
+z_index = -4
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=508965282]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_q644y")

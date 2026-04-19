@@ -1,6 +1,8 @@
 extends TextureButton
 @export var texture : Texture2D
 @export var ingredient : PackedScene
+@export var cost : int
+var cost_counter : CostCounter
 var item_name : String
 var composition : String
 var amounts : String
@@ -25,6 +27,7 @@ func _ready() -> void:
 func _on_button_down() -> void:
 	var new_ing := ingredient.instantiate()
 	new_ing.UI_communicator = UI_communicator
+	cost_counter.total_cost += cost
 	#new_ing.dragging = true
 	get_tree().current_scene.add_child(new_ing)
 	new_ing.position = get_global_mouse_position()
@@ -33,7 +36,7 @@ func _on_button_down() -> void:
 
 
 func _on_mouse_entered() -> void:
-	UI_communicator.display_request.emit(item_name, composition, desc+amounts)
+	UI_communicator.display_request.emit(item_name, composition, desc+"\n"+amounts + "\nCost: " + str(cost))
 
 
 func _on_mouse_exited() -> void:

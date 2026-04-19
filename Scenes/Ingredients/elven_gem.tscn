@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dfspwnxnmo2vd"]
+
+[ext_resource type="Script" uid="uid://buy2hafu0orfk" path="res://Scripts/mineral.gd" id="1_iyexn"]
+[ext_resource type="PackedScene" uid="uid://bfq2jjmtcrsw7" path="res://Scenes/Ingredients/elven_crystal_powder.tscn" id="2_iyexn"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="3_nebo7"]
+[ext_resource type="Texture2D" uid="uid://iqt07sootjjt" path="res://Assets/Ingredients/Elvencrytsalv2.png" id="4_278cn"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="5_qbolu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpwpd"]
+resource_local_to_scene = true
+shader = ExtResource("3_nebo7")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu2du"]
+size = Vector2(30, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5in2v"]
+size = Vector2(27, 31)
+
+[node name="Mineral" type="CharacterBody2D" unique_id=977333642]
+collision_mask = 7
+platform_floor_layers = 4294967042
+script = ExtResource("1_iyexn")
+gravity = 1000.0
+blended_volume = 50
+item_name = "Elven Gem"
+powder = ExtResource("2_iyexn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
+material = SubResource("ShaderMaterial_xpwpd")
+texture = ExtResource("4_278cn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=77040318 node_paths=PackedStringArray("non_static")]
+priority = 3
+script = ExtResource("5_qbolu")
+non_static = [NodePath("../Sprite2D")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454880484]
+position = Vector2(-3, -1.5)
+shape = SubResource("RectangleShape2D_qu2du")
+debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_5in2v")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]

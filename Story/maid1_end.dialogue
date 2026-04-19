@@ -1,0 +1,9 @@
+~ start
+Witch: Here you go
+Maid: *Sigh*
+[wait=0.5]
+Maid: I'll probably be here again...
+do exit_right()
+[wait=0.5]
+
+=> END

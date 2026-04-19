@@ -15,10 +15,11 @@ shader_parameter/line_thickness = 0.0
 radius = 6.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gija"]
-size = Vector2(20, 8)
+size = Vector2(10, 2)
 
 [node name="Ingredient" type="CharacterBody2D" unique_id=977333642]
 collision_mask = 7
+floor_constant_speed = true
 platform_floor_layers = 4294967042
 script = ExtResource("1_pij5w")
 gravity = 1000.0
@@ -43,7 +44,7 @@ shape = SubResource("CircleShape2D_uw8q3")
 debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
-position = Vector2(0, 19)
+position = Vector2(0, 21)
 shape = SubResource("RectangleShape2D_4gija")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

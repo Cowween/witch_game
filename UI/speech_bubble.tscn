@@ -1,23 +1,32 @@
 [gd_scene format=3 uid="uid://6i3awoaepw7o"]
 
 [ext_resource type="FontFile" uid="uid://c6rkvog4ygxy4" path="res://Assets/UI/m3x6.ttf" id="1_fr7yj"]
+[ext_resource type="Script" uid="uid://cuj3w0wie00t5" path="res://Scripts/UI/speech_bubble.gd" id="1_hqh3f"]
 
 [sub_resource type="Theme" id="Theme_hqh3f"]
+RichTextLabel/constants/line_separation = -5
+RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/normal_font = ExtResource("1_fr7yj")
 
 [node name="HBoxContainer" type="HBoxContainer" unique_id=644040401]
 custom_minimum_size = Vector2(100, 0)
 offset_right = 181.0
 offset_bottom = 13.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
+script = ExtResource("1_hqh3f")
 
 [node name="SpeechBubble" type="PanelContainer" parent="." unique_id=1022257495]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 10
 theme = SubResource("Theme_hqh3f")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble" unique_id=476180877]
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubble" unique_id=641110417]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "sdsa  sdas sda "
+theme_override_constants/margin_left = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/MarginContainer" unique_id=476180877]
+layout_mode = 2
+bbcode_enabled = true
+text = "sdsa sdas sda '''uuuuu"
 fit_content = true

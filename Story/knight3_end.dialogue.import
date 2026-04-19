@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cccfsyngut28i"
+path="res://.godot/imported/knight3_end.dialogue-670164dfea97ff0a00b32172862e455a.tres"
+
+[deps]
+
+source_file="res://Story/knight3_end.dialogue"
+dest_files=["res://.godot/imported/knight3_end.dialogue-670164dfea97ff0a00b32172862e455a.tres"]
+
+[params]
+
+defaults=true

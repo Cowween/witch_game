@@ -1,0 +1,22 @@
+~ start
+do enter_left()
+do show_express(2)
+[wait=0.01]
+do ring()
+Maid: Little witch! Your potion really worked!
+Maid: The Young Master began waking up in time, and even started to make his own bed!
+Witch: Wow, I really am something
+Maid: You don't get it!
+Maid: Ever since I left my village for this stupid job as maid, it's been one thing after another
+Maid: And it's all because of this stupid prince!
+Maid: And I haven't seen my parents for so long, and everyday I have to clean up his mess
+do shake()
+do show_express(1)
+Maid: And, and- Bwahhhh
+Witch: Hey hey! Don't cry...
+Witch: How about I make something for you, to lower your cortisol or something...
+Maid: C-cortisol?
+Witch: (I'll make her a [color=yellow]calming potion[/color])
+Witch  (The calming effects of [color=yellow]earth[/color] should help, and some of [color=yellow]wood's[/color] healing can help her too)
+
+=> END

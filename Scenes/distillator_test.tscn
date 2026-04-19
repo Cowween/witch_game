@@ -45,7 +45,7 @@ UI_communicator = NodePath("../UICommunicator")
 position = Vector2(622, 254)
 UI_communicator = NodePath("../UICommunicator")
 
-[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_node_display_request"]
 [connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_node_display_request"]
 [connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
 [connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]

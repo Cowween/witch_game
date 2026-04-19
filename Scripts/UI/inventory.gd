@@ -2,6 +2,7 @@ extends PanelContainer
 
 var UI_communicator : UICommunicator : set = set_communicator
 @onready var hbox := $IngredientsInventory/HBoxContainer
+@export var cost : CostCounter
 
 func set_communicator(value: UICommunicator) -> void:
 	UI_communicator = value
@@ -10,7 +11,8 @@ func set_communicator(value: UICommunicator) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for i in hbox.get_children():
+		i.cost_counter = cost
 
 func load_scenes_in_folder(path: String):
 	var scenes = []

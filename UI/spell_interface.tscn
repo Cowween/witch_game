@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c54ok7fh2jo6v"]
 
 [ext_resource type="Script" uid="uid://dd73uhwpb5nl0" path="res://Scripts/UI/spell_interface.gd" id="1_j4mfn"]
+[ext_resource type="FontFile" uid="uid://c6rkvog4ygxy4" path="res://Assets/UI/m3x6.ttf" id="2_xx8w7"]
 
 [node name="SpellInterface" type="ColorRect" unique_id=653094351]
 anchors_preset = 15
@@ -20,6 +21,8 @@ anchor_bottom = 1.0
 offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_xx8w7")
+theme_override_font_sizes/font_size = 16
 placeholder_text = "Type your spell here"
 alignment = 1
 
@@ -36,6 +39,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_xx8w7")
+theme_override_font_sizes/font_size = 32
 text = "What can I do for you, little witch?"
 
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

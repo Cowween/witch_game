@@ -6,6 +6,43 @@
 [ext_resource type="Texture2D" uid="uid://dbcawh08pdqh1" path="res://Assets/Equipment/Cauldronback.png" id="4_bv1vs"]
 [ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="4_mebvf"]
 [ext_resource type="Texture2D" uid="uid://dwbtdrsm3q4g1" path="res://Assets/Equipment/Cauldronfront.png" id="5_mebvf"]
+[ext_resource type="Texture2D" uid="uid://dnrjd4npt5gj2" path="res://Assets/Equipment/Cauldrontap.png" id="7_mebvf"]
+[ext_resource type="Texture2D" uid="uid://kbd4d4qveydk" path="res://Assets/Equipment/Cauldronwhite1.png" id="8_bdyso"]
+[ext_resource type="Texture2D" uid="uid://joqmdu4anuus" path="res://Assets/Equipment/Cauldronwhite2.png" id="9_gxo81"]
+[ext_resource type="Texture2D" uid="uid://4vq1c0tg1hnf" path="res://Assets/Equipment/Cauldronwhite3.png" id="10_tspsu"]
+[ext_resource type="Texture2D" uid="uid://dvwv3468xobbo" path="res://Assets/Equipment/cauldron/Cauldroneffect1.png" id="11_ldq78"]
+[ext_resource type="Texture2D" uid="uid://dwuuv36kg4wwm" path="res://Assets/Equipment/cauldron/Cauldroneffect2.png" id="12_71c74"]
+[ext_resource type="Texture2D" uid="uid://bqv5vxm78oll2" path="res://Assets/Equipment/cauldron/Cauldroneffect3.png" id="13_dfp2c"]
+[ext_resource type="Texture2D" uid="uid://b2pwa1wv2np8q" path="res://Assets/Equipment/cauldron/Cauldroneffect4.png" id="14_tibt2"]
+[ext_resource type="Texture2D" uid="uid://b2ul1n0vgmnhm" path="res://Assets/Equipment/cauldron/Cauldroneffect5.png" id="15_as3ox"]
+[ext_resource type="Texture2D" uid="uid://bl5w3yq3mjcqb" path="res://Assets/Equipment/cauldron/Cauldroneffect6.png" id="16_jui3l"]
+[ext_resource type="Texture2D" uid="uid://dbbchyxl20hun" path="res://Assets/Equipment/cauldron/Cauldroneffect7.png" id="17_5k4c4"]
+[ext_resource type="Texture2D" uid="uid://bmne80bef1dn" path="res://Assets/Equipment/cauldron/Cauldronenchant1.png" id="18_234rx"]
+[ext_resource type="Texture2D" uid="uid://sdlshwuurnh4" path="res://Assets/Equipment/cauldron/Cauldronenchant2.png" id="19_5nr52"]
+[ext_resource type="Texture2D" uid="uid://d2pwnx2ukm6ix" path="res://Assets/Equipment/cauldron/Cauldronenchant3.png" id="20_85rw3"]
+[ext_resource type="Texture2D" uid="uid://bvsoegqflivf8" path="res://Assets/Equipment/cauldron/Cauldronenchant4.png" id="21_bx323"]
+[ext_resource type="Texture2D" uid="uid://caxaiimg5epjk" path="res://Assets/Equipment/cauldron/Cauldronenchant5.png" id="22_mlqf8"]
+[ext_resource type="Texture2D" uid="uid://dk3ft3kxujmjx" path="res://Assets/Equipment/cauldron/Cauldronenchant6.png" id="23_p7yvn"]
+[ext_resource type="Texture2D" uid="uid://4vei8qf2dvw0" path="res://Assets/Equipment/cauldron/Cauldronenchant7.png" id="24_4lqdg"]
+[ext_resource type="Texture2D" uid="uid://bk3kaif0j35rp" path="res://Assets/Equipment/cauldron/Cauldronenchant8.png" id="25_8oti8"]
+[ext_resource type="Texture2D" uid="uid://da7wqwwupa333" path="res://Assets/Equipment/cauldron/Cauldronenchant9.png" id="26_ns1mv"]
+[ext_resource type="Texture2D" uid="uid://bianu4b7a5s3u" path="res://Assets/Equipment/cauldron/Cauldronenchant10.png" id="27_ceebe"]
+[ext_resource type="Texture2D" uid="uid://brw58pc6bhjae" path="res://Assets/Equipment/cauldron/Cauldronenchant11.png" id="28_qinfg"]
+[ext_resource type="Texture2D" uid="uid://wv5dfxj8g1iw" path="res://Assets/Equipment/cauldron/Cauldronenchant12.png" id="29_55yjj"]
+[ext_resource type="Texture2D" uid="uid://csew1hs07mu5k" path="res://Assets/Equipment/cauldron/Cauldronenchant13.png" id="30_3w4wa"]
+[ext_resource type="Texture2D" uid="uid://bmwvevwhb5542" path="res://Assets/Equipment/cauldron/Cauldronenchant14.png" id="31_1plqn"]
+[ext_resource type="Texture2D" uid="uid://n8sw461vycm4" path="res://Assets/Equipment/cauldron/Cauldronenchant15.png" id="32_ftgqn"]
+[ext_resource type="Texture2D" uid="uid://bcc8jyyqn66gn" path="res://Assets/Equipment/cauldron/Cauldronenchant16.png" id="33_gpf6l"]
+[ext_resource type="Texture2D" uid="uid://cuk1ok1imk1wd" path="res://Assets/Equipment/cauldron/Cauldronenchant17.png" id="34_e1ixm"]
+[ext_resource type="Texture2D" uid="uid://b1a0u1oc10m4d" path="res://Assets/Equipment/cauldron/Cauldronsparkle1.png" id="35_1x3gg"]
+[ext_resource type="Texture2D" uid="uid://bcfd2l73jy5rp" path="res://Assets/Equipment/cauldron/Cauldronsparkle2.png" id="36_7fl23"]
+[ext_resource type="Texture2D" uid="uid://cegq18lpe54jw" path="res://Assets/Equipment/cauldron/Cauldronsparkle3.png" id="37_s4g1k"]
+[ext_resource type="Texture2D" uid="uid://1xlaf6nibgx5" path="res://Assets/Equipment/cauldron/Cauldronsparkle4.png" id="38_r3lny"]
+[ext_resource type="Texture2D" uid="uid://civwi3gf4cppe" path="res://Assets/Equipment/cauldron/Cauldronsparkle5.png" id="39_iqrq5"]
+[ext_resource type="Texture2D" uid="uid://jkq0gcni0pe1" path="res://Assets/Equipment/cauldron/Cauldronsparkle6.png" id="40_j1ipw"]
+[ext_resource type="Texture2D" uid="uid://dt1fxo6m0h6e6" path="res://Assets/Equipment/cauldron/Cauldronsparkle7.png" id="41_u04td"]
+[ext_resource type="Texture2D" uid="uid://dyrrvqgl3jlbu" path="res://Assets/Equipment/cauldron/Cauldronsparkle8.png" id="42_iugp8"]
+[ext_resource type="Texture2D" uid="uid://ccxijtb8hfjrt" path="res://Assets/Equipment/cauldron/Cauldronsparkle9.png" id="43_rjls6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjndh"]
 size = Vector2(64, 88)
@@ -26,7 +63,7 @@ size = Vector2(80, 16)
 size = Vector2(24.5, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfmuv"]
-size = Vector2(56, 10)
+size = Vector2(45, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rfmuv"]
 shader = ExtResource("4_mebvf")
@@ -37,6 +74,156 @@ shader_parameter/line_thickness = 0.0
 shader = ExtResource("4_mebvf")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mebvf"]
+resource_local_to_scene = true
+shader = ExtResource("4_mebvf")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mebvf"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waplg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bdyso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gxo81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tspsu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt40l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ldq78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_71c74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dfp2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tibt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_as3ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jui3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5k4c4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5d7hi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_234rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5nr52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_85rw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_bx323")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_mlqf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_p7yvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_4lqdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8oti8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ns1mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ceebe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_qinfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_55yjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3w4wa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1plqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ftgqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_gpf6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_e1ixm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6y4wr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_1x3gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_7fl23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_s4g1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_r3lny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_iqrq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_j1ipw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_u04td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_iugp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_rjls6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Cauldron" type="StaticBody2D" unique_id=312336044]
 script = ExtResource("1_hap34")
@@ -76,16 +263,18 @@ shape = SubResource("RectangleShape2D_bv1vs")
 [node name="PourArea" type="Area2D" parent="." unique_id=2063694468]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PourArea" unique_id=992365384]
-position = Vector2(-56, 16)
+position = Vector2(-52, 17)
 shape = SubResource("RectangleShape2D_mebvf")
 
 [node name="CupPos" type="Node2D" parent="." unique_id=424135928]
-position = Vector2(-64, 88)
+position = Vector2(-44, 11)
 
-[node name="Tap" type="Area2D" parent="." unique_id=1694150060]
+[node name="Tap" type="Area2D" parent="." unique_id=1694150060 node_paths=PackedStringArray("non_static")]
+script = ExtResource("3_l8d1q")
+non_static = [NodePath("../Sprite2D")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tap" unique_id=1011342197]
-position = Vector2(-40, -8)
+position = Vector2(-35, -13)
 shape = SubResource("RectangleShape2D_rfmuv")
 
 [node name="CauldronBack" type="Sprite2D" parent="." unique_id=1099265028]
@@ -98,6 +287,44 @@ z_index = 2
 material = SubResource("ShaderMaterial_jgb66")
 texture = ExtResource("5_mebvf")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1890323904]
+z_index = 1
+material = SubResource("ShaderMaterial_mebvf")
+position = Vector2(-35.775, -2.815)
+texture = ExtResource("7_mebvf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=998619292]
+position = Vector2(-44, -7)
+emitting = false
+lifetime = 0.9
+process_material = SubResource("ParticleProcessMaterial_mebvf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266501953]
+sprite_frames = SubResource("SpriteFrames_waplg")
+autoplay = "default"
+frame = 2
+frame_progress = 0.047284562
+
+[node name="Splash" type="AnimatedSprite2D" parent="." unique_id=944409139]
+visible = false
+position = Vector2(1, -27)
+sprite_frames = SubResource("SpriteFrames_vt40l")
+frame = 6
+frame_progress = 0.33974683
+
+[node name="Enchant" type="AnimatedSprite2D" parent="." unique_id=11206826]
+visible = false
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_5d7hi")
+frame = 16
+frame_progress = 1.0
+
+[node name="Glow" type="AnimatedSprite2D" parent="." unique_id=1600620696]
+visible = false
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_6y4wr")
+autoplay = "default"
+
 [connection signal="body_entered" from="PourReceptor" to="." method="_on_pour_receptor_body_entered"]
 [connection signal="body_exited" from="PourReceptor" to="." method="_on_pour_receptor_body_exited"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
@@ -108,4 +335,6 @@ texture = ExtResource("5_mebvf")
 [connection signal="body_entered" from="PourArea" to="." method="_on_pour_area_body_entered"]
 [connection signal="body_exited" from="PourArea" to="." method="_on_pour_area_body_exited"]
 [connection signal="mouse_entered" from="Tap" to="." method="_on_tap_mouse_entered"]
+[connection signal="mouse_entered" from="Tap" to="Tap" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Tap" to="." method="_on_tap_mouse_exited"]
+[connection signal="mouse_exited" from="Tap" to="Tap" method="_on_mouse_exited"]

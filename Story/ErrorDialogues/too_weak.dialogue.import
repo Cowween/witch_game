@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bwkgrnyah7hp3"
+path="res://.godot/imported/too_weak.dialogue-cb0e25449beb90591e26d3e414dae3f9.tres"
+
+[deps]
+
+source_file="res://Story/ErrorDialogues/too_weak.dialogue"
+dest_files=["res://.godot/imported/too_weak.dialogue-cb0e25449beb90591e26d3e414dae3f9.tres"]
+
+[params]
+
+defaults=true

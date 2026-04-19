@@ -1,0 +1,17 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+
+Witch: Welcome to Witchy Whims!
+Witch: How may I help you?
+Maid: *Sigh*
+[wait=0.5]
+Witch: Miss...?
+Maid: Ah... Yes...
+Maid: It seems that Young Master has gotten into trouble again
+Maid: Please just give me a [color=yellow]Potion of Healing[/color]
+Witch: ([color=yellow]Potion of Healing[/color] is standard repertoire for me)
+Witch: (Just a [color=yellow]physical potion of wood[/color] should do the trick)
+
+=> END

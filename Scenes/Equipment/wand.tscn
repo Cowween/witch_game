@@ -21,6 +21,10 @@ shader_parameter/line_thickness = 0.0
 
 [node name="Wand" type="CharacterBody2D" unique_id=1744849138]
 script = ExtResource("1_vw6r0")
+physical_spell = "ti"
+mental_spell = "xin"
+curse_spell = "zhou"
+purge_spell = "chu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=621798864]
 position = Vector2(82, 7.5)
@@ -48,6 +52,7 @@ position = Vector2(26, 25)
 texture = ExtResource("3_v1j1j")
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]

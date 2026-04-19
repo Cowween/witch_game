@@ -12,6 +12,7 @@ var all_elements : Array[BaseElement]= []
 @export var soluble := false
 @export var soluble_in_acid := false
 @export var suffix := ""
+@export var is_random := false
 
 @export var is_powder := false
 var mouse_in := false
@@ -33,6 +34,12 @@ func _ready() -> void:
 	amounts = OPERATIONS.get_empty_dict()
 	for i in all_elements:
 		amounts[i.type][i.state] = amounts[i.type].get(i.state, 0) + i.moles
+	if is_random:
+		var initial := 100
+		for element in amounts:
+			var s : String = amounts[element].keys().pick_random()
+			amounts[element][s] = randi_range(0, initial)
+			initial -= amounts[element][s]
 	el_composition = OPERATIONS.get_composition_from_amount(amounts)
 	#print(el_composition)
 
@@ -86,11 +93,13 @@ func generate_default_name() -> String:
 
 func generate_desc() -> String:
 	var output := ""
+	if soluble:
+		output += "Soluble in aqua\n"
 	for element in amounts:
 			for state in amounts[element]:
 				if amounts[element][state] <= 0.0:
 					continue
-				output += "%s %s: %2f \n" % [state, element, amounts[element][state]]
+				output += "%s %s: %.2f \n" % [state, element, amounts[element][state]]
 	
 	return output
 
@@ -103,9 +112,10 @@ func _input(event: InputEvent) -> void:
 			dragging = false
 
 func generate_comp_text() -> String:
-	var output := "Composition: "
+	var output := "Composition: \n"
 	for i in el_composition:
-		output += i + ": " + str(el_composition[i]*100) + "% "
+		if el_composition[i] > 0.0:
+			output += i + ": %.2f" % (el_composition[i]*100) + "% "
 	return output
 
 func _on_area_2d_mouse_entered() -> void:

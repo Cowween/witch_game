@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ia10rmcylprs"]
+
+[ext_resource type="Texture2D" uid="uid://dsmgotune1ikt" path="res://Assets/Equipment/Book/smallbook.png" id="1_ddkc6"]
+[ext_resource type="Script" uid="uid://ryreqq5vkhrd" path="res://Scripts/Equipment/small_book.gd" id="1_px5g0"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="2_t30tp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1wq0"]
+size = Vector2(73, 22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvpa3"]
+resource_local_to_scene = true
+shader = ExtResource("2_t30tp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="Area2D" type="Area2D" unique_id=1119884972 node_paths=PackedStringArray("non_static")]
+script = ExtResource("1_px5g0")
+non_static = [NodePath("Smallbook")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1359701414]
+position = Vector2(75.5, -34)
+shape = SubResource("RectangleShape2D_c1wq0")
+
+[node name="Smallbook" type="Sprite2D" parent="." unique_id=1689485677]
+material = SubResource("ShaderMaterial_rvpa3")
+texture = ExtResource("1_ddkc6")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

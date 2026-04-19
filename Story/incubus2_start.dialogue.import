@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dmyb2pkeskim6"
+path="res://.godot/imported/incubus2_start.dialogue-af18cf37a9a3d182dd2c497528f2f286.tres"
+
+[deps]
+
+source_file="res://Story/incubus2_start.dialogue"
+dest_files=["res://.godot/imported/incubus2_start.dialogue-af18cf37a9a3d182dd2c497528f2f286.tres"]
+
+[params]
+
+defaults=true

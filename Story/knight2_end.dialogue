@@ -1,0 +1,7 @@
+~ start
+Witch: The combination of fire and wood should give the user a prettier, youthful look
+Knight: Oh uh... The user will be delighted to hear that
+Witch: Good luck on your “expedition”!
+do exit_right()
+[wait=0.5]
+=> END

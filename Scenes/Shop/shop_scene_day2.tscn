@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://biotcanr2sdwt"]
+
+[ext_resource type="Script" uid="uid://dj6jifemnxwui" path="res://Scripts/Misc/shop_scene.gd" id="1_7anhh"]
+[ext_resource type="Texture2D" uid="uid://b2k8c22a14oo3" path="res://Assets/Workspace/Workspace.png" id="2_jbw8t"]
+[ext_resource type="PackedScene" uid="uid://b5s41hsc0raq7" path="res://Scenes/Equipment/SolventBarrel.tscn" id="3_33pc8"]
+[ext_resource type="PackedScene" uid="uid://87ldof7f0ps4" path="res://Scenes/Equipment/beaker_spawn.tscn" id="4_7fwsr"]
+[ext_resource type="PackedScene" uid="uid://hwkqe1aenhf7" path="res://Scenes/Equipment/blender.tscn" id="5_da06g"]
+[ext_resource type="PackedScene" uid="uid://c4snp4hx54w4h" path="res://Scenes/Equipment/distillator.tscn" id="6_nhnsj"]
+[ext_resource type="PackedScene" uid="uid://chd547q64a8w2" path="res://Scenes/Equipment/mortar.tscn" id="7_nt332"]
+[ext_resource type="PackedScene" uid="uid://bqj8rkxdbeeeg" path="res://Scenes/Equipment/cauldron.tscn" id="8_eyi30"]
+[ext_resource type="PackedScene" uid="uid://ou2gukbjogx" path="res://Scenes/Equipment/potion_bottle_spawn.tscn" id="9_qgj5o"]
+[ext_resource type="Script" uid="uid://qnacb7ayv71y" path="res://Scripts/ui_communicator.gd" id="10_olm7h"]
+[ext_resource type="PackedScene" uid="uid://cmv8nf4frcs1p" path="res://UI/tool_tip.tscn" id="11_x154x"]
+[ext_resource type="PackedScene" uid="uid://de2n8u2d74f14" path="res://UI/inventory.tscn" id="12_aq61y"]
+[ext_resource type="Texture2D" uid="uid://bl61cilqfh2go" path="res://Assets/Equipment/wandholderback.png" id="13_mmgyj"]
+[ext_resource type="PackedScene" uid="uid://bsdbsnjpskve0" path="res://Scenes/Equipment/wand.tscn" id="13_p50i1"]
+[ext_resource type="PackedScene" uid="uid://bk1uh24j22aeb" path="res://UI/DialogueUI.tscn" id="14_kflj7"]
+[ext_resource type="PackedScene" uid="uid://c54ok7fh2jo6v" path="res://UI/spell_interface.tscn" id="15_0oqcp"]
+[ext_resource type="Texture2D" uid="uid://d3x7rmx3tn3yo" path="res://Assets/Equipment/wandholderfront.png" id="15_abhrc"]
+[ext_resource type="Script" uid="uid://baht78t3as0k2" path="res://Scripts/encounter_manager.gd" id="16_xl118"]
+[ext_resource type="PackedScene" uid="uid://dp11ulu30wgdm" path="res://Scenes/Story/assassin1.tscn" id="17_da06g"]
+[ext_resource type="PackedScene" uid="uid://c04u54f5igss0" path="res://Scenes/Story/maid1.tscn" id="20_abhrc"]
+[ext_resource type="PackedScene" uid="uid://ecsoxi5eoq5f" path="res://Scenes/Story/incubus2.tscn" id="21_rgs8t"]
+[ext_resource type="PackedScene" uid="uid://djwys6rxw661s" path="res://Scenes/Shop/tim.tscn" id="22_aq61y"]
+[ext_resource type="Texture2D" uid="uid://cpp1orl3ftupt" path="res://Assets/Workspace/Windowbackground.png" id="28_bfrhg"]
+[ext_resource type="Script" uid="uid://b37e6a5ln1klr" path="res://Scripts/Misc/cost_counter.gd" id="29_jojfy"]
+[ext_resource type="PackedScene" uid="uid://b2g2kkts75jem" path="res://UI/end.tscn" id="30_jbw8t"]
+[ext_resource type="AudioStream" uid="uid://7ogahco6g6a" path="res://Assets/Sounds/alchemy_lab.mp3" id="33_eyi30"]
+[ext_resource type="AudioStream" uid="uid://qbpdakbulig2" path="res://Assets/Sounds/cooking_without_cover_01.ogg" id="34_qgj5o"]
+[ext_resource type="PackedScene" uid="uid://dkvtjv4qjmv54" path="res://Scenes/Shop/shop_scene_day3.tscn" id="35_abhrc"]
+[ext_resource type="PackedScene" uid="uid://btkgplhbxmccl" path="res://Scenes/Equipment/book.tscn" id="35_eyi30"]
+[ext_resource type="PackedScene" uid="uid://ia10rmcylprs" path="res://Scenes/Equipment/small_book.tscn" id="36_qgj5o"]
+[ext_resource type="PackedScene" uid="uid://dd03jxwvmee31" path="res://Scenes/Shop/bell.tscn" id="39_rgs8t"]
+[ext_resource type="Texture2D" uid="uid://cli5v8x5uilw5" path="res://Assets/Equipment/firegif1.png" id="40_4s5gy"]
+[ext_resource type="Texture2D" uid="uid://c26v0foqq6tfq" path="res://Assets/Equipment/firegif2.png" id="41_pswkc"]
+[ext_resource type="Texture2D" uid="uid://bkn4q2c0cr6r1" path="res://Assets/Equipment/firegif3.png" id="42_fcynd"]
+[ext_resource type="Texture2D" uid="uid://dwqipr86j7m8h" path="res://Assets/Equipment/firegif4.png" id="43_ogxqg"]
+[ext_resource type="Texture2D" uid="uid://cm6juo0y8nd0t" path="res://Assets/Equipment/firegif5.png" id="44_jthf6"]
+[ext_resource type="Texture2D" uid="uid://bp3t2djillre4" path="res://Assets/Equipment/firegif6.png" id="45_bfrhg"]
+[ext_resource type="Texture2D" uid="uid://dqve876b8dkj3" path="res://Assets/Equipment/firegif7.png" id="46_jojfy"]
+[ext_resource type="Texture2D" uid="uid://cnggheioa0i54" path="res://Assets/Equipment/firegif8.png" id="47_no770"]
+[ext_resource type="Texture2D" uid="uid://dwr46qiqgs0cj" path="res://Assets/Equipment/firegif9.png" id="48_xwdef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm8v2"]
+size = Vector2(477, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10g0h"]
+size = Vector2(152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4fdm"]
+size = Vector2(16, 296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cn7a"]
+size = Vector2(112, 136)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4fdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_4s5gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_pswkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_fcynd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_ogxqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_jthf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_bfrhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_jojfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_no770")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_xwdef")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ShopScene2" type="Node" unique_id=208922778]
+script = ExtResource("1_7anhh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=320123528]
+z_index = -3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_jbw8t")
+
+[node name="TableCollider" type="StaticBody2D" parent="." unique_id=1581436371]
+collision_layer = 130
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TableCollider" unique_id=2065300290]
+position = Vector2(401.5, 320)
+shape = SubResource("RectangleShape2D_sm8v2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TableCollider" unique_id=1710834217]
+position = Vector2(76, 360)
+shape = SubResource("RectangleShape2D_10g0h")
+
+[node name="SolventBarrel" parent="." unique_id=1567967711 instance=ExtResource("3_33pc8")]
+position = Vector2(312, 180)
+solvent = "Salt"
+item_name = "Aqua"
+desc = "Salt solvent"
+
+[node name="SolventBarrel2" parent="." unique_id=298994873 instance=ExtResource("3_33pc8")]
+position = Vector2(351, 180)
+solvent = "Polar"
+item_name = "Moonshine"
+desc = "Polar solvent"
+
+[node name="SolventBarrel3" parent="." unique_id=165874745 instance=ExtResource("3_33pc8")]
+position = Vector2(390, 180)
+solvent = "Non-polar"
+item_name = "Slime Juice"
+desc = "Non-polar solvent"
+
+[node name="BeakerSpawn" parent="." unique_id=210293072 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("4_7fwsr")]
+position = Vector2(561, 134)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Blender" parent="." unique_id=1680497295 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("5_da06g")]
+position = Vector2(252.21, 240)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Distillator" parent="." unique_id=1543099707 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("6_nhnsj")]
+position = Vector2(279, 180)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="Mortar" parent="." unique_id=1348376444 instance=ExtResource("7_nt332")]
+position = Vector2(448, 253)
+
+[node name="Cauldron" parent="." unique_id=312336044 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("8_eyi30")]
+position = Vector2(558, 243)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="PotionSpawn" parent="." unique_id=114448042 node_paths=PackedStringArray("UI_communicator") instance=ExtResource("9_qgj5o")]
+position = Vector2(509, 129)
+UI_communicator = NodePath("../UICommunicator")
+
+[node name="UICommunicator" type="Node" parent="." unique_id=614538878]
+script = ExtResource("10_olm7h")
+
+[node name="PanelContainer" parent="." unique_id=646950582 instance=ExtResource("11_x154x")]
+visible = false
+
+[node name="Inventory" parent="." unique_id=349930675 node_paths=PackedStringArray("cost") instance=ExtResource("12_aq61y")]
+cost = NodePath("../CostCounter")
+
+[node name="Wandholderback" type="Sprite2D" parent="." unique_id=881745453]
+position = Vector2(461, 202)
+texture = ExtResource("13_mmgyj")
+
+[node name="Wand" parent="." unique_id=1744849138 node_paths=PackedStringArray("spell_interface", "cauldron") instance=ExtResource("13_p50i1")]
+position = Vector2(432, 180)
+spell_interface = NodePath("../SpellInterface")
+cauldron = NodePath("../Cauldron")
+
+[node name="Wandholderfront" type="Sprite2D" parent="." unique_id=57356957]
+position = Vector2(461, 205)
+texture = ExtResource("15_abhrc")
+
+[node name="DialogueUI" parent="." unique_id=167703360 instance=ExtResource("14_kflj7")]
+test_dialogue = null
+
+[node name="SpellInterface" parent="." unique_id=653094351 instance=ExtResource("15_0oqcp")]
+visible = false
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=459809127]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall" unique_id=447477156]
+position = Vector2(8, 200)
+shape = SubResource("RectangleShape2D_b4fdm")
+
+[node name="EncounterManager" type="Area2D" parent="." unique_id=1645848961 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("16_xl118")
+dialogue_ui = NodePath("../DialogueUI")
+cost_counter = NodePath("../CostCounter")
+end = NodePath("../RichTextLabel")
+bell = NodePath("../Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterManager" unique_id=1726411278]
+position = Vector2(72, 180)
+shape = SubResource("RectangleShape2D_6cn7a")
+
+[node name="Encounter" parent="EncounterManager" unique_id=1718985390 instance=ExtResource("17_da06g")]
+
+[node name="Encounter2" parent="EncounterManager" unique_id=1155017707 instance=ExtResource("20_abhrc")]
+
+[node name="Encounter3" parent="EncounterManager" unique_id=324419527 instance=ExtResource("21_rgs8t")]
+
+[node name="Area2D3" parent="." unique_id=2091427261 instance=ExtResource("22_aq61y")]
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1895128020]
+z_index = -5
+offset_left = 9.0
+offset_top = 105.0
+offset_right = 137.0
+offset_bottom = 255.0
+texture = ExtResource("28_bfrhg")
+
+[node name="CostCounter" type="Node" parent="." unique_id=143479706]
+script = ExtResource("29_jojfy")
+
+[node name="RichTextLabel" parent="." unique_id=1584764037 instance=ExtResource("30_jbw8t")]
+z_index = 10
+next_scene_path = ExtResource("35_abhrc")
+
+[node name="AlchemyLab" type="AudioStreamPlayer2D" parent="." unique_id=1058278874]
+position = Vector2(326, 244)
+stream = ExtResource("33_eyi30")
+autoplay = true
+parameters/looping = true
+
+[node name="CookingWithoutCover01" type="AudioStreamPlayer2D" parent="." unique_id=1843767144]
+position = Vector2(340, 250)
+stream = ExtResource("34_qgj5o")
+volume_db = -6.386
+autoplay = true
+parameters/looping = true
+
+[node name="Book" parent="." unique_id=83682887 instance=ExtResource("35_eyi30")]
+visible = false
+
+[node name="Area2D2" parent="." unique_id=1119884972 node_paths=PackedStringArray("book") instance=ExtResource("36_qgj5o")]
+position = Vector2(350, 181)
+book = NodePath("../Book")
+
+[node name="Node2D" parent="." unique_id=1586733694 instance=ExtResource("39_rgs8t")]
+position = Vector2(74, 120)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102141520]
+position = Vector2(565, 356)
+sprite_frames = SubResource("SpriteFrames_b4fdm")
+autoplay = "default"
+frame_progress = 0.29026753
+
+[connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
+[connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
+[connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]
+[connection signal="spell_inputted" from="SpellInterface" to="Wand" method="_on_spell_interface_spell_inputted"]
+[connection signal="body_entered" from="EncounterManager" to="EncounterManager" method="_on_body_entered"]
+[connection signal="encounter_over" from="EncounterManager" to="EncounterManager" method="_on_encounter_over"]

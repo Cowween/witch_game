@@ -1,0 +1,15 @@
+~ start
+Witch: Alright here you go.
+Incubus: Thanks... 
+Incubus: Hopefully this time I can finally become a real incubus
+Incubus: Then my parents won't disown me for being a failure
+do show_express(2)
+Incubus: And people will actually find me attractive
+Incubus: And I'll finally be cool and sex-
+do show_express(3)
+do shake()
+Incubus: Oh-sorry-forgot-you-were-still-there-THANKS-AGAIN-BYE!!!
+do exit_right()
+Witch: Good luck!
+
+=> END

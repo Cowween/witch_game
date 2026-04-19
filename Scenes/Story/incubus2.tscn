@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ecsoxi5eoq5f"]
+
+[ext_resource type="Script" uid="uid://dbajvnhw4448c" path="res://Scripts/encounter.gd" id="1_o71k1"]
+[ext_resource type="Resource" uid="uid://c7gyvc0sq75mf" path="res://Story/incubus2_end.dialogue" id="2_o71k1"]
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="3_f0m4g"]
+[ext_resource type="Resource" uid="uid://dmyb2pkeskim6" path="res://Story/incubus2_start.dialogue" id="4_4cqt3"]
+[ext_resource type="Resource" uid="uid://v6opaiwafuqt" path="res://Story/ErrorDialogues/element_count.dialogue" id="5_l0ci3"]
+[ext_resource type="Resource" uid="uid://bhm0n53y5d71b" path="res://Story/ErrorDialogues/physical.dialogue" id="6_s72n4"]
+[ext_resource type="Resource" uid="uid://6jpfsmtnwuk3" path="res://Story/ErrorDialogues/mental.dialogue" id="7_52b12"]
+[ext_resource type="Resource" uid="uid://dhd44vs6a3iin" path="res://Story/ErrorDialogues/unset.dialogue" id="8_gymuh"]
+[ext_resource type="Resource" uid="uid://bwkgrnyah7hp3" path="res://Story/ErrorDialogues/too_weak.dialogue" id="9_dgium"]
+[ext_resource type="Resource" uid="uid://vn2h3p2wecjg" path="res://Story/ErrorDialogues/too_strong.dialogue" id="10_ifo4c"]
+[ext_resource type="PackedScene" uid="uid://c5v52npiwfxdd" path="res://Scenes/potion_checker.tscn" id="11_bv7ap"]
+[ext_resource type="Texture2D" uid="uid://5b4b467w0jsl" path="res://Assets/char/Incubus1.png" id="11_s72n4"]
+[ext_resource type="Texture2D" uid="uid://ckcqoyd4iw8by" path="res://Assets/char/Incubus2.png" id="12_52b12"]
+[ext_resource type="Texture2D" uid="uid://cb5jptjfabim2" path="res://Assets/char/Incubus.png" id="12_85cx0"]
+[ext_resource type="Texture2D" uid="uid://ci05kn8lcc3o6" path="res://Assets/char/Incubus3.png" id="13_gymuh"]
+[ext_resource type="Texture2D" uid="uid://j0tqt1vmutqe" path="res://Assets/char/Incubus4.png" id="14_dgium"]
+[ext_resource type="Texture2D" uid="uid://f07fjh0mu2ij" path="res://Assets/char/Incubus5.png" id="15_ifo4c"]
+
+[node name="Encounter" type="Node" unique_id=1718985390 node_paths=PackedStringArray("sprite", "req_potion")]
+script = ExtResource("1_o71k1")
+finished_dialogue = ExtResource("2_o71k1")
+all_dialogues = Array[ExtResource("3_f0m4g")]([ExtResource("4_4cqt3")])
+error_dialogue = Array[ExtResource("3_f0m4g")]([ExtResource("5_l0ci3"), ExtResource("5_l0ci3"), ExtResource("6_s72n4"), ExtResource("7_52b12"), ExtResource("8_gymuh"), ExtResource("9_dgium"), ExtResource("10_ifo4c")])
+sprite = NodePath("Sprite2D")
+req_potion = NodePath("PotionChecker")
+expressions = Array[Texture2D]([ExtResource("11_s72n4"), ExtResource("12_52b12"), ExtResource("13_gymuh"), ExtResource("14_dgium"), ExtResource("15_ifo4c")])
+
+[node name="PotionChecker" parent="." unique_id=463208243 instance=ExtResource("11_bv7ap")]
+majors = Array[String](["Water", "Earth"])
+effect = "Mental"
+min_strength = 2
+max_strength = 3
+reward = 200
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1964490206]
+z_index = -4
+position = Vector2(76, 192)
+texture = ExtResource("12_85cx0")

@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://rbqp8anhx1n2" path="res://Scripts/Equipment/distillator.gd" id="1_3tqox"]
 [ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="2_3tbyi"]
-[ext_resource type="Texture2D" uid="uid://dcs8kjqd6fiut" path="res://Assets/Equipment/Thermometer.png" id="2_t1reo"]
 [ext_resource type="PackedScene" uid="uid://cn4ypckhjviin" path="res://Scenes/Equipment/round_bottomed_flask.tscn" id="3_0cx7w"]
+[ext_resource type="Texture2D" uid="uid://bhr0ofu5ufysf" path="res://Assets/Equipment/thermometerl.png" id="3_1s3kb"]
 [ext_resource type="Texture2D" uid="uid://c71b6cd83uf0e" path="res://Assets/Equipment/distill.png" id="4_3tbyi"]
 [ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="4_jx8tp"]
+[ext_resource type="Texture2D" uid="uid://d3qrijbpnaydp" path="res://Assets/TestAssets/red_liquid.png" id="5_0trqa"]
 [ext_resource type="Texture2D" uid="uid://dtj76ge6gnu6s" path="res://Assets/Equipment/firerock.png" id="5_jx8tp"]
+[ext_resource type="Texture2D" uid="uid://ocfoefc0g7di" path="res://Assets/Equipment/Funnel.png" id="6_3cb2k"]
 [ext_resource type="Texture2D" uid="uid://cw5174jvj1wyg" path="res://Assets/Equipment/firerockoff.png" id="8_jx8tp"]
+[ext_resource type="Texture2D" uid="uid://brx4vvkcdvva" path="res://Assets/Equipment/distillcork.png" id="10_0trqa"]
+[ext_resource type="Texture2D" uid="uid://ce76v28w6d5t1" path="res://Res/particle.tres" id="11_5gqh3"]
+[ext_resource type="AudioStream" uid="uid://balqlfsakdn7f" path="res://Assets/Sounds/zipclick.ogg" id="12_cwsrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3tqox"]
 size = Vector2(45, 58)
@@ -67,8 +72,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cb2k"]
 radius = 15.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cwsrf"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="Distillator" type="StaticBody2D" unique_id=1543099707 node_paths=PackedStringArray("flask")]
 script = ExtResource("1_3tqox")
+min_therm_height = 78.545
+max_therm_height = 14.545
 flask_pos = Vector2(0, 88)
 flask = NodePath("Flask")
 
@@ -106,12 +117,27 @@ position = Vector2(41, 23)
 shape = SubResource("RectangleShape2D_t1reo")
 
 [node name="UTherm" type="Sprite2D" parent="." unique_id=1354307945]
-texture = ExtResource("2_t1reo")
+texture = ExtResource("3_1s3kb")
 
 [node name="STherm" type="Sprite2D" parent="." unique_id=1985587894]
 visible = false
 material = SubResource("ShaderMaterial_0trqa")
-texture = ExtResource("2_t1reo")
+texture = ExtResource("3_1s3kb")
+
+[node name="RedLiquid" type="Sprite2D" parent="." unique_id=1908192463]
+clip_children = 1
+position = Vector2(41.000004, 29.499998)
+scale = Vector2(0.02, 0.516)
+texture = ExtResource("5_0trqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="RedLiquid" unique_id=1826828230]
+position = Vector2(0, 36.81)
+scale = Vector2(3.1250007, 1.4581116)
+texture = ExtResource("5_0trqa")
+
+[node name="Funnel" type="Sprite2D" parent="." unique_id=1015857665]
+position = Vector2(1, 1.9073486e-06)
+texture = ExtResource("6_3cb2k")
 
 [node name="Flask" parent="." unique_id=1687937678 instance=ExtResource("3_0cx7w")]
 metadata/_edit_lock_ = true
@@ -133,6 +159,8 @@ frame_progress = 0.7346702
 
 [node name="URock" type="AnimatedSprite2D" parent="." unique_id=244300797]
 sprite_frames = SubResource("SpriteFrames_0trqa")
+frame = 1
+frame_progress = 0.8198722
 
 [node name="RockArea" type="Area2D" parent="." unique_id=895684446 node_paths=PackedStringArray("selected_texture", "not_selected")]
 script = ExtResource("2_3tbyi")
@@ -142,6 +170,22 @@ not_selected = NodePath("../URock")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RockArea" unique_id=1785463454]
 position = Vector2(45, 92)
 shape = SubResource("CircleShape2D_3cb2k")
+
+[node name="Distillcork" type="Sprite2D" parent="." unique_id=1366218330]
+z_index = -1
+position = Vector2(1, 1)
+texture = ExtResource("10_0trqa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1588071426]
+position = Vector2(112, 35)
+emitting = false
+amount = 3
+texture = ExtResource("11_5gqh3")
+process_material = SubResource("ParticleProcessMaterial_cwsrf")
+
+[node name="Zipclick" type="AudioStreamPlayer2D" parent="." unique_id=311609480]
+position = Vector2(71, 87)
+stream = ExtResource("12_cwsrf")
 
 [connection signal="body_entered" from="PourArea" to="." method="_on_pour_area_body_entered"]
 [connection signal="body_exited" from="PourArea" to="." method="_on_pour_area_body_exited"]

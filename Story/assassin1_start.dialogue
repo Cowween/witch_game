@@ -1,0 +1,21 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to-
+do shake()
+Assassin: I want to avenge my father, give me a potion that can do that
+Witch: W-what? 
+Witch: I can't sell you something that will kill someone
+do shake()
+Assassin: What? Do you want me to kill you instead?
+Witch: (Oh grandma please come here and save me)
+Assassin: *Sigh* Name's Elizabeth, my father died in a duel with another noble
+Assassin: Now that my father's gone, my house is also disgraced, and the household is falling into ruins
+Assassin: Just make me something that will help me get back at that bastard
+Witch: W-what about a [color=yellow]Potion of Misery[/color]
+Witch: It won't kill the man, but it will definitely make him feel really miserable for a while
+Assassin: Then I'll have that one
+Witch: (A [color=yellow]cursed wood and earth potion[/color] that affects the body should make the man pretty uncomfortable for a while)
+
+=> END

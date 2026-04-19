@@ -1,0 +1,7 @@
+~ start
+Witch: Here you go, miss knight
+Knight: Miss Knight...
+Knight: Thank you little witch, I am indebted to you
+do exit_right()
+[wait=0.5]
+=> END

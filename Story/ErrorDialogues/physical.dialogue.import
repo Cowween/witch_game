@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhm0n53y5d71b"
+path="res://.godot/imported/physical.dialogue-91b5f03a8cfa4df56e9969393c28dc36.tres"
+
+[deps]
+
+source_file="res://Story/ErrorDialogues/physical.dialogue"
+dest_files=["res://.godot/imported/physical.dialogue-91b5f03a8cfa4df56e9969393c28dc36.tres"]
+
+[params]
+
+defaults=true

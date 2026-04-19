@@ -1,0 +1,8 @@
+~ start
+Witch: I hope this helps you with your uh... 
+Witch: Mission
+Assassin: Thank you. Now make sure you speak to no one about this encounter, or else.
+do exit_right()
+Witch: Y-yes ma'am
+
+=> END

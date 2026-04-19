@@ -1,0 +1,21 @@
+~ start
+do rise_up()
+
+do show_express(1)
+[wait=0.01]
+do ring()
+Witch: Welcome to Witchy Whims! 
+Witch: How may I help you?
+Witch: Wait I still don't know your name
+Incubus: You shouldn't remember the name of someone worthless anyway
+Witch: How is your self esteem still lower than my height?
+Incubus: Well, I managed to finally approach some people and drain them for once...
+Witch: Congrats! Sounds like you've got it!
+Incubus: But you don't get it! I only could do it because of your potions!
+Incubus: I'm still as useless as before! I'm not naturally attractive!
+do shake()
+Witch: (My standards are quite high, but that's just not true)
+Witch: (He needs to realise that he's plenty attractive for who he is)
+Witch: (An [color=yellow]earth[/color] based potion should act as a [color=yellow]Potion of Truth[/color] here)
+
+=> END

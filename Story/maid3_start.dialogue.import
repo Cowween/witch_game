@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bjks3g342lw11"
+path="res://.godot/imported/maid3_start.dialogue-0de45bafa6cd3aeee17d34f8968186fd.tres"
+
+[deps]
+
+source_file="res://Story/maid3_start.dialogue"
+dest_files=["res://.godot/imported/maid3_start.dialogue-0de45bafa6cd3aeee17d34f8968186fd.tres"]
+
+[params]
+
+defaults=true

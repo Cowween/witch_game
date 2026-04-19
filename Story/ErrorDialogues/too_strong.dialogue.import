@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vn2h3p2wecjg"
+path="res://.godot/imported/too_strong.dialogue-7bde387e02f37d4b3b727289a8845964.tres"
+
+[deps]
+
+source_file="res://Story/ErrorDialogues/too_strong.dialogue"
+dest_files=["res://.godot/imported/too_strong.dialogue-7bde387e02f37d4b3b727289a8845964.tres"]
+
+[params]
+
+defaults=true

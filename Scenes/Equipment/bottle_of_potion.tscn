@@ -21,7 +21,8 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [node name="BottleOfPotion" type="CharacterBody2D" unique_id=1744849138]
-collision_mask = 2
+collision_layer = 129
+collision_mask = 128
 script = ExtResource("1_7fpdm")
 fill_curve = ExtResource("2_1iuxa")
 full_y = 19.0
@@ -41,6 +42,7 @@ position = Vector2(0, 4.75)
 shape = SubResource("RectangleShape2D_0abqx")
 
 [node name="POotion" type="Sprite2D" parent="." unique_id=267274049]
+z_index = 1
 material = SubResource("ShaderMaterial_yvnei")
 texture = ExtResource("2_5hkoj")
 
@@ -49,7 +51,7 @@ clip_children = 1
 texture = ExtResource("3_hhyj1")
 
 [node name="Liquid" type="Sprite2D" parent="Glass" unique_id=916932179]
-position = Vector2(0, 56)
+position = Vector2(0, 16)
 texture = ExtResource("4_1iuxa")
 
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]

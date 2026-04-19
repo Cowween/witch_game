@@ -1,0 +1,16 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to Witchy Whims!
+Witch: Oh it's you... Elizabeth
+Assassin: Little witch
+Assassin: No matter what I do, how many people I hurt
+Assassin: The pain inside me just wouldn't go away
+Assassin: Little witch...
+Assassin: Can you give me something that will fill the hole left by my father's passing?
+Witch: ...
+Witch: (I'll need the [color=yellow]passion of fire[/color], and [color=yellow]curse the grief of metal[/color])
+Witch: ([color=yellow]Standard strength[/color] should suffice)
+
+=> END

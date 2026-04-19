@@ -1,0 +1,20 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to Witchy Whims-
+Witch: Oh, it's you
+Knight: Your potion! 
+Knight: It really works!
+Witch: Uh huh
+Knight: So... Uh...
+Knight: I need another potion from you...
+Witch: For your expedition?
+Knight: Oh yes! For the expedition!
+Knight: We need a [color=yellow]Potion of Beauty[/color]?
+Witch: So a [color=yellow]Potion of Beauty[/color] for your expedition...
+Knight: Yeah...
+Witch: (I suppose I can use [color=yellow]fire[/color] to enhance [color=yellow]physical beauty[/color]... And throw in some [color=yellow]wood[/color] for youthfulness?)
+Witch: (For a good effect, I should aim for at least a [color=yellow]standard strength[/color].)
+
+=> END

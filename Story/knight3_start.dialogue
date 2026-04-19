@@ -1,0 +1,21 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to Witchy Whims
+Witch: Wait... You are...
+Knight: It's me, the knight
+Knight: And yes, I drank the potion
+Witch: Wow, good job me huh
+Knight: Look, I don't know how to say this, but I need another potion from you
+Knight: And no, it's not for any expedition this time
+Knight: It's for me
+Knight: I want... A [color=yellow]gender change potion[/color]...
+Knight: Little witch... If anyone can do it, it's you
+Knight: So please...
+Witch: Muahaha, my dream of someone begging for my potions have came true
+Witch: Relax, you are a paying customer, and I graduated top of my class
+Witch: Let me think... A [color=yellow]Potion of Gender Transformation[/color]
+Witch: (Perhaps I can expand on the Potion of Beauty, but how can I incorporate more femininity...?)
+Witch: (And also, this gotta be a really strong potion...)
+=> END

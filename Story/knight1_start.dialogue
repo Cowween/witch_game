@@ -1,0 +1,15 @@
+~ start
+do enter_left()
+[wait=0.01]
+do ring()
+Witch: Welcome to Witchy Whims!
+Witch: How may I help you?
+Knight: So this is the famous potion shop eh?
+Knight: Didn't know it's ran by a kid
+Witch: We reserve the right to turn down any customers by the way
+Knight: Alright alright
+Knight: Look, for our next expedition, our party needs a...
+Knight: [color=yellow]Potion of Strength?[/color]
+Knight: I've never been much of a potion person myself, so I need you to figure out what it is.
+Witch: ([color=yellow]Potion of Strength[/color]... I suppose a [color=yellow]standard physical wood[/color] potion would do the trick)
+=> END

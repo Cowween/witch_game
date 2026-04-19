@@ -1,0 +1,22 @@
+~ start
+do enter_left()
+do show_express(1)
+[wait=0.01]
+do ring()
+Witch: Welcome to witchy whims! 
+Witch: How may I help you?
+Witch: Oh its you again, uh-dont think i caught your name-
+do shake()
+Incubus: My-name's-not-important-failures-aren't-important
+Witch: (I swear I gave him a potion of courage last time, was it defective or something?)
+Witch: What's the issue this time? Did my potion not work?
+Incubus: Nonono it worked great but...
+Incubus: I'm so stupid...
+Incubus: Even if I had all the courage in the world
+Incubus: I don't know what to say after approaching people....
+Incubus: I've approached at least 10 people and just stood there silently frozen! What was I thinking!
+Witch: (Hmm, sounds like he needs a [color=yellow]potion to help him think on his feet[/color])
+Witch: (A [color=yellow]standard Potion of Wits[/color] should do the trick)
+Witch: (For that, I'll need [color=yellow]wisdom and clarity[/color])
+
+=> END

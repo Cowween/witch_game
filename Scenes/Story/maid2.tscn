@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://6g452m7kwl07"]
+
+[ext_resource type="Script" uid="uid://dbajvnhw4448c" path="res://Scripts/encounter.gd" id="1_7bing"]
+[ext_resource type="Resource" uid="uid://brgo45hkd6ayn" path="res://Story/maid2_end.dialogue" id="2_7bing"]
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="3_8yug7"]
+[ext_resource type="Resource" uid="uid://cidlww6m36u6h" path="res://Story/maid2_start.dialogue" id="4_pscrk"]
+[ext_resource type="Resource" uid="uid://v6opaiwafuqt" path="res://Story/ErrorDialogues/element_count.dialogue" id="5_xx8he"]
+[ext_resource type="Resource" uid="uid://bhm0n53y5d71b" path="res://Story/ErrorDialogues/physical.dialogue" id="6_fcfi5"]
+[ext_resource type="Resource" uid="uid://6jpfsmtnwuk3" path="res://Story/ErrorDialogues/mental.dialogue" id="7_86iv2"]
+[ext_resource type="Resource" uid="uid://dhd44vs6a3iin" path="res://Story/ErrorDialogues/unset.dialogue" id="8_2kagh"]
+[ext_resource type="Resource" uid="uid://bwkgrnyah7hp3" path="res://Story/ErrorDialogues/too_weak.dialogue" id="9_fp0ld"]
+[ext_resource type="Resource" uid="uid://vn2h3p2wecjg" path="res://Story/ErrorDialogues/too_strong.dialogue" id="10_2fabv"]
+[ext_resource type="PackedScene" uid="uid://c5v52npiwfxdd" path="res://Scenes/potion_checker.tscn" id="11_2yshg"]
+[ext_resource type="Texture2D" uid="uid://dqyqwu3qkx4rj" path="res://Assets/char/Maid.png" id="12_wynph"]
+
+[node name="Encounter" type="Node" unique_id=1718985390 node_paths=PackedStringArray("sprite", "req_potion")]
+script = ExtResource("1_7bing")
+finished_dialogue = ExtResource("2_7bing")
+all_dialogues = Array[ExtResource("3_8yug7")]([ExtResource("4_pscrk")])
+error_dialogue = Array[ExtResource("3_8yug7")]([ExtResource("5_xx8he"), ExtResource("5_xx8he"), ExtResource("6_fcfi5"), ExtResource("7_86iv2"), ExtResource("8_2kagh"), ExtResource("9_fp0ld"), ExtResource("10_2fabv")])
+sprite = NodePath("Sprite2D")
+req_potion = NodePath("PotionChecker")
+travel_distance = 300.0
+
+[node name="PotionChecker" parent="." unique_id=463208243 instance=ExtResource("11_2yshg")]
+majors = Array[String](["Metal"])
+effect = "Mental"
+min_strength = 4
+max_strength = 5
+reward = 700
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1964490206]
+z_index = -4
+position = Vector2(71, 209)
+texture = ExtResource("12_wynph")

@@ -1,0 +1,17 @@
+~ start
+Assassin: You actually made something
+[wait=0.5]
+Assassin: What's this?
+Witch: A Potion of Love, but perhaps less for you to drink
+Witch: I wish for you to love, not to fill the hole in your heart with hate, but with love
+Witch: Love the people still around you, love your father's memory
+Witch:  A wound will always remain, but at least it will be healed with love
+Assassin: Little witch... I-
+Assassin: *Sniffle*
+do show_express(0)
+[wait=0.5]
+Assassin: Thank you
+do exit_right()
+[wait=0.5]
+
+=> END

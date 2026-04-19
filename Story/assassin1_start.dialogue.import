@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://kplkw2j2iok3"
+path="res://.godot/imported/assassin1_start.dialogue-ae95bd85341b630d7cd8b534a7e248b3.tres"
+
+[deps]
+
+source_file="res://Story/assassin1_start.dialogue"
+dest_files=["res://.godot/imported/assassin1_start.dialogue-ae95bd85341b630d7cd8b534a7e248b3.tres"]
+
+[params]
+
+defaults=true

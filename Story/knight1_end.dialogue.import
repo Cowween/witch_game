@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://6g8if6o2s3lb"
+path="res://.godot/imported/knight1_end.dialogue-e1d3761d3fafb545589e6253497ac2ec.tres"
+
+[deps]
+
+source_file="res://Story/knight1_end.dialogue"
+dest_files=["res://.godot/imported/knight1_end.dialogue-e1d3761d3fafb545589e6253497ac2ec.tres"]
+
+[params]
+
+defaults=true

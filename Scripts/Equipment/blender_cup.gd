@@ -61,7 +61,14 @@ func _input(event: InputEvent) -> void:
 	
 	
 
-
+func purge() -> void:
+	print("purged")
+	
+	for i in all_solution:
+		i.decrease_volume(i.volume)
+	volume = 0
+	volume_updated.emit()
+	draw_volume()
 
 
 

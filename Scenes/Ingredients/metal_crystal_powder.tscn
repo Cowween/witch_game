@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://62gtga1r8ku5"]
+
+[ext_resource type="Script" uid="uid://ddlsglkkg8xg3" path="res://Scripts/ingredient.gd" id="1_c54cb"]
+[ext_resource type="Shader" uid="uid://7vmb2uqt51c3" path="res://Assets/Shaders/outline.gdshader" id="2_nbfqp"]
+[ext_resource type="Texture2D" uid="uid://c3uew6cohl2h" path="res://Assets/Ingredients/Powder.png" id="3_2l0nn"]
+[ext_resource type="PackedScene" uid="uid://08fp0te6c5fa" path="res://Scenes/element.tscn" id="4_aqk8q"]
+[ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="5_ipqos"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_080gs"]
+resource_local_to_scene = true
+shader = ExtResource("2_nbfqp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87hon"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5in2v"]
+size = Vector2(11, 6)
+
+[node name="Ingredient" type="CharacterBody2D" unique_id=977333642]
+collision_mask = 7
+platform_floor_layers = 4294967042
+script = ExtResource("1_c54cb")
+gravity = 1000.0
+blended_volume = 50
+item_name = "Water Crystal Powder"
+soluble = true
+suffix = "Powder"
+is_powder = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
+modulate = Color(0.573314, 0.7051278, 1, 1)
+material = SubResource("ShaderMaterial_080gs")
+texture = ExtResource("3_2l0nn")
+
+[node name="Element" parent="." unique_id=2016421258 instance=ExtResource("4_aqk8q")]
+type = "Metal"
+state = "Salt"
+moles = 25.0
+is_salt = true
+
+[node name="Element2" parent="." unique_id=1070466791 instance=ExtResource("4_aqk8q")]
+type = "Earth"
+state = "Salt"
+moles = 15.0
+is_salt = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=77040318 node_paths=PackedStringArray("non_static")]
+priority = 3
+script = ExtResource("5_ipqos")
+non_static = [NodePath("../Sprite2D")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454880484]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_87hon")
+debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
+position = Vector2(1, 19)
+shape = SubResource("RectangleShape2D_5in2v")
+
+[node name="Element4" parent="." unique_id=1953416758 instance=ExtResource("4_aqk8q")]
+type = "Junk"
+state = "Salt"
+moles = 10.0
+is_salt = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]

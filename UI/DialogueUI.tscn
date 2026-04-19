@@ -1,25 +1,32 @@
 [gd_scene format=3 uid="uid://bk1uh24j22aeb"]
 
+[ext_resource type="Script" uid="uid://c0ijqiof3bcae" path="res://Scripts/UI/dialogue_ui.gd" id="1_odgyn"]
 [ext_resource type="PackedScene" uid="uid://6i3awoaepw7o" path="res://UI/speech_bubble.tscn" id="1_s2htl"]
+[ext_resource type="Resource" uid="uid://b4u1a3nwcm6ti" path="res://Story/Test/test.dialogue" id="3_5n7m2"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=167703360]
+[node name="DialogueUI" type="CanvasLayer" unique_id=167703360]
+script = ExtResource("1_odgyn")
+speech_bubble_scene = ExtResource("1_s2htl")
+test_dialogue = ExtResource("3_5n7m2")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1750151163]
 custom_minimum_size = Vector2(11.355, 35.32)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 104.0
+offset_left = 8.0
+offset_top = -96.0
+offset_right = 144.0
+offset_bottom = -8.0
 grow_vertical = 0
+metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=949793642]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1611895819]
+[node name="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=644040401 instance=ExtResource("1_s2htl")]
 layout_mode = 2
 
-[node name="SpeechBubble" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1022257495 instance=ExtResource("1_s2htl")]
+[node name="HBoxContainer2" parent="ScrollContainer/VBoxContainer" unique_id=1410902215 instance=ExtResource("1_s2htl")]
 layout_mode = 2
-size_flags_vertical = 0
