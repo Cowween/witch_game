@@ -44,13 +44,12 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enquire"):
-		can_display = true
+		can_display = not can_display
 		if display_queued:
 			show()
 			await get_tree().process_frame
 			reset_size()
-	elif event.is_action_released("enquire"):
-		can_display = false
+
 
 
 

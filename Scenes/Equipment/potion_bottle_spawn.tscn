@@ -37,6 +37,8 @@ shader_parameter/line_thickness = 0.0
 script = ExtResource("1_vmmyh")
 ingredient = ExtResource("2_vmmyh")
 non_static = [NodePath("Beaker5"), NodePath("Beaker4"), NodePath("Beaker"), NodePath("Beaker2"), NodePath("Sprite2D")]
+item_name = "Potion Flasks"
+desc = "ONLY FOR POTIONS!! As mandated by the Witching Association"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814850656]
 position = Vector2(1.5, -5)

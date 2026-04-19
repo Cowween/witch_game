@@ -11,6 +11,7 @@ var UI_communicator : UICommunicator
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$TextureRect.texture = texture
+	$HBoxContainer/RichTextLabel.text = "%d" % cost
 	if ingredient:
 		var temp := ingredient.instantiate()
 		add_child(temp)

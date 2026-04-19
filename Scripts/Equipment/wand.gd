@@ -9,6 +9,7 @@ class_name Wand
 @export var mental_spell := "dcba"
 @export var curse_spell := "curse"
 @export var purge_spell := "purge"
+var UI_communicator : UICommunicator
 var spells : Dictionary[String, Callable] 
 var dragging := false
 var mouse_in := false
@@ -53,12 +54,12 @@ func _input(event: InputEvent) -> void:
 			if event.is_pressed() and mouse_in:
 				dragging = true
 				left = true
-				visibility_layer = 5
+				z_index = 5
 				mouse_offset = position - get_global_mouse_position()
 
 				
 			else:
-				visibility_layer = 1
+				z_index = 0
 				dragging = false
 		if event.is_action("r_click"):
 			if event.is_pressed() and castable:
@@ -96,11 +97,14 @@ func cast(s: String) -> void:
 
 func _on_click_area_mouse_entered() -> void:
 	mouse_in = true
+	if UI_communicator:
+		UI_communicator.display_request.emit("Wand", "", "Right click on equipment to cast spells")
 
 
 func _on_click_area_mouse_exited() -> void:
 	mouse_in = false
-
+	if UI_communicator:
+		UI_communicator.stop_display.emit()
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body == cauldron and cauldron.brewing:

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hcnd4yw3xko1"]
+[gd_scene format=3 uid="uid://c36nhoio71i6w"]
 
 [ext_resource type="Script" uid="uid://dj6jifemnxwui" path="res://Scripts/Misc/shop_scene.gd" id="1_qegkg"]
 [ext_resource type="Texture2D" uid="uid://b2k8c22a14oo3" path="res://Assets/Workspace/Workspace.png" id="2_hvahy"]
@@ -17,16 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://d3x7rmx3tn3yo" path="res://Assets/Equipment/wandholderfront.png" id="15_dy57a"]
 [ext_resource type="PackedScene" uid="uid://bk1uh24j22aeb" path="res://UI/DialogueUI.tscn" id="16_eesy5"]
 [ext_resource type="PackedScene" uid="uid://c54ok7fh2jo6v" path="res://UI/spell_interface.tscn" id="17_enmb5"]
-[ext_resource type="Script" uid="uid://baht78t3as0k2" path="res://Scripts/encounter_manager.gd" id="18_ah8c3"]
-[ext_resource type="PackedScene" uid="uid://duysvblli4vj8" path="res://Scenes/Story/incubus3.tscn" id="19_qegkg"]
-[ext_resource type="PackedScene" uid="uid://c8ftvwcdfujxf" path="res://Scenes/Story/knight3.tscn" id="20_hvahy"]
-[ext_resource type="PackedScene" uid="uid://ct61nfwapt06f" path="res://Scenes/Story/maid3.tscn" id="21_qegkg"]
+[ext_resource type="PackedScene" uid="uid://cfilrbkoc4e5k" path="res://Scenes/Managers/day4_manager.tscn" id="18_b54pp"]
+[ext_resource type="PackedScene" uid="uid://lav67tbarxrf" path="res://UI/cost_counter.tscn" id="21_q7tdb"]
 [ext_resource type="PackedScene" uid="uid://djwys6rxw661s" path="res://Scenes/Shop/tim.tscn" id="22_nqh2w"]
 [ext_resource type="Texture2D" uid="uid://cpp1orl3ftupt" path="res://Assets/Workspace/Windowbackground.png" id="32_40205"]
-[ext_resource type="Script" uid="uid://b37e6a5ln1klr" path="res://Scripts/Misc/cost_counter.gd" id="33_4v7oq"]
 [ext_resource type="PackedScene" uid="uid://b2g2kkts75jem" path="res://UI/end.tscn" id="34_agqbi"]
 [ext_resource type="AudioStream" uid="uid://7ogahco6g6a" path="res://Assets/Sounds/alchemy_lab.mp3" id="35_eb0fv"]
-[ext_resource type="PackedScene" uid="uid://lkhm5r0et06i" path="res://Scenes/Shop/shop_scene_day5.tscn" id="35_hvahy"]
+[ext_resource type="PackedScene" uid="uid://dajrfgk2dwr22" path="res://Scenes/Shop/shop_scene_day5.tscn" id="35_hvahy"]
 [ext_resource type="AudioStream" uid="uid://qbpdakbulig2" path="res://Assets/Sounds/cooking_without_cover_01.ogg" id="36_04vhr"]
 [ext_resource type="PackedScene" uid="uid://btkgplhbxmccl" path="res://Scenes/Equipment/book.tscn" id="37_og6lj"]
 [ext_resource type="PackedScene" uid="uid://ia10rmcylprs" path="res://Scenes/Equipment/small_book.tscn" id="38_lnug1"]
@@ -41,19 +38,16 @@
 [ext_resource type="Texture2D" uid="uid://cnggheioa0i54" path="res://Assets/Equipment/firegif8.png" id="47_4kmx2"]
 [ext_resource type="Texture2D" uid="uid://dwr46qiqgs0cj" path="res://Assets/Equipment/firegif9.png" id="48_a1lx4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg1wq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy4j2"]
 size = Vector2(477, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_assh8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpt1j"]
 size = Vector2(152, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxxb5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33aas"]
 size = Vector2(16, 296)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r37aj"]
-size = Vector2(112, 136)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_b4fdm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8eyan"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -107,11 +101,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableCollider" unique_id=2065300290]
 position = Vector2(401.5, 320)
-shape = SubResource("RectangleShape2D_bg1wq")
+shape = SubResource("RectangleShape2D_fy4j2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TableCollider" unique_id=1710834217]
 position = Vector2(76, 360)
-shape = SubResource("RectangleShape2D_assh8")
+shape = SubResource("RectangleShape2D_mpt1j")
 
 [node name="SolventBarrel" parent="." unique_id=1567967711 instance=ExtResource("3_gvkvu")]
 position = Vector2(312, 180)
@@ -188,28 +182,17 @@ collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall" unique_id=447477156]
 position = Vector2(8, 200)
-shape = SubResource("RectangleShape2D_rxxb5")
+shape = SubResource("RectangleShape2D_33aas")
 
-[node name="EncounterManager" type="Area2D" parent="." unique_id=1645848961 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
-collision_layer = 0
-collision_mask = 128
-script = ExtResource("18_ah8c3")
+[node name="EncounterManager" parent="." unique_id=1514334865 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell") instance=ExtResource("18_b54pp")]
 dialogue_ui = NodePath("../DialogueUI")
 cost_counter = NodePath("../CostCounter")
 end = NodePath("../RichTextLabel")
 bell = NodePath("../Node2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterManager" unique_id=1726411278]
-position = Vector2(72, 180)
-shape = SubResource("RectangleShape2D_r37aj")
-
-[node name="Encounter" parent="EncounterManager" unique_id=1718985390 instance=ExtResource("19_qegkg")]
-
-[node name="Encounter2" parent="EncounterManager" unique_id=176891930 instance=ExtResource("20_hvahy")]
-
-[node name="Encounter3" parent="EncounterManager" unique_id=1594014536 instance=ExtResource("21_qegkg")]
-
 [node name="Area2D3" parent="." unique_id=2091427261 instance=ExtResource("22_nqh2w")]
+
+[node name="CostCounter" parent="." unique_id=1644600402 instance=ExtResource("21_q7tdb")]
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1895128020]
 z_index = -5
@@ -218,9 +201,6 @@ offset_top = 105.0
 offset_right = 137.0
 offset_bottom = 255.0
 texture = ExtResource("32_40205")
-
-[node name="CostCounter" type="Node" parent="." unique_id=143479706]
-script = ExtResource("33_4v7oq")
 
 [node name="RichTextLabel" parent="." unique_id=1584764037 instance=ExtResource("34_agqbi")]
 z_index = 10
@@ -251,7 +231,7 @@ position = Vector2(74, 120)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102141520]
 position = Vector2(565, 356)
-sprite_frames = SubResource("SpriteFrames_b4fdm")
+sprite_frames = SubResource("SpriteFrames_8eyan")
 autoplay = "default"
 frame_progress = 0.29026753
 
@@ -259,5 +239,3 @@ frame_progress = 0.29026753
 [connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
 [connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]
 [connection signal="spell_inputted" from="SpellInterface" to="Wand" method="_on_spell_interface_spell_inputted"]
-[connection signal="body_entered" from="EncounterManager" to="EncounterManager" method="_on_body_entered"]
-[connection signal="encounter_over" from="EncounterManager" to="EncounterManager" method="_on_encounter_over"]

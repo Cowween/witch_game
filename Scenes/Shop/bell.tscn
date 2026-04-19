@@ -60,6 +60,7 @@ frame_progress = 0.97147286
 [node name="Sd0" type="AudioStreamPlayer2D" parent="." unique_id=1903426981]
 position = Vector2(0, 12)
 stream = ExtResource("10_j1x0u")
+volume_db = 6.386
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1166920484]
 

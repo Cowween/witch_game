@@ -52,7 +52,7 @@ shape = SubResource("CircleShape2D_ugrgv")
 debug_color = Color(0.95008224, 4.7168137e-06, 0.57274145, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281764837]
-position = Vector2(-10, -7)
+position = Vector2(-10, -8)
 shape = SubResource("CircleShape2D_w0lqd")
 
 [node name="Element3" parent="." unique_id=1698068545 instance=ExtResource("4_xfkqo")]

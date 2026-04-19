@@ -96,10 +96,11 @@ func generate_desc() -> String:
 
 	output += "Purity: %.2f, Strength: %d\n" % [potion.purity*100, potion.strength]
 	for element in potion.el_composition:
+		var c : String = OPERATIONS.COLORS_TEXT[element]
 		if potion.el_composition[element]>0.0:
 			if element in potion.cursed_elements:
 				output += "Cursed "
-			output += "%s: %.2f%%\n" % [element, (potion.el_composition[element] * 100)]
+			output += "[color=%s]%s[/color]: %.2f%% \n" % [c, element, (potion.el_composition[element] * 100)]
 	return output
 func play_enchant() -> void:
 	enchant.show()
@@ -174,11 +175,14 @@ func _on_pour_area_body_exited(body: Node2D) -> void:
 
 func _on_tap_mouse_entered() -> void:
 	in_tap = true
+	if UI_communicator:
+		UI_communicator.emit_signal("display_request", "Tap", "", "Press me to empty cauldron contents into potion flask")
 
 
 func _on_tap_mouse_exited() -> void:
 	in_tap = false
-
+	if UI_communicator:
+		UI_communicator.stop_display.emit()
 
 func _on_click_area_mouse_entered() -> void:
 	if UI_communicator:

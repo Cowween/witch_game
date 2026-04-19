@@ -3,6 +3,6 @@ Witch: This is for you, this should lower the effects of stress on you somewhat
 do show_express(2)
 Maid: Oh- *Sniffles*, you're too kind
 Maid: Thank you little witch, I'll remember you!
-do exit_right()
+do exit_left()
 [wait=0.5]
 => END

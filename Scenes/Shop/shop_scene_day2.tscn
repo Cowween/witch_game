@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://biotcanr2sdwt"]
+[gd_scene format=3 uid="uid://bj24f6l1kw8ye"]
 
 [ext_resource type="Script" uid="uid://dj6jifemnxwui" path="res://Scripts/Misc/shop_scene.gd" id="1_7anhh"]
 [ext_resource type="Texture2D" uid="uid://b2k8c22a14oo3" path="res://Assets/Workspace/Workspace.png" id="2_jbw8t"]
@@ -17,17 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://bk1uh24j22aeb" path="res://UI/DialogueUI.tscn" id="14_kflj7"]
 [ext_resource type="PackedScene" uid="uid://c54ok7fh2jo6v" path="res://UI/spell_interface.tscn" id="15_0oqcp"]
 [ext_resource type="Texture2D" uid="uid://d3x7rmx3tn3yo" path="res://Assets/Equipment/wandholderfront.png" id="15_abhrc"]
-[ext_resource type="Script" uid="uid://baht78t3as0k2" path="res://Scripts/encounter_manager.gd" id="16_xl118"]
-[ext_resource type="PackedScene" uid="uid://dp11ulu30wgdm" path="res://Scenes/Story/assassin1.tscn" id="17_da06g"]
-[ext_resource type="PackedScene" uid="uid://c04u54f5igss0" path="res://Scenes/Story/maid1.tscn" id="20_abhrc"]
-[ext_resource type="PackedScene" uid="uid://ecsoxi5eoq5f" path="res://Scenes/Story/incubus2.tscn" id="21_rgs8t"]
+[ext_resource type="PackedScene" uid="uid://bl6kwpqnidkdk" path="res://Scenes/Managers/day2_manager.tscn" id="18_qgj5o"]
+[ext_resource type="PackedScene" uid="uid://lav67tbarxrf" path="res://UI/cost_counter.tscn" id="21_qgj5o"]
 [ext_resource type="PackedScene" uid="uid://djwys6rxw661s" path="res://Scenes/Shop/tim.tscn" id="22_aq61y"]
 [ext_resource type="Texture2D" uid="uid://cpp1orl3ftupt" path="res://Assets/Workspace/Windowbackground.png" id="28_bfrhg"]
-[ext_resource type="Script" uid="uid://b37e6a5ln1klr" path="res://Scripts/Misc/cost_counter.gd" id="29_jojfy"]
 [ext_resource type="PackedScene" uid="uid://b2g2kkts75jem" path="res://UI/end.tscn" id="30_jbw8t"]
 [ext_resource type="AudioStream" uid="uid://7ogahco6g6a" path="res://Assets/Sounds/alchemy_lab.mp3" id="33_eyi30"]
 [ext_resource type="AudioStream" uid="uid://qbpdakbulig2" path="res://Assets/Sounds/cooking_without_cover_01.ogg" id="34_qgj5o"]
-[ext_resource type="PackedScene" uid="uid://dkvtjv4qjmv54" path="res://Scenes/Shop/shop_scene_day3.tscn" id="35_abhrc"]
+[ext_resource type="PackedScene" uid="uid://ddvcv7seyql6f" path="res://Scenes/Shop/shop_scene_day3.tscn" id="35_abhrc"]
 [ext_resource type="PackedScene" uid="uid://btkgplhbxmccl" path="res://Scenes/Equipment/book.tscn" id="35_eyi30"]
 [ext_resource type="PackedScene" uid="uid://ia10rmcylprs" path="res://Scenes/Equipment/small_book.tscn" id="36_qgj5o"]
 [ext_resource type="PackedScene" uid="uid://dd03jxwvmee31" path="res://Scenes/Shop/bell.tscn" id="39_rgs8t"]
@@ -50,10 +47,7 @@ size = Vector2(152, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4fdm"]
 size = Vector2(16, 296)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cn7a"]
-size = Vector2(112, 136)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_b4fdm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_15m1r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -190,24 +184,13 @@ collision_mask = 0
 position = Vector2(8, 200)
 shape = SubResource("RectangleShape2D_b4fdm")
 
-[node name="EncounterManager" type="Area2D" parent="." unique_id=1645848961 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
-collision_layer = 0
-collision_mask = 128
-script = ExtResource("16_xl118")
+[node name="CostCounter" parent="." unique_id=1644600402 instance=ExtResource("21_qgj5o")]
+
+[node name="EncounterManager" parent="." unique_id=1391628309 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell") instance=ExtResource("18_qgj5o")]
 dialogue_ui = NodePath("../DialogueUI")
 cost_counter = NodePath("../CostCounter")
-end = NodePath("../RichTextLabel")
+end = NodePath("../End")
 bell = NodePath("../Node2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterManager" unique_id=1726411278]
-position = Vector2(72, 180)
-shape = SubResource("RectangleShape2D_6cn7a")
-
-[node name="Encounter" parent="EncounterManager" unique_id=1718985390 instance=ExtResource("17_da06g")]
-
-[node name="Encounter2" parent="EncounterManager" unique_id=1155017707 instance=ExtResource("20_abhrc")]
-
-[node name="Encounter3" parent="EncounterManager" unique_id=324419527 instance=ExtResource("21_rgs8t")]
 
 [node name="Area2D3" parent="." unique_id=2091427261 instance=ExtResource("22_aq61y")]
 
@@ -219,10 +202,7 @@ offset_right = 137.0
 offset_bottom = 255.0
 texture = ExtResource("28_bfrhg")
 
-[node name="CostCounter" type="Node" parent="." unique_id=143479706]
-script = ExtResource("29_jojfy")
-
-[node name="RichTextLabel" parent="." unique_id=1584764037 instance=ExtResource("30_jbw8t")]
+[node name="End" parent="." unique_id=1584764037 instance=ExtResource("30_jbw8t")]
 z_index = 10
 next_scene_path = ExtResource("35_abhrc")
 
@@ -251,7 +231,7 @@ position = Vector2(74, 120)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=102141520]
 position = Vector2(565, 356)
-sprite_frames = SubResource("SpriteFrames_b4fdm")
+sprite_frames = SubResource("SpriteFrames_15m1r")
 autoplay = "default"
 frame_progress = 0.29026753
 
@@ -259,5 +239,3 @@ frame_progress = 0.29026753
 [connection signal="display_temperature" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_temperature"]
 [connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]
 [connection signal="spell_inputted" from="SpellInterface" to="Wand" method="_on_spell_interface_spell_inputted"]
-[connection signal="body_entered" from="EncounterManager" to="EncounterManager" method="_on_body_entered"]
-[connection signal="encounter_over" from="EncounterManager" to="EncounterManager" method="_on_encounter_over"]

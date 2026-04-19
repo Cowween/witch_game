@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://lav67tbarxrf"]
+
+[ext_resource type="Script" uid="uid://b37e6a5ln1klr" path="res://Scripts/Misc/cost_counter.gd" id="1_qac46"]
+[ext_resource type="FontFile" uid="uid://c6rkvog4ygxy4" path="res://Assets/UI/m3x6.ttf" id="2_lgw7f"]
+[ext_resource type="Texture2D" uid="uid://or0hxe4obmih" path="res://Res/coin.tres" id="3_0hcbj"]
+
+[sub_resource type="Theme" id="Theme_l2v8o"]
+default_font = ExtResource("2_lgw7f")
+Label/fonts/font = ExtResource("2_lgw7f")
+
+[node name="CostCounter" type="Node" unique_id=1644600402]
+script = ExtResource("1_qac46")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=238833906]
+offset_left = 5.0
+offset_top = 84.0
+offset_right = 46.0
+offset_bottom = 117.0
+size_flags_horizontal = 3
+theme = SubResource("Theme_l2v8o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=831438830]
+layout_mode = 2
+
+[node name="Cost" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=591100137]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Cost:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=2097780228]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_0hcbj")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=147906841]
+layout_mode = 2
+
+[node name="Gain" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2" unique_id=1663823366]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Gain: "
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=784627212]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_0hcbj")
+stretch_mode = 5

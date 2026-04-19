@@ -12,8 +12,9 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	$Crunchybite.play()
-	tim.play("default")
-	body.queue_free()
-	await tim.animation_finished
-	tim.frame = 0
+	if body is not BeakerCup:
+		$Crunchybite.play()
+		tim.play("default")
+		body.queue_free()
+		await tim.animation_finished
+		tim.frame = 0

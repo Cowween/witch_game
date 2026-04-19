@@ -57,7 +57,7 @@ size = Vector2(10, 64)
 size = Vector2(80, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bv1vs"]
-size = Vector2(80, 16)
+size = Vector2(73, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mebvf"]
 size = Vector2(24.5, 33)
@@ -257,7 +257,7 @@ shape = SubResource("RectangleShape2D_l8d1q")
 [node name="DissolveArea" type="Area2D" parent="." unique_id=886675333]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DissolveArea" unique_id=802077750]
-position = Vector2(0, 16)
+position = Vector2(0.5, 16)
 shape = SubResource("RectangleShape2D_bv1vs")
 
 [node name="PourArea" type="Area2D" parent="." unique_id=2063694468]
@@ -296,7 +296,7 @@ texture = ExtResource("7_mebvf")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=998619292]
 position = Vector2(-44, -7)
 emitting = false
-lifetime = 0.9
+lifetime = 0.75
 process_material = SubResource("ParticleProcessMaterial_mebvf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266501953]

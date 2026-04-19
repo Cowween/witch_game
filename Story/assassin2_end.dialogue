@@ -2,7 +2,7 @@
 Witch: This should numb the pain, but your other sensations will also be numbed
 Witch: Take care and rest well
 Assassin: Thank you... Little witch
-do exit_right()
+do exit_left()
 [wait=0.5]
 
 => END

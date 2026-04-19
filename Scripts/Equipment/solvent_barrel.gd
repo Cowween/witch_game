@@ -24,13 +24,13 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Beaker and body is not BottleOfPotion:
+	if body is Beaker and body is not BottleOfPotion and body is not BeakerCup:
 		beaker = body
 		$GPUParticles2D.emitting = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body is Beaker and body is not BottleOfPotion:
+	if body is Beaker and body is not BottleOfPotion and body is not BeakerCup:
 		beaker = null
 		$GPUParticles2D.emitting = false
 

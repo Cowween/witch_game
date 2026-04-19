@@ -10,13 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://ckl3att85pgm1" path="res://Assets/Equipment/Book/book7.png" id="8_nwx8h"]
 [ext_resource type="Texture2D" uid="uid://d362664gw48fe" path="res://Assets/Equipment/Book/book8.png" id="9_31dqx"]
 [ext_resource type="Texture2D" uid="uid://bl6vevo7faria" path="res://Res/left_boo.tres" id="10_06kou"]
+[ext_resource type="Texture2D" uid="uid://cev2b2e5rc1qi" path="res://Assets/Equipment/book9.png" id="10_75mi6"]
 [ext_resource type="Texture2D" uid="uid://cdgix0cq2l1ki" path="res://Res/bookmark.tres" id="11_75mi6"]
 [ext_resource type="Texture2D" uid="uid://d15vy4q2mchms" path="res://Res/right_boo.tres" id="12_nwx8h"]
 
 [node name="Book" type="CanvasLayer" unique_id=2117418619]
 layer = 2
 script = ExtResource("1_nxdue")
-pages = Array[CompressedTexture2D]([ExtResource("1_3lot3"), ExtResource("3_sa2r1"), ExtResource("4_tcnrp"), ExtResource("5_v5jmd"), ExtResource("6_06kou"), ExtResource("7_75mi6"), ExtResource("8_nwx8h"), ExtResource("9_31dqx")])
+pages = Array[Texture2D]([ExtResource("1_3lot3"), ExtResource("3_sa2r1"), ExtResource("4_tcnrp"), ExtResource("5_v5jmd"), ExtResource("6_06kou"), ExtResource("7_75mi6"), ExtResource("8_nwx8h"), ExtResource("9_31dqx"), ExtResource("10_75mi6")])
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2057785416]
 anchors_preset = 15
@@ -48,6 +49,6 @@ offset_bottom = 332.0
 texture_normal = ExtResource("12_nwx8h")
 
 [connection signal="pressed" from="Previous" to="." method="_on_previous_pressed"]
-[connection signal="pressed" from="Close" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

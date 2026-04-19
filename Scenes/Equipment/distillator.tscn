@@ -76,6 +76,9 @@ radius = 15.0
 particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3cb2k"]
+polygon = PackedVector2Array(14, 38, 17, 28, 26, 22, 29, 22, 31, 34, 28, 38)
+
 [node name="Distillator" type="StaticBody2D" unique_id=1543099707 node_paths=PackedStringArray("flask")]
 script = ExtResource("1_3tqox")
 min_therm_height = 78.545
@@ -186,6 +189,12 @@ process_material = SubResource("ParticleProcessMaterial_cwsrf")
 [node name="Zipclick" type="AudioStreamPlayer2D" parent="." unique_id=311609480]
 position = Vector2(71, 87)
 stream = ExtResource("12_cwsrf")
+
+[node name="BeakerLoc" type="Node2D" parent="." unique_id=736479724]
+position = Vector2(111, 80)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=650284035]
+occluder = SubResource("OccluderPolygon2D_3cb2k")
 
 [connection signal="body_entered" from="PourArea" to="." method="_on_pour_area_body_entered"]
 [connection signal="body_exited" from="PourArea" to="." method="_on_pour_area_body_exited"]

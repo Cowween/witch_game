@@ -23,7 +23,7 @@ collision_mask = 7
 platform_floor_layers = 4294967042
 script = ExtResource("1_3la4n")
 gravity = 1000.0
-item_name = "Rhino Beetle"
+item_name = "Earthworm"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461532183]
 material = SubResource("ShaderMaterial_080gs")

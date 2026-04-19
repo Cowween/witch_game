@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cn4ypckhjviin"]
 
 [ext_resource type="Script" uid="uid://bsvgy4kpfscmt" path="res://Scripts/Equipment/round_bottomed_flask.gd" id="1_u3o3m"]
+[ext_resource type="Curve" uid="uid://c0rosqlsyq2gy" path="res://Res/round_flask.tres" id="2_kgujy"]
 [ext_resource type="Texture2D" uid="uid://bpie1w8tnlb53" path="res://Assets/Equipment/roundflaskmask.png" id="2_xedul"]
 [ext_resource type="Texture2D" uid="uid://da678pgb25pak" path="res://Assets/TestAssets/cum.png" id="4_kgujy"]
 [ext_resource type="Script" uid="uid://6vr67skvsv45" path="res://Scripts/Equipment/beaker_area.gd" id="5_gmay8"]
@@ -26,6 +27,7 @@ radius = 18.0
 collision_layer = 9
 collision_mask = 6
 script = ExtResource("1_u3o3m")
+fill_curve = ExtResource("2_kgujy")
 full_y = 83.0
 empty_y = 103.0
 full_x = 46.0

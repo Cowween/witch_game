@@ -3,7 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cxuhb68eajwgf" path="res://Res/borders.tres" id="1_skx7d"]
 [ext_resource type="Texture2D" uid="uid://bd8nnht1pijpo" path="res://Res/selected_border.tres" id="2_aj3pv"]
 [ext_resource type="Script" uid="uid://db8hu4kkj8u46" path="res://Scripts/UI/ingredient_button.gd" id="2_rn4fu"]
-[ext_resource type="Texture2D" uid="uid://db8jivqbank82" path="res://icon.svg" id="4_rn4fu"]
+[ext_resource type="Texture2D" uid="uid://x3wr4gmyjnq1" path="res://Assets/Ingredients/Blucrystal.png" id="4_pps3h"]
+[ext_resource type="FontFile" uid="uid://c6rkvog4ygxy4" path="res://Assets/UI/m3x6.ttf" id="5_dmbt8"]
+[ext_resource type="Texture2D" uid="uid://or0hxe4obmih" path="res://Res/coin.tres" id="6_8b105"]
+
+[sub_resource type="Theme" id="Theme_f4cuu"]
+RichTextLabel/fonts/normal_font = ExtResource("5_dmbt8")
 
 [node name="IngredientButton" type="TextureButton" unique_id=819609343]
 texture_normal = ExtResource("1_skx7d")
@@ -17,7 +22,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_rn4fu")
+texture = ExtResource("4_pps3h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1455137412]
+custom_minimum_size = Vector2(5.08, 0)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 56.0
+offset_bottom = 22.0
+theme = SubResource("Theme_f4cuu")
+theme_override_constants/separation = 0
+metadata/_edit_group_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" unique_id=1137213804]
+custom_minimum_size = Vector2(12.405, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "100"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=481810322]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_8b105")
+stretch_mode = 5
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

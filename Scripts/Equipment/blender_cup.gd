@@ -1,5 +1,5 @@
 extends Beaker
-
+class_name BeakerCup
 signal volume_updated
 signal moving
 signal back
@@ -39,6 +39,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_action("l_click"):
 			if event.is_pressed() and mouse_in:
+				print("clicked")
 				dragging = true
 				left = true
 				moving.emit()
@@ -56,6 +57,7 @@ func _input(event: InputEvent) -> void:
 			elif pouring:
 				volume_updated.emit()
 				pouring = false
+				particle.emitting = false
 				draw_volume()
 
 	
@@ -80,6 +82,7 @@ func _on_beaker_area_pourable(beaker: Beaker) -> void:
 
 
 func _on_click_area_mouse_entered() -> void:
+	print("mousin")
 	mouse_in = true
 	if UI_communicator:
 		var n := item_name 
@@ -90,6 +93,7 @@ func _on_click_area_mouse_entered() -> void:
 
 
 func _on_click_area_mouse_exited() -> void:
+	print("mouseout")
 	mouse_in = false
 	if UI_communicator:
 		UI_communicator.emit_signal("stop_display")

@@ -42,6 +42,8 @@ shader_parameter/line_thickness = 0.0
 script = ExtResource("1_rjxnp")
 ingredient = ExtResource("2_rjxnp")
 non_static = [NodePath("Beaker5"), NodePath("Beaker4"), NodePath("Beaker"), NodePath("Beaker2"), NodePath("Sprite2D"), NodePath("Beaker3")]
+item_name = "Beakers"
+desc = "To fill and transport solution"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=814850656]
 position = Vector2(1, -6)

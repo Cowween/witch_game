@@ -97,9 +97,10 @@ func generate_desc() -> String:
 		output += "Soluble in aqua\n"
 	for element in amounts:
 			for state in amounts[element]:
+				var c : String = OPERATIONS.COLORS_TEXT[element]
 				if amounts[element][state] <= 0.0:
 					continue
-				output += "%s %s: %.2f \n" % [state, element, amounts[element][state]]
+				output += "%s [color=%s]%s[/color]: %.2f \n" % [state, c, element, amounts[element][state]]
 	
 	return output
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://pueq5thceacm"]
+
+[ext_resource type="Script" uid="uid://baht78t3as0k2" path="res://Scripts/encounter_manager.gd" id="1_etlie"]
+[ext_resource type="PackedScene" uid="uid://jbcg352v0igv" path="res://Scenes/Story/knight_2.tscn" id="2_yt1ly"]
+[ext_resource type="PackedScene" uid="uid://chej8oxsbk0t8" path="res://Scenes/Story/assassin2.tscn" id="3_gkmn2"]
+[ext_resource type="PackedScene" uid="uid://6g452m7kwl07" path="res://Scenes/Story/maid2.tscn" id="4_ltn54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r37aj"]
+size = Vector2(112, 136)
+
+[node name="EncounterManager" type="Area2D" unique_id=1221310270 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_etlie")
+dialogue_ui = NodePath("")
+cost_counter = NodePath("")
+end = NodePath("")
+bell = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=928873411]
+position = Vector2(72, 180)
+shape = SubResource("RectangleShape2D_r37aj")
+
+[node name="Encounter" parent="." unique_id=1718985390 instance=ExtResource("2_yt1ly")]
+
+[node name="Encounter2" parent="." unique_id=714450289 instance=ExtResource("3_gkmn2")]
+
+[node name="Encounter3" parent="." unique_id=1522713222 instance=ExtResource("4_ltn54")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="encounter_over" from="." to="." method="_on_encounter_over"]

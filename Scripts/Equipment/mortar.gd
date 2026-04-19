@@ -103,7 +103,7 @@ func _input(event: InputEvent) -> void:
 func _on_clickable_area_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit("Mortar", "", "")
+		UI_communicator.display_request.emit("Mortar", "", "Click me to grind ingredients down")
 	#print("Entered")
 
 func get_minerals(area: Area2D) -> Array[Mineral]:

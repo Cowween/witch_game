@@ -75,11 +75,11 @@ func _input(event: InputEvent) -> void:
 
 func populate_extractable() -> void:
 	flask.tally_effects()
-	#print(flask.total_comp)
+	print(flask.total_comp)
 	for i in flask.total_comp:
 		if i == "Junk":
 			continue
-		if flask.total_comp[i] > 0.1:
+		if flask.total_comp[i] > 0.0:
 			temp_extractable[OPERATIONS.DISTIL_TEMPS[i]] = i
 	for i in temp_extractable:
 		temp_list.append(i)
@@ -92,6 +92,7 @@ func extract_element(element:String, quant : float) -> bool:
 	var usable : Array[Solution]
 	for i in flask.all_solution:
 		var temp := OPERATIONS.get_element_amount(element, i.amounts)
+		print(element, " ", temp)
 		if temp > 0.1:
 			usable.append(i)
 	if usable.is_empty():
@@ -99,7 +100,6 @@ func extract_element(element:String, quant : float) -> bool:
 	for i in usable:
 		i.decrease_element(element, quant)
 	if beaker:
-		print("beaker", beaker)
 		beaker.change_volume(quant, {element: {"Elemental": 1.0}}, "Elixir")
 	flask.tally_effects()
 	return false
@@ -115,7 +115,9 @@ func decrease_vol() -> void:
 func distill() -> void:
 	if temp_list.is_empty():
 		return
+	#print(temp_list)
 	if temperature >= temp_list[0]:
+		
 		particles.emitting = true
 		actual_increment = 0.0
 		var is_finished := extract_element(temp_extractable[temp_list[0]], boil_rate)
@@ -129,10 +131,14 @@ func distill() -> void:
 
 func _on_click_area_mouse_entered() -> void:
 	mouse_in = true
+	if UI_communicator:
+		UI_communicator.display_request.emit("Distillator", "", "Click on the fire stone to begin distillation")
 
 
 func _on_click_area_mouse_exited() -> void:
 	mouse_in = false
+	if UI_communicator:
+		UI_communicator.stop_display.emit()
 
 
 func _on_timer_timeout() -> void:
@@ -152,14 +158,20 @@ func _on_pour_area_body_entered(body: Node2D) -> void:
 	if body and body is Beaker:
 		if beaker:
 			return
+		print("beaker in")
 		beaker_in = true
 		beaker = body
+		beaker.in_distill = true
+		beaker.distill_pos = to_global($BeakerLoc.position)
 
 
 func _on_pour_area_body_exited(body: Node2D) -> void:
-	if body and body is Beaker:
+	if body and body is Beaker and body == beaker:
+		print("beaker out")
 		beaker_in = false
+		beaker.in_distill = false
 		beaker = null
+		
 
 
 func _on_thermometer_area_mouse_entered() -> void:

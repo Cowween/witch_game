@@ -36,6 +36,8 @@ var total_amount : Dictionary[String, Dictionary]
 var total_comp : Dictionary[String, float]
 var item_name := ""
 var solute : Array[Ingredient]
+var in_distill := false
+var distill_pos := Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func set_volume(value: float):
 	volume = clamp(value, 0, max_volume)
@@ -48,7 +50,7 @@ func _ready() -> void:
 			all_solution.append(i)
 			volume += i.volume
 			count += 1
-	print(all_solution)
+	#print(all_solution)
 	total_amount = OPERATIONS.get_empty_dict()
 	#print(all_solution)
 	tally_effects()
@@ -60,7 +62,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if pour_receptor:
 		for i in pour_receptor.get_overlapping_areas():
-			print(i)
+			#print(i)
 			i.emit_signal("pourable", self)
 	if pouring:
 		change_volume(-0.1)
@@ -95,7 +97,10 @@ func _physics_process(delta: float) -> void:
 		var raw_velocity := target_direction * drag_speed
 		velocity = raw_velocity.limit_length(500)
 		#print(volume)
-		
+	elif in_distill:
+		var target_pos := distill_pos
+		var target_direction := target_pos - position
+		velocity = target_direction * drag_speed
 	else:
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -118,7 +123,7 @@ func _input(event: InputEvent) -> void:
 				mouse_offset = position - get_global_mouse_position()
 				for i in beaker_area.get_overlapping_bodies():
 					if i is Ingredient and i.mouse_in:
-						print(i.mouse_in)
+						#print(i.mouse_in)
 						dragging = false
 				
 			else:
@@ -181,7 +186,7 @@ func draw_volume(a:Dictionary = {}) -> void:
 			liquid = elixir_l
 		if fill_curve:
 			ratio = fill_curve.sample(ratio)
-		print(name, i.name, i.el_composition)
+		#print(name, i.name, i.el_composition)
 		liquid.modulate = OPERATIONS.generate_color(i.el_composition)
 		if not a.is_empty():
 			liquid.modulate = OPERATIONS.generate_color(a)
@@ -254,9 +259,10 @@ func generate_desc() -> String:
 		output+= "Layer %s: %dml\n" % [solution.solvent, solution.volume]
 		for element in solution.amounts:
 			for state in solution.amounts[element]:
+				var c :String= OPERATIONS.COLORS_TEXT[element]
 				if solution.amounts[element][state] <= 0.0:
 					continue
-				output += "%s %s: %.2f \n" % [state, element, solution.amounts[element][state]]
+				output += "%s [color=%s]%s[/color]: %.2f \n" % [state, c, element, solution.amounts[element][state]]
 	
 	return output
 func generate_default_name() -> String:

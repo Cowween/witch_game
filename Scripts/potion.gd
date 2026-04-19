@@ -62,8 +62,9 @@ func generate_comp_text() -> String:
 	if final: comp = final_comp
 	
 	for i in comp:
+		var c : String = OPERATIONS.COLORS_TEXT[i]
 		if comp[i]>0:
-			output += i + ": %.2f"  %(comp[i]*100) + "% "
+			output += "%s" % i + ": %.2f"  %(comp[i]*100) + "% "
 	return output
 func get_purity() -> void:
 	purity = 0.0

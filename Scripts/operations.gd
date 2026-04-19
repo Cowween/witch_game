@@ -4,7 +4,9 @@ const STATES := ["Polar", "Non-polar", "Salt", "Elemental"]
 const DISTIL_TEMPS := {"Wood": 30.0, "Fire": 120.0, "Water": 100.0, "Earth": 35.0, "Metal": 60.0}
 const STR_RANGE := [50, 100, 200, 300]
 const COLORS := {"Wood": Color.SADDLE_BROWN, "Earth": Color.DARK_GREEN, "Water": Color.AQUA, "Fire": Color.RED, "Metal": Color.BISQUE, "Junk": Color.BLACK}
-
+const COLORS_TEXT := {"Wood": "brown", "Earth": "green", "Water": "blue", "Fire": "red", "Metal": "yellow", "Junk": "black",
+"Cursed Wood": "brown", "Cursed Earth": "green", "Cursed Water": "blue", "Cursed Fire": "red", "Cursed Metal": "yellow", "Cursed Junk": "black"
+}
 #amount = {Metal: {Polar:1, NonPolar: 2}...
 func get_composition_from_amount(amount: Dictionary) -> Dictionary[String, float]:
 	var total_amount := 0.0
