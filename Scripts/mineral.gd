@@ -69,10 +69,10 @@ func _input(event: InputEvent) -> void:
 func _on_area_2d_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit(item_name, "", "")
+		UI_communicator.display_request.emit(self, item_name, "", "")
 
 
 func _on_area_2d_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)

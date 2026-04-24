@@ -26,9 +26,6 @@ func _input(event: InputEvent) -> void:
 
 
 
-func _on_beaker_area_pourable(beaker: Beaker) -> void:
-
-	target_beaker = beaker
 
 
 func _on_pour_receptor_area_exited(area: Area2D) -> void:
@@ -42,10 +39,10 @@ func _on_beaker_area_mouse_entered() -> void:
 	tally_effects()
 	if UI_communicator:
 		print("here")
-		UI_communicator.emit_signal("display_request", "Distillation Flask", generate_comp_text(), generate_desc())
+		UI_communicator.emit_signal("display_request", self, "Distillation Flask", generate_comp_text(), generate_desc())
 
 
 func _on_beaker_area_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)

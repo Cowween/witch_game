@@ -135,7 +135,7 @@ func _on_dissolve_area_body_entered(body: Node2D) -> void:
 		splash.stop()
 		splash.hide()
 		return
-	if body is Beaker and body is not BottleOfPotion:
+	if body is Beaker and body is not BottleOfPotion and body is not BeakerCup:
 		for i in body.all_solution:
 			simple_combine(i.amounts)
 		body.queue_free()
@@ -176,20 +176,20 @@ func _on_pour_area_body_exited(body: Node2D) -> void:
 func _on_tap_mouse_entered() -> void:
 	in_tap = true
 	if UI_communicator:
-		UI_communicator.emit_signal("display_request", "Tap", "", "Press me to empty cauldron contents into potion flask")
+		UI_communicator.emit_signal("display_request", self, "Tap", "", "Press me to empty cauldron contents into potion flask")
 
 
 func _on_tap_mouse_exited() -> void:
 	in_tap = false
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)
 
 func _on_click_area_mouse_entered() -> void:
 	if UI_communicator:
-		UI_communicator.emit_signal("display_request", "Cauldron", potion.generate_comp_text(), generate_desc())
+		UI_communicator.emit_signal("display_request", self, "Cauldron", potion.generate_comp_text(), generate_desc())
 
 
 
 func _on_click_area_mouse_exited() -> void:
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)

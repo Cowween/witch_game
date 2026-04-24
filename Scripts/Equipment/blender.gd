@@ -140,7 +140,7 @@ func _input(event: InputEvent) -> void:
 func _on_area_2d_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit("Blender", "", "Click on me to liquidate ingredients")
+		UI_communicator.display_request.emit(self, "Blender", "", "Click on me to liquidate ingredients")
 	
 	
 
@@ -148,7 +148,7 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)
 
 
 func _on_blender_cup_volume_updated() -> void:

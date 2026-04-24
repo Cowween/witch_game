@@ -124,8 +124,8 @@ texture = ExtResource("8_kgujy")
 position = Vector2(45, 57)
 shape = SubResource("CircleShape2D_w0wiw")
 
-[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_beaker_area_mouse_entered"]
 [connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_beaker_area_mouse_entered"]
 [connection signal="mouse_entered" from="BeakerArea" to="BeakerArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_exited" from="BeakerArea" to="." method="_on_beaker_area_mouse_exited"]

@@ -8,6 +8,7 @@ extends PanelContainer
 
 var can_display := false
 var display_queued := false
+var current_sender: Node = null
 func set_item_name(text:String) -> void:
 	item_name.text = text
 	
@@ -53,7 +54,8 @@ func _input(event: InputEvent) -> void:
 
 
 
-func _on_ui_communicator_display_request(item_name: Variant, el_comp: Variant, desc: Variant) -> void:
+func _on_ui_communicator_display_request(sender: Node, item_name: Variant, el_comp: Variant, desc: Variant) -> void:
+	current_sender = sender # Lock onto the new object
 	if can_display:
 		visible = true
 	display_queued = true
@@ -63,13 +65,15 @@ func _on_ui_communicator_display_request(item_name: Variant, el_comp: Variant, d
 	await get_tree().process_frame
 	reset_size()
 
+func _on_ui_communicator_stop_display(sender: Node) -> void:
+	# ONLY hide if the object telling us to stop is the one we are currently looking at
+	if sender == current_sender:
+		visible = false
+		display_queued = false
+		current_sender = null
 
-func _on_ui_communicator_stop_display() -> void:
-	visible = false
-	display_queued = false
-
-
-func _on_ui_communicator_display_temperature(temp: float) -> void:
+func _on_ui_communicator_display_temperature(sender: Node, temp: float) -> void:
+	current_sender = sender
 	if can_display:
 		visible = true
 	set_item_name("Thermometer")

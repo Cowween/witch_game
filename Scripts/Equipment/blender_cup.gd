@@ -4,7 +4,7 @@ signal volume_updated
 signal moving
 signal back
 var active := true
-var initial_pos : Vector2
+var initial_pos : Vector2 
 var left := false
 @onready var twig : AnimatedSprite2D = $Twig
 @onready var mixture := $Mixture
@@ -88,7 +88,7 @@ func _on_click_area_mouse_entered() -> void:
 		var n := item_name 
 		if n == "":
 			n = generate_default_name()
-		UI_communicator.emit_signal("display_request", "Blender", generate_comp_text(), generate_desc())
+		UI_communicator.emit_signal("display_request", self, "Blender", generate_comp_text(), generate_desc())
 
 
 
@@ -96,4 +96,4 @@ func _on_click_area_mouse_exited() -> void:
 	print("mouseout")
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)

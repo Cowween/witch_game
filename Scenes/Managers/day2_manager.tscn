@@ -8,14 +8,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cn7a"]
 size = Vector2(112, 136)
 
-[node name="EncounterManager" type="Area2D" unique_id=1391628309 node_paths=PackedStringArray("dialogue_ui", "cost_counter", "end", "bell")]
+[node name="EncounterManager" type="Area2D" unique_id=1391628309]
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("1_rvbpt")
-dialogue_ui = NodePath("")
-cost_counter = NodePath("")
-end = NodePath("")
-bell = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=445223998]
 position = Vector2(72, 180)

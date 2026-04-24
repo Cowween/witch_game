@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://23nh1yce1hl8" path="res://Scenes/mineral.tscn" id="7_5wyu1"]
 [ext_resource type="PackedScene" uid="uid://dgry3kypfekms" path="res://Scenes/powder.tscn" id="8_0c07c"]
 [ext_resource type="PackedScene" uid="uid://b5s41hsc0raq7" path="res://Scenes/Equipment/SolventBarrel.tscn" id="9_2cgwh"]
+[ext_resource type="PackedScene" uid="uid://dhnr3ney512wj" path="res://Scenes/Equipment/blender_cup.tscn" id="10_iaow0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qbn"]
 size = Vector2(1154, 144)
@@ -83,6 +84,9 @@ UI_communicator = NodePath("../UICommunicator")
 [node name="SolventBarrel" parent="." unique_id=1567967711 instance=ExtResource("9_2cgwh")]
 position = Vector2(513, 66)
 solvent = "Salt"
+
+[node name="BlenderCup" parent="." unique_id=363631082 instance=ExtResource("10_iaow0")]
+position = Vector2(312, 183)
 
 [connection signal="display_request" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_display_request"]
 [connection signal="stop_display" from="UICommunicator" to="PanelContainer" method="_on_ui_communicator_stop_display"]

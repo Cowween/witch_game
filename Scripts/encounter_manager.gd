@@ -45,12 +45,13 @@ func _on_encounter_over() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is BottleOfPotion:
 		print("checking potion")
-		var check_res := curr_encounter.req_potion.check_potion(body.potion)
-		if check_res == 7:
-			cost_counter.total_gain+=curr_encounter.req_potion.reward
-			curr_encounter.end()
-			body.queue_free()
-			await dialogue_ui.dialogue_over
-			encounter_over.emit()
-		else:
-			curr_encounter.show_wrong(check_res)
+		if body.potion:
+			var check_res := curr_encounter.req_potion.check_potion(body.potion)
+			if check_res == 7:
+				cost_counter.total_gain+=curr_encounter.req_potion.reward
+				curr_encounter.end()
+				body.queue_free()
+				await dialogue_ui.dialogue_over
+				encounter_over.emit()
+			else:
+				curr_encounter.show_wrong(check_res)

@@ -37,9 +37,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_area_2d_2_mouse_entered() -> void:
 	if UI_communicator:
-		UI_communicator.display_request.emit(item_name, "", desc)
+		UI_communicator.display_request.emit(self, item_name, "", desc)
 	
 
 func _on_area_2d_2_mouse_exited() -> void:
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)

@@ -65,11 +65,11 @@ func _on_click_area_mouse_entered() -> void:
 			n = potion.generic_name()
 			c = potion.generate_comp_text()
 			d = potion.generate_desc()
-		UI_communicator.emit_signal("display_request", n, c, d)
+		UI_communicator.emit_signal("display_request", self, n, c, d)
 
 
 
 func _on_click_area_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)

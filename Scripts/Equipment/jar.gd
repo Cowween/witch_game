@@ -30,7 +30,7 @@ func _input(event: InputEvent) -> void:
 func _on_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit(item_name, "", desc)
+		UI_communicator.display_request.emit(self, item_name, "", desc)
 	if not non_static.is_empty():
 		for i in non_static:
 			i.material.set_shader_parameter("line_thickness", 1.0)
@@ -39,7 +39,7 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)
 	if not non_static.is_empty():
 		for i in non_static:
 			i.material.set_shader_parameter("line_thickness", 0.0)

@@ -37,8 +37,8 @@ func _on_button_down() -> void:
 
 
 func _on_mouse_entered() -> void:
-	UI_communicator.display_request.emit(item_name, composition, desc+"\n"+amounts + "\nCost: " + str(cost))
+	UI_communicator.display_request.emit(self, item_name, composition, desc+"\n"+amounts + "\nCost: " + str(cost))
 
 
 func _on_mouse_exited() -> void:
-	UI_communicator.stop_display.emit()
+	UI_communicator.stop_display.emit(self)

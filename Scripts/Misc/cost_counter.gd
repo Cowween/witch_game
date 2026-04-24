@@ -10,4 +10,4 @@ func set_cost(value) -> void:
 	
 func set_gain(value) -> void:
 	total_gain = value
-	$VBoxContainer/HBoxContainer2/Gain.text = "Cost: [color=green]%d[/color]" % total_gain
+	$VBoxContainer/HBoxContainer2/Gain.text = "Gain: [color=green]%d[/color]" % total_gain

@@ -60,6 +60,7 @@ collision_mode = 2
 [node name="BlenderCup" type="CharacterBody2D" unique_id=1687937678 node_paths=PackedStringArray("particle")]
 collision_layer = 5
 collision_mask = 2
+input_pickable = true
 script = ExtResource("1_jf7xx")
 particle = NodePath("GPUParticles2D")
 fill_curve = ExtResource("2_4a5kw")
@@ -119,6 +120,7 @@ script = ExtResource("4_ppm87")
 non_static = [NodePath("../BlendBack"), NodePath("../BlendFront")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=1956695760]
+z_index = 7
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_mpsrd")
 
@@ -137,8 +139,6 @@ amount = 11
 texture = ExtResource("15_wp5cq")
 process_material = SubResource("ParticleProcessMaterial_4a5kw")
 
-[connection signal="mouse_entered" from="BeakerArea" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="BeakerArea" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pourable" from="BeakerArea" to="." method="_on_beaker_area_pourable"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
 [connection signal="mouse_entered" from="ClickArea" to="ClickArea" method="_on_mouse_entered"]

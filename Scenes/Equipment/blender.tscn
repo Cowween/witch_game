@@ -70,6 +70,7 @@ texture = ExtResource("4_4dkjm")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1213382402]
 input_pickable = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1882965119]
 position = Vector2(-0.5, 7)

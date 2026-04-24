@@ -114,6 +114,7 @@ func decrease_vol() -> void:
 	
 func distill() -> void:
 	if temp_list.is_empty():
+		particles.emitting = false
 		return
 	#print(temp_list)
 	if temperature >= temp_list[0]:
@@ -132,13 +133,13 @@ func distill() -> void:
 func _on_click_area_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit("Distillator", "", "Click on the fire stone to begin distillation")
+		UI_communicator.display_request.emit(self, "Distillator", "", "Click on the fire stone to begin distillation")
 
 
 func _on_click_area_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)
 
 
 func _on_timer_timeout() -> void:
@@ -147,7 +148,7 @@ func _on_timer_timeout() -> void:
 	temperature += actual_increment
 	red_liquid.position.y = lerpf(min_therm_height, max_therm_height, temperature/max_temp)
 	if UI_communicator and t_in:
-		UI_communicator.emit_signal("display_temperature", temperature)
+		UI_communicator.emit_signal("display_temperature", self, temperature)
 	decrease_vol()
 	
 
@@ -177,13 +178,13 @@ func _on_pour_area_body_exited(body: Node2D) -> void:
 func _on_thermometer_area_mouse_entered() -> void:
 	t_in = true
 	if UI_communicator:
-		UI_communicator.emit_signal("display_temperature", temperature)
+		UI_communicator.emit_signal("display_temperature", self, temperature)
 
 
 func _on_thermometer_area_mouse_exited() -> void:
 	t_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)
 
 
 func _on_rock_area_mouse_entered() -> void:

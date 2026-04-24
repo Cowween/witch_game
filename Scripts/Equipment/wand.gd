@@ -98,13 +98,13 @@ func cast(s: String) -> void:
 func _on_click_area_mouse_entered() -> void:
 	mouse_in = true
 	if UI_communicator:
-		UI_communicator.display_request.emit("Wand", "", "Right click on equipment to cast spells")
+		UI_communicator.display_request.emit(self, "Wand", "", "Right click on equipment to cast spells")
 
 
 func _on_click_area_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.stop_display.emit()
+		UI_communicator.stop_display.emit(self)
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body == cauldron and cauldron.brewing:

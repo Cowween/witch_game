@@ -298,13 +298,13 @@ func _on_area_2d_mouse_entered() -> void:
 		var n := item_name 
 		if n == "":
 			n = generate_default_name()
-		UI_communicator.emit_signal("display_request", n, generate_comp_text(), generate_desc())
+		UI_communicator.emit_signal("display_request", self, n, generate_comp_text(), generate_desc())
 
 
 func _on_area_2d_mouse_exited() -> void:
 	mouse_in = false
 	if UI_communicator:
-		UI_communicator.emit_signal("stop_display")
+		UI_communicator.emit_signal("stop_display", self)
 
 func _on_pour_receptor_area_entered(area: Area2D) -> void:
 	print("Detected", area.name)
